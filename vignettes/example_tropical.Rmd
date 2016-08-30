@@ -1,0 +1,93 @@
+---
+title: "Using devRate package on T. solanivora (Lepidoptera: Gelechiidae) in Ecuador"
+author: "Francois Rebaudo, using data from Crespo-Perez et al. 2011"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## T. solanivora dataset
+Dataset for T. solanivora was retrieved from Crespo-Perez et al.
+2011^[Crespo-Pérez, V., Rebaudo, F., Silvain, J.-F. and Dangles, O. (2011)
+      Modeling invasive species spread in complex landscapes: the case of
+      potato moth in Ecuador. Landscape Ecology, 26, 1447–1461.], using Web
+Plot Digitizer^[Rohatgi, A. (2015) WebPlotDigitalizer: HTML5 Based Online Tool
+                to Extract Numerical Data from Plot Images.].
+
+    rawDevEggs <- matrix(c(10, 0.031, 10, 0.039, 15, 0.047, 15, 0.059, 15.5, 0.066,
+      13, 0.072, 16, 0.083, 16, 0.100, 17, 0.100, 20, 0.100, 20, 0.143, 25, 0.171,
+      25, 0.200, 30, 0.200, 30, 0.180, 35, 0.001), ncol = 2, byrow = TRUE)
+
+    rawDevLarva <- matrix(c(10, 0.010, 10, 0.014, 10, 0.019, 13, 0.034, 15, 0.024,
+      15.5, 0.029, 15.5, 0.034, 15.5, 0.039, 17, 0.067, 20, 0.050, 25, 0.076,
+      25, 0.056, 30, 0.0003, 35, 0.0002), ncol = 2, byrow = TRUE)
+
+    rawDevPupa <- matrix(c(10, 0.001, 10, 0.008, 10, 0.012, 13, 0.044, 15, 0.017,
+      15, 0.044, 15.5, 0.039, 16, 0.034, 15.5, 0.037, 16, 0.051, 17, 0.051,
+      20, 0.080, 20, 0.092, 25, 0.102, 25, 0.073, 30, 0.005,
+      35, 0.0002), ncol = 2, byrow = TRUE)
+
+## Finding models in the literature
+Before attempting to fit any model to the empirical data, the devRate function
+"devRateFind" search the database for previous articles fitting which models to
+the organism, either by Order, Family, or species.
+
+    devRateFind(orderSP = "Lepidoptera")
+    devRateFind(familySP = "Gelechiidae")
+
+Then, the "devRateInfo" function provides additional information on these models
+and on parameter estimations.
+
+    devRateInfo(eq = taylor_81)
+
+Information from the database can be plotted using the "devRatePlotInfo" function.
+
+    devRatePlotInfo (eq = taylor_81, sortBy = "ordersp",
+      ylim = c(0, 0.20), xlim = c(0, 50))
+
+## Fitting models to empirical datasets
+The empirical data can be fitted to any model in the database with the
+"devRateModel" function and empirical data plotted against the model using the
+"devRatePlot" function.
+
+    mEggs <- devRateModel(eq = taylor_81, temp = rawDevEggs[,1], devRate = rawDevEggs[,2],
+      startValues = list(Rm = 0.05, Tm = 30, To = 5))
+    mLarva <- devRateModel(eq = taylor_81, temp = rawDevLarva[,1], devRate = rawDevLarva[,2],
+      startValues = list(Rm = 0.05, Tm = 25, To = 5))
+    mPupa <- devRateModel(eq = taylor_81, temp = rawDevPupa[,1], devRate = rawDevPupa[,2],
+      startValues = list(Rm = 0.05, Tm = 30, To = 5))
+
+    devRatePlot(eq = taylor_81, nlsDR = mEggs, temp = rawDevEggs[,1], devRate = rawDevEggs[,2],
+      pch = 16, ylim = c(0, 0.2))
+    devRatePlot(eq = taylor_81, nlsDR = mLarva, temp = rawDevLarva[,1], devRate = rawDevLarva[,2],
+      pch = 16, ylim = c(0, 0.2))
+    devRatePlot(eq = taylor_81, nlsDR = mPupa, temp = rawDevPupa[,1], devRate = rawDevPupa[,2],
+      pch = 16, ylim = c(0, 0.2))
+
+```{r, echo=FALSE, results='asis'}
+knitr::kable(data.frame(Stage = c("Eggs", "Larva", "Pupa"), model = rep("Taylor", 3),
+  Rm = c(0.1934, 0.06838, 0.0978), Rm_SE = c(0.01781, 0.009473, 0.0087),
+  Tm = c(25.3418, 21.40871, 22.0114), Tm_SE = c(0.76013, 0.729058, 0.4556),
+  To = c(-6.8939, 5.54497, -4.7515), To_SE = c(0.76853, 0.865261, 0.4715)))
+```
+
+## Forecasting phenologies from empirical temperature
+In this example the temperature dataset is built from a Normal distribution of mean
+15 and a standard deviation of 1, with a time step of one day. The developmental
+models used are those previously fitted with the Taylor model for the three stages.
+We assumed that the average time for female adults to lay eggs was of 1 day. We
+simulated 500 individuals, with a stochasticity in developmental rate centered on
+the developmental rate, with a standard deviation of 0.015 (Normal distribution).
+
+    forecastTsolanivora <- devRateIBM(
+      tempTS = rnorm(n = 100, mean = 15, sd = 1),
+      timeStepTS = 1,
+      models = list(mEggs, mLarva, mPupa),
+      numInd = 500,
+      stocha = 0.015,
+      timeLayEggs = 1)
+
+    devRateIBMPlot(ibm = forecastTsolanivora, typeG = "density")
