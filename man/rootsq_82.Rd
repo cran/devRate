@@ -3,7 +3,7 @@
 \docType{data}
 \name{rootsq_82}
 \alias{rootsq_82}
-\title{Root square equation of developmental rate as a function of temperature.}
+\title{Root square equation of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -17,20 +17,20 @@
 }}
 \source{
 \url{http://jb.asm.org/content/149/1/1}
-
-\url{http://jb.asm.org/}
 }
 \usage{
-rootsq_82
-
 rootsq_82
 }
 \description{
 Ratkowsky, D.A., Olley, J., McMeekin, T.A., and Ball, A. (1982) Relationship between
 temperature and growth rate of bacterial cultures. Journal of Bacteriology 149(1): 1-5.
+}
+\details{
+Equation:
+rT ~ (bb * (T - Tb))^2
 
-Ratkowsky, D.A., Olley, J., McMeekin, T.A., and Ball, A. (1982) Relationship between
-temperature and growth rate of bacterial cultures. Journal of Bacteriology 149(1): 1-5.
+where rT is the development rate, T the temperature, bb the slope of the
+regression line, and Tb a conceptual temperature of no metabolic significance.
 }
 \keyword{datasets}
 

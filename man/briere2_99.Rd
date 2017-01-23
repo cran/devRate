@@ -3,7 +3,7 @@
 \docType{data}
 \name{briere2_99}
 \alias{briere2_99}
-\title{Briere et al equation 2 of developmental rate as a function of temperature.}
+\title{Briere et al equation 2 of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -24,6 +24,14 @@ briere2_99
 \description{
 Briere, J.F., Pracros, P., le Roux, A.Y. and Pierre, S. (1999) A novel rate model of
 temperature-dependent development for arthropods. Environmental Entomology, 28, 22-29.
+}
+\details{
+Equation:
+rT ~ aa * T * (T - Tmin) * (Tmax - T)^(1 / bb)
+
+where rT is the development rate, T the temperature, Tmin the low
+temperature developmental threshold, Tmax the lethal temperature, and aa and
+bb empirical constants.
 }
 \keyword{datasets}
 

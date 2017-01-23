@@ -2,8 +2,8 @@ Package: devRate
 Type: Package
 Title: Quantify Relationship Between Developmental Rate and Temperature
         in Ectotherms
-Version: 0.1.0
-Date: 2016-08-29
+Version: 0.1.1
+Date: 2017-01-22
 Authors@R: c(person("Francois", "Rebaudo", role = c("aut", "cre"),
     email = "francois.rebaudo@ird.fr"),
     person("Quentin", "Struelens", role = "aut"))
@@ -16,9 +16,9 @@ Description: A set of functions to ease quantifying the relationship between dev
 License: GPL-2
 LazyData: TRUE
 RoxygenNote: 5.0.1
-Suggests: knitr, rmarkdown
+Suggests: knitr, rmarkdown, testthat
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2016-08-29 18:20:57 UTC; rebaudo
+Packaged: 2017-01-22 20:30:43 UTC; rebaudo
 Repository: CRAN
-Date/Publication: 2016-08-30 00:37:42
+Date/Publication: 2017-01-23 06:35:23

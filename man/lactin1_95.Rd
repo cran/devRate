@@ -3,7 +3,7 @@
 \docType{data}
 \name{lactin1_95}
 \alias{lactin1_95}
-\title{Lactin et al. equation 1 of developmental rate as a function of temperature.}
+\title{Lactin et al. equation 1 of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -24,6 +24,13 @@ lactin1_95
 \description{
 Lactin, Derek J, NJ Holliday, DL Johnson, y R Craigen (995) Improved rate model of
 temperature-dependent development by arthropods. Environmental Entomology 24(1): 68-75.
+}
+\details{
+Equation:
+rT ~ exp(aa * T) - exp(aa * Tmax - (Tmax - T)/deltaT)
+
+where rT is the development rate, T the temperature, and aa, Tmax,
+and deltaT fitted parameters.
 }
 \keyword{datasets}
 

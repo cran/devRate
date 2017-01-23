@@ -3,7 +3,7 @@
 \docType{data}
 \name{wangengel_98}
 \alias{wangengel_98}
-\title{Wang and Engel equation of developmental rate as a function of temperature.}
+\title{Wang and Engel equation of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -17,20 +17,20 @@
 }}
 \source{
 \url{http://dx.doi.org/10.1016/S0308-521X(98)00028-6}
-
-\url{http://dx.doi.org/10.1016/S0308-521X(98)00028-6}
 }
 \usage{
-wangengel_98
-
 wangengel_98
 }
 \description{
 Wang, E., and Engel, T. (1998) Simulation of phenological development of wheat crops.
 Agricultural systems 58(1): 1-24.
+}
+\details{
+Equation:
+rT ~ (2 * (T - Tmin)^aa * (Topt - Tmin)^aa - (T - Tmin)^(2 * aa)) / ((Topt - Tmin)^(2 * aa))
 
-Wang, E., and Engel, T. (1998) Simulation of phenological development of wheat crops.
-Agricultural systems 58(1): 1-24.
+where rT is the development rate, T the temperature, Tmin the minimum temperature,
+Topt the optimum temperature, and aa a constant.
 }
 \keyword{datasets}
 

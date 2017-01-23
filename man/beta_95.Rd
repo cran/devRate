@@ -3,7 +3,7 @@
 \docType{data}
 \name{beta_95}
 \alias{beta_95}
-\title{Beta equation of developmental rate as a function of temperature.}
+\title{Beta equation of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -17,20 +17,21 @@
 }}
 \source{
 \url{http://dx.doi.org/10.1016/0168-1923(95)02236-Q}
-
-\url{http://dx.doi.org/10.1016/0168-1923(95)02236-Q}
 }
 \usage{
-beta_95
-
 beta_95
 }
 \description{
 Yin, X., Kropff, M.J., McLaren, G., and Visperas, R.M. (1995) A nonlinear model for crop
-development as a function of temperature. Agricultural and Forest Meteorology 77(1): 1-16.
+  development as a function of temperature. Agricultural and Forest Meteorology 77(1): 1-16.
+}
+\details{
+Equation:
+rT ~ exp(mu) * (T - Tb)^aa * (Tc - T)^bb
 
-Yin, X., Kropff, M.J., McLaren, G., and Visperas, R.M. (1995) A nonlinear model for crop
-development as a function of temperature. Agricultural and Forest Meteorology 77(1): 1-16.
+where rT is the development rate, T the temperature, mu, aa,
+and bb the model parameters, Tb the base temperature, and Tc the ceiling
+temperature.
 }
 \keyword{datasets}
 

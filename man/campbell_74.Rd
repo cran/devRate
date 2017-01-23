@@ -3,7 +3,7 @@
 \docType{data}
 \name{campbell_74}
 \alias{campbell_74}
-\title{Campbell et al. equation of developmental rate as a function of temperature.}
+\title{Campbell et al. equation of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -24,6 +24,13 @@ campbell_74
 \description{
 Campbell, A., Frazer, B. D., Gilbert, N. G. A. P., Gutierrez, A. P., & Mackauer, M. (1974).
 Temperature requirements of some aphids and their parasites. Journal of applied ecology, 431-438.
+}
+\details{
+Equation:
+rT ~ aa + bb * T
+
+where rT is the development rate, T the temperature, bb the slope, and aa
+the point at which the line crosses the rT axis when T = 0.
 }
 \keyword{datasets}
 

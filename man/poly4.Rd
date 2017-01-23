@@ -3,7 +3,7 @@
 \docType{data}
 \name{poly4}
 \alias{poly4}
-\title{Fourth-order polynomial equation of developmental rate as a function of temperature.}
+\title{Fourth-order polynomial equation of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -19,7 +19,11 @@
 poly4
 }
 \description{
-Fourth-order polynomial equation of developmental rate as a function of temperature.
+A simple fourth-order polynomial equation.
+}
+\details{
+Equation:
+rT ~ a0 + a1 * T + a2 * T^2 + a3 * T^3 + a4 * T^4
 }
 \keyword{datasets}
 

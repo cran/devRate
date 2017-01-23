@@ -3,7 +3,7 @@
 \docType{data}
 \name{logan10_76}
 \alias{logan10_76}
-\title{Logan et al. equation 10 of developmental rate as a function of temperature.}
+\title{Logan et al. equation 10 of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -25,6 +25,13 @@ logan10_76
 Logan, J. A., Wollkind, D. J., Hoyt, S. C., and Tanigoshi, L. K. (1976). An analytic model
 for description of temperature dependent rate phenomena in arthropods. Environmental
 Entomology, 5(6), 1133-1140.
+}
+\details{
+Equation:
+rT ~ alpha * (1/(1 + cc * exp(- bb * T)) - exp(-((Tmax - T)/deltaT)))
+
+where rT is the development rate, T the temperature, Tmax the maximum temperature,
+deltaT the width of the high temperature boundary layer, and alpha and bb constants.
 }
 \keyword{datasets}
 

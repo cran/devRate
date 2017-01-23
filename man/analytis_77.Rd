@@ -3,7 +3,7 @@
 \docType{data}
 \name{analytis_77}
 \alias{analytis_77}
-\title{Analytis equation of developmental rate as a function of temperature.}
+\title{Analytis equation of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -24,6 +24,13 @@ analytis_77
 \description{
 Analytis, S. (1977) Uber die Relation zwischen biologischer Entwicklung und Temperatur bei
 phytopathogenen Pilzen. Journal of Phytopathology 90(1): 64-76.
+}
+\details{
+Equation:
+rT ~ aa * (T - Tmin)^bb * (Tmax - T)^cc
+
+where rT is the development rate, T the temperature, Tmin the minimum
+temperature, Tmax the maximum temperature, and aa, bb, and cc constants.
 }
 \keyword{datasets}
 

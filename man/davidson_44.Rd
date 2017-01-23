@@ -3,7 +3,7 @@
 \docType{data}
 \name{davidson_44}
 \alias{davidson_44}
-\title{Davidson equation of developmental rate as a function of temperature.}
+\title{Davidson equation of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -24,6 +24,15 @@ davidson_44
 \description{
 Davidson, J. (1944). On the relationship between temperature and rate of development of insects
 at constant temperatures. The Journal of Animal Ecology:26-38.
+}
+\details{
+Equation:
+rT ~ K / (1 + exp(aa + bb * T))
+
+where rT is the development rate, T the temperature, K the distance between
+the upper and lower asymptote of the curve, aa the relative position of the origin of
+the curve on the abscissa, bb the degree of acceleration of development of the life stage
+in relation to temperature.
 }
 \keyword{datasets}
 

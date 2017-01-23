@@ -3,7 +3,7 @@
 \docType{data}
 \name{harcourtYee_82}
 \alias{harcourtYee_82}
-\title{Harcourt and Yee equation of developmental rate as a function of temperature.}
+\title{Harcourt and Yee equation of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -24,6 +24,10 @@ harcourtYee_82
 \description{
 Harcourt, D. and Yee, J. (1982) Polynomial algorithm for predicting the duration of insect
 life stages. Environmental Entomology, 11, 581-584.
+}
+\details{
+Equation:
+rT ~ a0 + a1 * T + a2 * T^2 + a3 * T^3
 }
 \keyword{datasets}
 

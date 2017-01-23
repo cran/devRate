@@ -3,7 +3,7 @@
 \docType{data}
 \name{damos_08}
 \alias{damos_08}
-\title{Simplified beta type equation of developmental rate as a function of temperature.}
+\title{Simplified beta type equation of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -25,6 +25,14 @@ damos_08
 Damos, P.T., and Savopoulou-Soultani, M. (2008). Temperature-dependent bionomics and modeling
 of Anarsia lineatella (Lepidoptera: Gelechiidae) in the laboratory.
 Journal of economic entomology, 101(5), 1557-1567.
+}
+\details{
+Equation:
+rT ~ aa * (bb - T / 10) * (T / 10)^cc
+rT ~ aa * (T - Tmin)^2 * (Tmax - T)
+
+where rT is the development rate, T the temperature, and aa, bb, and
+cc empirical constant parameters.
 }
 \keyword{datasets}
 

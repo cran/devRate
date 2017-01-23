@@ -3,7 +3,7 @@
 \docType{data}
 \name{kontodimas_04}
 \alias{kontodimas_04}
-\title{Kontodimas et al. equation of developmental rate as a function of temperature.}
+\title{Kontodimas et al. equation of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -27,6 +27,13 @@ temperature-dependent development of Nephus includens (Kirsch) and Nephus bisign
 (Boheman)(Coleoptera: Coccinellidae) preying on Planococcus citri
 (Risso)(Homoptera: Pseudococcidae): evaluation of a linear and various nonlinear models
 using specific criteria. Environmental Entomology 33(1): 1-11.
+}
+\details{
+Equation:
+rT ~ aa * (T - Tmin)^2 * (Tmax - T)
+
+where rT is the development rate, T the temperature, Tmin the minimum
+temperature, Tmax the maximum temperature, and aa a constant.
 }
 \keyword{datasets}
 

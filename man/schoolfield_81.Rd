@@ -3,7 +3,7 @@
 \docType{data}
 \name{schoolfield_81}
 \alias{schoolfield_81}
-\title{Schoolfield et al. equation of developmental rate as a function of temperature.}
+\title{Schoolfield et al. equation of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -25,6 +25,19 @@ schoolfield_81
 Schoolfield, R., Sharpe, P. & Magnuson, C. (1981) Non-linear regression of biological
 temperature-dependent rate models based on absolute reaction-rate theory.
 Journal of theoretical biology, 88, 719-731.
+}
+\details{
+Equation:
+rT ~ (p25 * (T + 273.16)/298 * exp(aa/1.987 * (1/298 - 1/(T + 273.16)))) / (1 + exp(bb/1.987 * (1/cc - 1/(T + 273.16))) + exp(dd/1.987 * (1/ee - 1/(T + 273.16))))
+
+where rT is the development rate, T the temperature, p25 the development
+rate at 25 degree Celcius assuming no enzyme inactivation, aa the enthalpy of
+activation of the reaction that is catalyzed by the enzyme, bb the change in
+enthalpy associated with low temperature inactivation of the enzyme, cc the
+the temperature at which the enzyme is 1/2 active and 1/2 low temperature inactive,
+dd the cange in enthalpy associated with high temperature inactivation of the enzyme,
+and ee the temperature at which the enzyme is 1/2 active and 1/2 high temperature
+inactive.
 }
 \keyword{datasets}
 

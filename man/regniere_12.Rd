@@ -3,7 +3,7 @@
 \docType{data}
 \name{regniere_12}
 \alias{regniere_12}
-\title{Regniere equation of developmental rate as a function of temperature.}
+\title{Regniere equation of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -17,22 +17,21 @@
 }}
 \source{
 \url{http://dx.doi.org/10.1016/j.jinsphys.2012.01.010}
-
-\url{http://dx.doi.org/10.1016/j.jinsphys.2012.01.010}
 }
 \usage{
-regniere_12
-
 regniere_12
 }
 \description{
 Regniere, J., Powell, J., Bentz, B., and Nealis, V. (2012) Effects of temperature on
 development, survival and reproduction of insects: experimental design, data analysis
 and modeling. Journal of Insect Physiology 58(5): 634-47.
+}
+\details{
+Equation:
+rT ~ phi * (exp(bb * (T - Tb)) - ((Tm - T)/(Tm - Tb)) * exp(-bb * (T - Tb) / deltab) - ((T - Tb)/(Tm - Tb)) * exp(bb * (Tm - Tb) - (Tm - T)/deltam))
 
-Regniere, J., Powell, J., Bentz, B., and Nealis, V. (2012) Effects of temperature on
-development, survival and reproduction of insects: experimental design, data analysis and
-modeling. Journal of Insect Physiology 58(5): 634-47.
+where rT is the development rate, T the temperature, and the others
+thermodynamic parameters (see source).
 }
 \keyword{datasets}
 

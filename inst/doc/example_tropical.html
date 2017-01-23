@@ -12,7 +12,7 @@
 
 <meta name="author" content="Francois Rebaudo, using data from Crespo-Perez et al. 2011" />
 
-<meta name="date" content="2016-08-29" />
+<meta name="date" content="2017-01-22" />
 
 <title>Using devRate package on T. solanivora (Lepidoptera: Gelechiidae) in Ecuador</title>
 
@@ -21,7 +21,7 @@
 
 
 
-<link href="data:text/css,body%20%7B%0A%20%20background%2Dcolor%3A%20%23fff%3B%0A%20%20margin%3A%201em%20auto%3B%0A%20%20max%2Dwidth%3A%20700px%3B%0A%20%20overflow%3A%20visible%3B%0A%20%20padding%2Dleft%3A%202em%3B%0A%20%20padding%2Dright%3A%202em%3B%0A%20%20font%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0A%20%20font%2Dsize%3A%2014px%3B%0A%20%20line%2Dheight%3A%201%2E35%3B%0A%7D%0A%0A%23header%20%7B%0A%20%20text%2Dalign%3A%20center%3B%0A%7D%0A%0A%23TOC%20%7B%0A%20%20clear%3A%20both%3B%0A%20%20margin%3A%200%200%2010px%2010px%3B%0A%20%20padding%3A%204px%3B%0A%20%20width%3A%20400px%3B%0A%20%20border%3A%201px%20solid%20%23CCCCCC%3B%0A%20%20border%2Dradius%3A%205px%3B%0A%0A%20%20background%2Dcolor%3A%20%23f6f6f6%3B%0A%20%20font%2Dsize%3A%2013px%3B%0A%20%20line%2Dheight%3A%201%2E3%3B%0A%7D%0A%20%20%23TOC%20%2Etoctitle%20%7B%0A%20%20%20%20font%2Dweight%3A%20bold%3B%0A%20%20%20%20font%2Dsize%3A%2015px%3B%0A%20%20%20%20margin%2Dleft%3A%205px%3B%0A%20%20%7D%0A%0A%20%20%23TOC%20ul%20%7B%0A%20%20%20%20padding%2Dleft%3A%2040px%3B%0A%20%20%20%20margin%2Dleft%3A%20%2D1%2E5em%3B%0A%20%20%20%20margin%2Dtop%3A%205px%3B%0A%20%20%20%20margin%2Dbottom%3A%205px%3B%0A%20%20%7D%0A%20%20%23TOC%20ul%20ul%20%7B%0A%20%20%20%20margin%2Dleft%3A%20%2D2em%3B%0A%20%20%7D%0A%20%20%23TOC%20li%20%7B%0A%20%20%20%20line%2Dheight%3A%2016px%3B%0A%20%20%7D%0A%0Atable%20%7B%0A%20%20margin%3A%201em%20auto%3B%0A%20%20border%2Dwidth%3A%201px%3B%0A%20%20border%2Dcolor%3A%20%23DDDDDD%3B%0A%20%20border%2Dstyle%3A%20outset%3B%0A%20%20border%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0A%20%20border%2Dwidth%3A%202px%3B%0A%20%20padding%3A%205px%3B%0A%20%20border%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0A%20%20border%2Dwidth%3A%201px%3B%0A%20%20border%2Dstyle%3A%20inset%3B%0A%20%20line%2Dheight%3A%2018px%3B%0A%20%20padding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0A%20%20border%2Dleft%2Dstyle%3A%20none%3B%0A%20%20border%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0A%20%20background%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0A%0Ap%20%7B%0A%20%20margin%3A%200%2E5em%200%3B%0A%7D%0A%0Ablockquote%20%7B%0A%20%20background%2Dcolor%3A%20%23f6f6f6%3B%0A%20%20padding%3A%200%2E25em%200%2E75em%3B%0A%7D%0A%0Ahr%20%7B%0A%20%20border%2Dstyle%3A%20solid%3B%0A%20%20border%3A%20none%3B%0A%20%20border%2Dtop%3A%201px%20solid%20%23777%3B%0A%20%20margin%3A%2028px%200%3B%0A%7D%0A%0Adl%20%7B%0A%20%20margin%2Dleft%3A%200%3B%0A%7D%0A%20%20dl%20dd%20%7B%0A%20%20%20%20margin%2Dbottom%3A%2013px%3B%0A%20%20%20%20margin%2Dleft%3A%2013px%3B%0A%20%20%7D%0A%20%20dl%20dt%20%7B%0A%20%20%20%20font%2Dweight%3A%20bold%3B%0A%20%20%7D%0A%0Aul%20%7B%0A%20%20margin%2Dtop%3A%200%3B%0A%7D%0A%20%20ul%20li%20%7B%0A%20%20%20%20list%2Dstyle%3A%20circle%20outside%3B%0A%20%20%7D%0A%20%20ul%20ul%20%7B%0A%20%20%20%20margin%2Dbottom%3A%200%3B%0A%20%20%7D%0A%0Apre%2C%20code%20%7B%0A%20%20background%2Dcolor%3A%20%23f7f7f7%3B%0A%20%20border%2Dradius%3A%203px%3B%0A%20%20color%3A%20%23333%3B%0A%20%20white%2Dspace%3A%20pre%2Dwrap%3B%20%20%20%20%2F%2A%20Wrap%20long%20lines%20%2A%2F%0A%7D%0Apre%20%7B%0A%20%20border%2Dradius%3A%203px%3B%0A%20%20margin%3A%205px%200px%2010px%200px%3B%0A%20%20padding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0A%20%20background%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0A%0Acode%20%7B%0A%20%20font%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0A%20%20font%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0A%20%20padding%3A%202px%200px%3B%0A%7D%0A%0Adiv%2Efigure%20%7B%0A%20%20text%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0A%20%20background%2Dcolor%3A%20%23FFFFFF%3B%0A%20%20padding%3A%202px%3B%0A%20%20border%3A%201px%20solid%20%23DDDDDD%3B%0A%20%20border%2Dradius%3A%203px%3B%0A%20%20border%3A%201px%20solid%20%23CCCCCC%3B%0A%20%20margin%3A%200%205px%3B%0A%7D%0A%0Ah1%20%7B%0A%20%20margin%2Dtop%3A%200%3B%0A%20%20font%2Dsize%3A%2035px%3B%0A%20%20line%2Dheight%3A%2040px%3B%0A%7D%0A%0Ah2%20%7B%0A%20%20border%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0A%20%20padding%2Dtop%3A%2010px%3B%0A%20%20padding%2Dbottom%3A%202px%3B%0A%20%20font%2Dsize%3A%20145%25%3B%0A%7D%0A%0Ah3%20%7B%0A%20%20border%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0A%20%20padding%2Dtop%3A%2010px%3B%0A%20%20font%2Dsize%3A%20120%25%3B%0A%7D%0A%0Ah4%20%7B%0A%20%20border%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0A%20%20margin%2Dleft%3A%208px%3B%0A%20%20font%2Dsize%3A%20105%25%3B%0A%7D%0A%0Ah5%2C%20h6%20%7B%0A%20%20border%2Dbottom%3A%201px%20solid%20%23ccc%3B%0A%20%20font%2Dsize%3A%20105%25%3B%0A%7D%0A%0Aa%20%7B%0A%20%20color%3A%20%230033dd%3B%0A%20%20text%2Ddecoration%3A%20none%3B%0A%7D%0A%20%20a%3Ahover%20%7B%0A%20%20%20%20color%3A%20%236666ff%3B%20%7D%0A%20%20a%3Avisited%20%7B%0A%20%20%20%20color%3A%20%23800080%3B%20%7D%0A%20%20a%3Avisited%3Ahover%20%7B%0A%20%20%20%20color%3A%20%23BB00BB%3B%20%7D%0A%20%20a%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0A%20%20%20%20text%2Ddecoration%3A%20underline%3B%20%7D%0A%20%20a%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0A%20%20%20%20text%2Ddecoration%3A%20underline%3B%20%7D%0A%0A%2F%2A%20Class%20described%20in%20https%3A%2F%2Fbenjeffrey%2Ecom%2Fposts%2Fpandoc%2Dsyntax%2Dhighlighting%2Dcss%0A%20%20%20Colours%20from%20https%3A%2F%2Fgist%2Egithub%2Ecom%2Frobsimmons%2F1172277%20%2A%2F%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%2F%2A%20Keyword%20%2A%2F%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%2F%2A%20DataType%20%2A%2F%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%2F%2A%20DecVal%20%28decimal%20values%29%20%2A%2F%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%2F%2A%20BaseN%20%2A%2F%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%2F%2A%20Float%20%2A%2F%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%2F%2A%20Char%20%2A%2F%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%2F%2A%20String%20%2A%2F%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%2F%2A%20Comment%20%2A%2F%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%2F%2A%20OtherToken%20%2A%2F%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%2F%2A%20AlertToken%20%2A%2F%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%2F%2A%20Function%20calls%20%2A%2F%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%2F%2A%20ErrorTok%20%2A%2F%0A%0A" rel="stylesheet" type="text/css" />
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -32,7 +32,7 @@
 
 <h1 class="title toc-ignore">Using devRate package on T. solanivora (Lepidoptera: Gelechiidae) in Ecuador</h1>
 <h4 class="author"><em>Francois Rebaudo, using data from Crespo-Perez et al. 2011</em></h4>
-<h4 class="date"><em>2016-08-29</em></h4>
+<h4 class="date"><em>2017-01-22</em></h4>
 
 
 
@@ -56,75 +56,186 @@ rawDevPupa &lt;- matrix(c(10, 0.001, 10, 0.008, 10, 0.012, 13, 0.044, 15, 0.017,
 <h2>Finding models in the literature</h2>
 <p>Before attempting to fit any model to the empirical data, the devRate function “devRateFind” search the database for previous articles fitting which models to the organism, either by Order, Family, or species.</p>
 <pre><code>devRateFind(orderSP = &quot;Lepidoptera&quot;)
-devRateFind(familySP = &quot;Gelechiidae&quot;)</code></pre>
+R&gt; [ davidson_44 ]   Logistic: Davidson 1944 (15 times)
+R&gt; [ campbell_74 ]   Linear: Campbell et al. 1974 (108 times)
+R&gt; [ logan6_76 ]   Logan-6: Logan et al. 1976 (19 times)
+R&gt; [ logan10_76 ]   Logan-10: Logan et al. 1976 (12 times)
+R&gt; [ analytis_77 ]   Analytis: Analytis 1977 (7 times)
+R&gt; [ schoolfieldHigh_81 ]   Schoolfield High: Schoolfield et al. 1981 (3 times)
+R&gt; [ taylor_81 ]   Gauss: Taylor 1981 (21 times)
+R&gt; [ poly2 ]   Second-order polynomial: - (4 times)
+R&gt; [ harcourtYee_82 ]   Third-order polynomial: Harcourt and Yee 1982 (13 times)
+R&gt; [ poly4 ]   Forth-order polynomial: - (5 times)
+R&gt; [ rootsq_82 ]   Root square: Ratkowsky et al. 1982 (1 times)
+R&gt; [ hilbertLogan_83 ]   Holling type III: Hilbert and Logan 1983 (9 times)
+R&gt; [ lactin1_95 ]   Lactin-1: Lactin et al. 1995 (7 times)
+R&gt; [ lactin2_95 ]   Lactin-2: Lactin et al. 1995 (28 times)
+R&gt; [ briere1_99 ]   Briere-1: Briere et al. 1999 (22 times)
+R&gt; [ briere2_99 ]   Briere-2: Briere et al. 1999 (17 times)
+R&gt; [ kontodimas_04 ]   Equation 16: Kontodimas et al. 2004 (4 times)
+R&gt; [ damos_08 ]   Simplified beta type: Damos and Savopoulou 2008 (1 times)
+R&gt; [ regniere_12 ]   Regniere: Regniere et al. 2012 (1 times)
+
+devRateFind(familySP = &quot;Gelechiidae&quot;)
+R&gt; [ campbell_74 ]   Linear: Campbell et al. 1974 (12 times)
+R&gt; [ logan6_76 ]   Logan-6: Logan et al. 1976 (4 times)
+R&gt; [ logan10_76 ]   Logan-10: Logan et al. 1976 (1 times)
+R&gt; [ analytis_77 ]   Analytis: Analytis 1977 (3 times)
+R&gt; [ taylor_81 ]   Gauss: Taylor 1981 (2 times)
+R&gt; [ harcourtYee_82 ]   Third-order polynomial: Harcourt and Yee 1982 (1 times)
+R&gt; [ poly4 ]   Forth-order polynomial: - (1 times)
+R&gt; [ rootsq_82 ]   Root square: Ratkowsky et al. 1982 (1 times)
+R&gt; [ lactin1_95 ]   Lactin-1: Lactin et al. 1995 (3 times)
+R&gt; [ lactin2_95 ]   Lactin-2: Lactin et al. 1995 (3 times)
+R&gt; [ briere1_99 ]   Briere-1: Briere et al. 1999 (3 times)
+R&gt; [ damos_08 ]   Simplified beta type: Damos and Savopoulou 2008 (1 times)</code></pre>
 <p>Then, the “devRateInfo” function provides additional information on these models and on parameter estimations.</p>
-<pre><code>devRateInfo(eq = taylor_81)</code></pre>
+<pre><code>devRateInfo(eq = taylor_81)
+R&gt; ----------------------------------------
+R&gt; Gauss 
+R&gt; ----------------------------------------
+R&gt; Taylor, F. (1981) Ecology and evolution of physiological time in insects.
+R&gt; American Naturalist, 1-23.  Lamb, RJ. (1992) Developmental rate of
+R&gt; Acyrthosiphon pisum (Homoptera: Aphididae) at low temperatures: implications
+R&gt; for estimating rate parameters for insects. Environmental Entomology 21(1):
+R&gt; 10-19.
+R&gt; 
+R&gt; rT ~ Rm * exp(-1/2 * ((T - Tm)/To)^2)
+R&gt; &lt;environment: namespace:devRate&gt;
+R&gt; 
+R&gt; Parameter estimates from the literature (eq$startVal): 
+R&gt; 
+R&gt;    ...                      genSp  stage param.Rm param.Tm param.To                     ref
+R&gt; 1  ...         Geocoris articolor    all   0.0550  37.2000   8.8000             Taylor 1981
+R&gt; 2  ...           Geocoris pallens    all   0.0630  37.0000   8.6000             Taylor 1981
+R&gt; 3  ...         Geocoris punctipes    all   0.0440  33.8000   7.7000             Taylor 1981
+R&gt; 4  ...            Lygus desetinus    all   0.0560  32.1000   9.8000             Taylor 1981
+R&gt; 5  ...             Lygus hesperus    all   0.0620  36.2000  12.8000             Taylor 1981
+R&gt; 6  ...        Acyrthosiphon pisum    all   0.1650  26.2000   9.0000             Taylor 1981
+R&gt; 7  ...        Acyrthosiphon pisum    all   0.1510  27.5000  11.0000             Taylor 1981
+R&gt; 8  ...      Brevicoryne brassicae    all   0.0970  26.4000  10.5000             Taylor 1981
+R&gt; 9  ...      Brevicoryne brassicae    all   0.1000  26.6000   8.4000             Taylor 1981
+R&gt; 10 ...  Hyadaphis pseudobrassicae    all   0.1440  26.0000   9.1000             Taylor 1981
+R&gt; 11 ...     Macrosiphum euphorbiae    all   0.1400  30.6000  14.6000             Taylor 1981
+R&gt; 12 ...             Myzus persicae    all   0.1290  24.7000   9.3000             Taylor 1981
+R&gt; 13 ...             Myzus persicae    all   0.1550  26.3000  10.4000             Taylor 1981
+R&gt; 14 ...         Circulifer tenelus    all   0.0520  35.2000   9.2000             Taylor 1981
+R&gt; 15 ...             Empoasca fabae    all   0.0710  30.7000   8.9000             Taylor 1981
+R&gt; 16 ... Callosobruchus rhodesianus    all   0.0390  31.2000   8.0000             Taylor 1981
+R&gt; 17 ...         Crioceris asparagi    all   0.0710  37.6000  13.3000             Taylor 1981
+R&gt; ...
+R&gt; 62 ...        Acyrthosiphon pisum    all   0.1990  26.1000   9.9000               Lamb 1992
+R&gt; 63 ...        Acyrthosiphon pisum    all   0.1900  26.3000  10.3000               Lamb 1992
+R&gt; 64 ...   Symmetrischema tangolias  larva   0.0476  28.5800  10.5000   Sporleder et al. 2016
+R&gt; 65 ...   Symmetrischema tangolias   pupa   0.0990  31.8000  11.1000   Sporleder et al. 2016
+R&gt; 66 ...           Nephus includens    all   0.0441  34.9999  11.0220  Kontodimas et al. 2004
+R&gt; 67 ...          Nephus bisignatus    all   0.0338  32.4999  10.7097  Kontodimas et al. 2004
+R&gt; 68 ...            Cydia pomonella    egg   0.2468  30.9122   9.0574      Aghdam et al. 2009
+R&gt; 69 ...            Cydia pomonella  larva   0.0637  29.6918   8.7660      Aghdam et al. 2009
+R&gt; 70 ...            Cydia pomonella   pupa   0.0836  30.6414   8.8934      Aghdam et al. 2009
+R&gt; 71 ...            Cydia pomonella    all   0.0316  29.9478   8.5990      Aghdam et al. 2009
+R&gt; ...
+R&gt; 
+R&gt; Comments: 
+R&gt; &quot;The curve must be truncated to the right of Tm because of lethal effects of
+R&gt; short exposures to high temperatures. The rate at which development rate falls
+R&gt; away from Tm is measured by To.&quot; Taylor 1981</code></pre>
 <p>Information from the database can be plotted using the “devRatePlotInfo” function.</p>
 <pre><code>devRatePlotInfo (eq = taylor_81, sortBy = &quot;ordersp&quot;,
   ylim = c(0, 0.20), xlim = c(0, 50))</code></pre>
 </div>
 <div id="fitting-models-to-empirical-datasets" class="section level2">
 <h2>Fitting models to empirical datasets</h2>
-<p>The empirical data can be fitted to any model in the database with the “devRateModel” function and empirical data plotted against the model using the “devRatePlot” function.</p>
+<p>The empirical data can be fitted to any model in the database with the “devRateModel” function</p>
 <pre><code>mEggs &lt;- devRateModel(eq = taylor_81, temp = rawDevEggs[,1], devRate = rawDevEggs[,2],
   startValues = list(Rm = 0.05, Tm = 30, To = 5))
+  
 mLarva &lt;- devRateModel(eq = taylor_81, temp = rawDevLarva[,1], devRate = rawDevLarva[,2],
-  startValues = list(Rm = 0.05, Tm = 25, To = 5))
+  startValues = list(Rm = 0.05, Tm = 25, To = 10))
+  
 mPupa &lt;- devRateModel(eq = taylor_81, temp = rawDevPupa[,1], devRate = rawDevPupa[,2],
-  startValues = list(Rm = 0.05, Tm = 30, To = 5))
-
-devRatePlot(eq = taylor_81, nlsDR = mEggs, temp = rawDevEggs[,1], devRate = rawDevEggs[,2],
+  startValues = list(Rm = 0.1, Tm = 30, To = 10))
+  </code></pre>
+<p>The summary of the “devRateModel” can be optained with the “devRatePrint” function.</p>
+<pre><code>devRatePrint(myNLS = mLarva, temp = rawDevLarva[,1], devRate = rawDevLarva[,2])
+R&gt; ##################################################
+R&gt; ### Parameter estimates and overall model fit
+R&gt; ##################################################
+R&gt; 
+R&gt; Formula: rT ~ Rm * exp(-1/2 * ((T - Tm)/To)^2)
+R&gt; 
+R&gt; Parameters:
+R&gt;     Estimate Std. Error t value Pr(&gt;|t|)    
+R&gt; Rm  0.068383   0.009473   7.219 1.71e-05 ***
+R&gt; Tm 21.408732   0.729062  29.365 8.41e-12 ***
+R&gt; To  5.544986   0.865264   6.408 5.02e-05 ***
+R&gt; ---
+R&gt; Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+R&gt; 
+R&gt; Residual standard error: 0.0133 on 11 degrees of freedom
+R&gt; 
+R&gt; Number of iterations to convergence: 13 
+R&gt; Achieved convergence tolerance: 6.653e-06
+R&gt; 
+R&gt; ##################################################
+R&gt; ### Confidence intervals for parameters
+R&gt; ##################################################
+R&gt;          2.5 %      97.5 %
+R&gt; Rm  0.04981547  0.08694955
+R&gt; Tm 19.97979621 22.83766817
+R&gt; To  3.84909961  7.24087239
+R&gt; 
+R&gt; ##################################################
+R&gt; ### Residuals distribution and independence
+R&gt; ##################################################
+R&gt; ### Normality of the residual distribution
+R&gt; 
+R&gt;  Shapiro-Wilk normality test
+R&gt; 
+R&gt; data:  stats::residuals(myNLS)
+R&gt; W = 0.97915, p-value = 0.9696
+R&gt; 
+R&gt; ### Regression of the residuals against a lagged version of themselves
+R&gt; ### and testing if the slope of the resulting relationship is significantly
+R&gt; ### different from 0:
+R&gt; 
+R&gt; Call:
+R&gt; stats::lm(formula = stats::residuals(myNLS)[-N] ~ stats::residuals(myNLS)[-1])
+R&gt; 
+R&gt; Residuals:
+R&gt;       Min        1Q    Median        3Q       Max 
+R&gt; -0.021388 -0.011116  0.002149  0.009943  0.020078 
+R&gt; 
+R&gt; Coefficients:
+R&gt;                               Estimate Std. Error t value Pr(&gt;|t|)
+R&gt; (Intercept)                  0.0005691  0.0036255   0.157    0.878
+R&gt; stats::residuals(myNLS)[-1] -0.1654787  0.2965227  -0.558    0.588
+R&gt; 
+R&gt; Residual standard error: 0.01307 on 11 degrees of freedom
+R&gt; Multiple R-squared:  0.02753,    Adjusted R-squared:  -0.06087 
+R&gt; F-statistic: 0.3114 on 1 and 11 DF,  p-value: 0.588
+R&gt; 
+R&gt; ##################################################
+R&gt; ### Comparing models
+R&gt; ##################################################
+R&gt; ### Using AIC and BIC
+R&gt; Akaike Information Criterion (AIC): -76.6001352945075
+R&gt; Bayesian Information Criterion (BIC): -74.0439059760465</code></pre>
+<p>Empirical data can be plotted against the model using the “devRatePlot” function.</p>
+<pre><code>devRatePlot(eq = taylor_81, nlsDR = mEggs, temp = rawDevEggs[,1], devRate = rawDevEggs[,2],
   pch = 16, ylim = c(0, 0.2))
+  
 devRatePlot(eq = taylor_81, nlsDR = mLarva, temp = rawDevLarva[,1], devRate = rawDevLarva[,2],
   pch = 16, ylim = c(0, 0.2))
+  
 devRatePlot(eq = taylor_81, nlsDR = mPupa, temp = rawDevPupa[,1], devRate = rawDevPupa[,2],
   pch = 16, ylim = c(0, 0.2))</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Stage</th>
-<th align="left">model</th>
-<th align="right">Rm</th>
-<th align="right">Rm_SE</th>
-<th align="right">Tm</th>
-<th align="right">Tm_SE</th>
-<th align="right">To</th>
-<th align="right">To_SE</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Eggs</td>
-<td align="left">Taylor</td>
-<td align="right">0.19340</td>
-<td align="right">0.017810</td>
-<td align="right">25.34180</td>
-<td align="right">0.760130</td>
-<td align="right">-6.89390</td>
-<td align="right">0.768530</td>
-</tr>
-<tr class="even">
-<td align="left">Larva</td>
-<td align="left">Taylor</td>
-<td align="right">0.06838</td>
-<td align="right">0.009473</td>
-<td align="right">21.40871</td>
-<td align="right">0.729058</td>
-<td align="right">5.54497</td>
-<td align="right">0.865261</td>
-</tr>
-<tr class="odd">
-<td align="left">Pupa</td>
-<td align="left">Taylor</td>
-<td align="right">0.09780</td>
-<td align="right">0.008700</td>
-<td align="right">22.01140</td>
-<td align="right">0.455600</td>
-<td align="right">-4.75150</td>
-<td align="right">0.471500</td>
-</tr>
-</tbody>
-</table>
+<!-- ```{r, echo=FALSE, results='asis'} -->
+<!-- knitr::kable(data.frame(Stage = c("Eggs", "Larva", "Pupa"), model = rep("Taylor", 3), -->
+<!--   Rm = c(0.1934, 0.06838, 0.0978), Rm_SE = c(0.01781, 0.009473, 0.0087), -->
+<!--   Tm = c(25.3418, 21.40871, 22.0114), Tm_SE = c(0.76013, 0.729058, 0.4556), -->
+<!--   To = c(-6.8939, 5.54497, -4.7515), To_SE = c(0.76853, 0.865261, 0.4715))) -->
+<!-- ``` -->
 </div>
 <div id="forecasting-phenologies-from-empirical-temperature" class="section level2">
 <h2>Forecasting phenologies from empirical temperature</h2>
@@ -136,6 +247,64 @@ devRatePlot(eq = taylor_81, nlsDR = mPupa, temp = rawDevPupa[,1], devRate = rawD
   numInd = 500,
   stocha = 0.015,
   timeLayEggs = 1)
+
+print(forecastTsolanivora)
+R&gt; [[1]]
+R&gt;        g1s1 g1s2 g1s3 g2s1
+R&gt;   [1,]   14   43   68   83
+R&gt;   [2,]   14   41   67   83
+R&gt;   [3,]   14   44   79   96
+R&gt;   [4,]   13   43   75   92
+R&gt;   [5,]   15   43   68   84
+R&gt;   [6,]   13   37   65   80
+R&gt;   [7,]   14   42   68   85
+R&gt;   [8,]   14   40   67   84
+R&gt;   [9,]   15   44   78   94
+R&gt;  [10,]   14   45   76   91
+R&gt;  ...
+R&gt; [500,]   14   40   70   87
+R&gt; 
+R&gt; [[2]]
+R&gt; [[2]][[1]]
+R&gt; Nonlinear regression model
+R&gt;   model: rT ~ Rm * exp(-1/2 * ((T - Tm)/To)^2)
+R&gt;    data: data.frame(rT = devRate, T = temp)
+R&gt;      Rm      Tm      To 
+R&gt;  0.1934 25.3418 -6.8939 
+R&gt;  residual sum-of-squares: 0.01303
+R&gt; 
+R&gt; Number of iterations to convergence: 13 
+R&gt; Achieved convergence tolerance: 8.264e-06
+R&gt; 
+R&gt; [[2]][[2]]
+R&gt; Nonlinear regression model
+R&gt;   model: rT ~ Rm * exp(-1/2 * ((T - Tm)/To)^2)
+R&gt;    data: data.frame(rT = devRate, T = temp)
+R&gt;       Rm       Tm       To 
+R&gt;  0.06838 21.40873  5.54499 
+R&gt;  residual sum-of-squares: 0.001947
+R&gt; 
+R&gt; Number of iterations to convergence: 13 
+R&gt; Achieved convergence tolerance: 6.653e-06
+R&gt; 
+R&gt; [[2]][[3]]
+R&gt; Nonlinear regression model
+R&gt;   model: rT ~ Rm * exp(-1/2 * ((T - Tm)/To)^2)
+R&gt;    data: data.frame(rT = devRate, T = temp)
+R&gt;      Rm      Tm      To 
+R&gt;  0.0978 22.0114  4.7515 
+R&gt;  residual sum-of-squares: 0.002394
+R&gt; 
+R&gt; Number of iterations to convergence: 14 
+R&gt; Achieved convergence tolerance: 3.032e-06
+R&gt; 
+R&gt; 
+R&gt; [[3]]
+R&gt;   [1] 13.73130 16.34298 15.14231 17.88713 13.84732 14.35198 16.15267 ...
+R&gt;  [21] 14.88865 15.13143 14.41983 15.66492 14.32055 16.48751 16.47430 ...
+R&gt;  [41] 13.86618 15.10432 15.81162 15.54097 13.39031 16.13360 15.25043 ...
+R&gt;  [61] 14.62629 15.47062 14.06978 15.24159 14.68912 14.90124 16.97001 ...
+R&gt;  [81] 15.80832 15.33636 16.05875 16.28860 14.14241 13.81280 16.15399 ...
 
 devRateIBMPlot(ibm = forecastTsolanivora, typeG = &quot;density&quot;)</code></pre>
 </div>

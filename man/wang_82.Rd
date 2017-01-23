@@ -3,7 +3,7 @@
 \docType{data}
 \name{wang_82}
 \alias{wang_82}
-\title{Wang et al. equation of developmental rate as a function of temperature.}
+\title{Wang et al. equation of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -24,6 +24,12 @@ wang_82
 \description{
 Wang, R., Lan, Z. and Ding, Y. (1982) Studies on mathematical models of the relationship
 between insect development and temperature. Acta Ecol. Sin, 2, 47-57.
+}
+\details{
+Equation:
+rT ~ (K / (1 + exp(-r*(T - T0)))) * (1 - exp(-(T - TL)/aa)) * (1-exp(-(TH - T)/aa))
+
+where rT is the development rate, and T the temperature.
 }
 \keyword{datasets}
 

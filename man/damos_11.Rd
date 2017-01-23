@@ -3,7 +3,7 @@
 \docType{data}
 \name{damos_11}
 \alias{damos_11}
-\title{Inverse second-order polynomial equation of developmental rate as a function of temperature.}
+\title{Inverse second-order polynomial equation of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -24,6 +24,13 @@ damos_11
 \description{
 Damos, P., and Savopoulou-Soultani, M. (2011) Temperature-driven models for insect
 development and vital thermal requirements. Psyche: A Journal of Entomology, 2012.
+}
+\details{
+Equation:
+rT ~ aa / (1 + bb * T + cc * T^2)
+
+where rT is the development rate, T the temperature, and aa, bb, and
+cc empirical constant parameters.
 }
 \keyword{datasets}
 

@@ -3,7 +3,7 @@
 \docType{data}
 \name{sharpeDeMichele_77}
 \alias{sharpeDeMichele_77}
-\title{Sharpe and DeMichele equation of developmental rate as a function of temperature.}
+\title{Sharpe and DeMichele equation of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -24,6 +24,13 @@ sharpeDeMichele_77
 \description{
 Sharpe, P.J. & DeMichele, D.W. (1977) Reaction kinetics of poikilotherm development.
 Journal of Theoretical Biology, 64, 649-670.
+}
+\details{
+Equation:
+rT ~ ((T + 273.16) * exp((aa - bb/(T + 273.16))/1.987)) / (1 + exp((cc - dd/(T + 273.16))/1.987) + exp((ff - gg/(T + 273.16))/1.987))
+
+where rT is the development rate, T the temperature, and aa, bb, cc,
+dd, ff, and gg thermodynamic parameters
 }
 \keyword{datasets}
 

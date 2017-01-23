@@ -3,7 +3,7 @@
 \docType{data}
 \name{stinner_74}
 \alias{stinner_74}
-\title{Stinner et al equation of developmental rate as a function of temperature.}
+\title{Stinner et al equation of development rate as a function of temperature.}
 \format{A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation as a formula object.}
@@ -24,6 +24,14 @@ stinner_74
 \description{
 Stinner, R., Gutierrez, A. & Butler, G. (1974) An algorithm for temperature-dependent growth
 rate simulation. The Canadian Entomologist, 106, 519-524.
+}
+\details{
+Equation:
+c(rT ~ C / (1 + exp(k1 + k2 * T)), rT ~ C / (1 + exp(k1 + k2 * (2 * Topt - T))))
+
+where rT is the development rate, T the temperature, Topt the optimum temperature,
+k1 and k2 constants. "[...] the relationship [is] inverted when the temperature is above an
+optimum [...] T = 2 * Topt - T for T >= Topt." Stinner et al. 1974.
 }
 \keyword{datasets}
 
