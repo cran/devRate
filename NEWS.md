@@ -1,3 +1,8 @@
+# devRate 0.1.2.
+* equations in latex in PDF manual using \eqn{latex}{ascii}
+* fixed some tipo in manual
+* linear models with auto-starting values
+
 # devRate 0.1.1.
 * vignette improved
 * help page for function devRateMap improved
