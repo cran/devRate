@@ -1,6 +1,15 @@
+## devRate 0.1.3
+* typos and grammatical errors in manual fixed
+* example from the vignette included in the package
+* vignette with more information and interpretation
+* devRateFind function now returns a data.frame
+* new function to model phenology from the package database
+* BDD modif: refs with new column entries
+* BDD update: 35 models and 619 entries ; 138 species
+
 # devRate 0.1.2.
 * equations in latex in PDF manual using \eqn{latex}{ascii}
-* fixed some tipo in manual
+* fixed some typos in manual
 * linear models with auto-starting values
 
 # devRate 0.1.1.

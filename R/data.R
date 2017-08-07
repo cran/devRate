@@ -13,16 +13,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1016/0168-1923(95)02236-Q}
+#' @docType data
+#' @keywords datasets
 "beta_95"
 
 #' @title Performance-2 equation of development rate as a function of temperature.
@@ -45,16 +47,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1016/j.aspen.2010.11.008}
+#' @docType data
+#' @keywords datasets
 "perf2_11"
 
 #' @title Root square equation of development rate as a function of temperature.
@@ -71,16 +75,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://jb.asm.org/content/149/1/1}
+#' @docType data
+#' @keywords datasets
 "rootsq_82"
 
 #' @title Wang and Engel equation of development rate as a function of temperature.
@@ -97,16 +103,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1016/S0308-521X(98)00028-6}
+#' @docType data
+#' @keywords datasets
 "wangengel_98"
 
 #' @title Ratkowsky equation of development rate as a function of temperature (Shi modification).
@@ -131,17 +139,19 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://jb.asm.org/content/149/1/1}
 #' @source \url{http://jb.asm.org/content/154/3/1222}
+#' @docType data
+#' @keywords datasets
 "ratkowsky_82"
 
 #' @title Regniere equation of development rate as a function of temperature.
@@ -160,16 +170,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1016/j.jinsphys.2012.01.010}
+#' @docType data
+#' @keywords datasets
 "regniere_12"
 
 #' @title Shi equation of development rate as a function of temperature.
@@ -187,16 +199,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1016/j.aspen.2010.11.008}
+#' @docType data
+#' @keywords datasets
 "shi_11"
 
 # #' @title Hansen equation of development rate as a function of temperature.
@@ -215,14 +229,14 @@
 # #'
 # #' @format A list of eight elements describing the equation.
 # #' \describe{
-# #'   \item{eq}{The equation as a formula object.}
-# #'   \item{eqAlt}{The equation as a string.}
-# #'   \item{name}{The equation name.}
+# #'   \item{eq}{The equation (formula object).}
+# #'   \item{eqAlt}{The equation (string).}
+# #'   \item{name}{The name of the equation.}
 # #'   \item{ref}{The equation reference.}
 # #'   \item{refShort}{The equation reference shortened.}
-# #'   \item{startVal}{The parameter values found in the literature with their references.}
-# #'   \item{com}{An otional comment about the equation use.}
-# #'   \item{id}{An id to identificate the equation.}
+# #'   \item{startVal}{The parameters found in the literature with their references.}
+# #'   \item{com}{An optional comment about the equation use.}
+# #'   \item{id}{An id to identify the equation.}
 # #' }
 # #' @source \url{http://dx.doi.org/10.1016/j.jinsphys.2011.06.011}
 # "hansen_11"
@@ -251,16 +265,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1111/j.1365-2311.1932.tb03305.x}
+#' @docType data
+#' @keywords datasets
 "janisch_32"
 
 #' @title Davidson equation of development rate as a function of temperature.
@@ -279,16 +295,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.2307/1326}
+#' @docType data
+#' @keywords datasets
 "davidson_44"
 
 #' @title Campbell et al. equation of development rate as a function of temperature.
@@ -305,16 +323,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.2307/2402197}
+#' @docType data
+#' @keywords datasets
 "campbell_74"
 
 #' @title Stinner et al equation of development rate as a function of temperature.
@@ -335,16 +355,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.4039/Ent106519-5}
+#' @docType data
+#' @keywords datasets
 "stinner_74"
 
 #' @title Logan et al. equation 6 of development rate as a function of temperature.
@@ -363,16 +385,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1093/ee/5.6.1133}
+#' @docType data
+#' @keywords datasets
 "logan6_76"
 
 #' @title Logan et al. equation 10 of development rate as a function of temperature.
@@ -390,16 +414,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1093/ee/5.6.1133}
+#' @docType data
+#' @keywords datasets
 "logan10_76"
 
 #' @title Sharpe and DeMichele equation of development rate as a function of temperature.
@@ -416,16 +442,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1016/0022-5193(77)90265-X}
+#' @docType data
+#' @keywords datasets
 "sharpeDeMichele_77"
 
 #' @title Analytis equation of development rate as a function of temperature.
@@ -442,16 +470,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1111/j.1439-0434.1977.tb02886.x}
+#' @docType data
+#' @keywords datasets
 "analytis_77"
 
 #' @title Schoolfield et al. equation of development rate as a function of temperature.
@@ -475,16 +505,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1016/0022-5193(81)90246-0}
+#' @docType data
+#' @keywords datasets
 "schoolfield_81"
 
 #' @title Schoolfield et al. equation of development rate as a function of temperature for
@@ -512,16 +544,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1016/0022-5193(81)90246-0}
+#' @docType data
+#' @keywords datasets
 "schoolfieldHigh_81"
 
 #' @title Schoolfield et al. equation of development rate as a function of temperature for
@@ -549,16 +583,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1016/0022-5193(81)90246-0}
+#' @docType data
+#' @keywords datasets
 "schoolfieldLow_81"
 
 #' @title Taylor equation of development rate as a function of temperature.
@@ -579,16 +615,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://www.jstor.org/stable/2460694}
+#' @docType data
+#' @keywords datasets
 "taylor_81"
 
 #' @title Second-order polynomial equation of development rate as a function of temperature.
@@ -604,15 +642,17 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
+#' @docType data
+#' @keywords datasets
 "poly2"
 
 #' @title Harcourt and Yee equation of development rate as a function of temperature.
@@ -629,16 +669,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1093/ee/11.3.581}
+#' @docType data
+#' @keywords datasets
 "harcourtYee_82"
 
 #' @title Fourth-order polynomial equation of development rate as a function of temperature.
@@ -654,15 +696,17 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
+#' @docType data
+#' @keywords datasets
 "poly4"
 
 #' @title Holling type III equation of development rate as a function of temperature.
@@ -681,16 +725,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1093/ee/12.1.1}
+#' @docType data
+#' @keywords datasets
 "hilbertLogan_83"
 
 #' @title Lamb equation of development rate as a function of temperature.
@@ -715,16 +761,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1093/ee/21.1.10}
+#' @docType data
+#' @keywords datasets
 "lamb_92"
 
 #' @title Lactin et al. equation 1 of development rate as a function of temperature.
@@ -741,16 +789,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1093/ee/24.1.68}
+#' @docType data
+#' @keywords datasets
 "lactin1_95"
 
 #' @title Lactin et al. equation 2 of development rate as a function of temperature.
@@ -767,16 +817,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1093/ee/24.1.68}
+#' @docType data
+#' @keywords datasets
 "lactin2_95"
 
 #' @title Briere et al equation 1 of development rate as a function of temperature.
@@ -794,16 +846,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1093/ee/28.1.22 }
+#' @docType data
+#' @keywords datasets
 "briere1_99"
 
 #' @title Briere et al equation 2 of development rate as a function of temperature.
@@ -821,16 +875,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1093/ee/28.1.22 }
+#' @docType data
+#' @keywords datasets
 "briere2_99"
 
 #' @title Kontodimas et al. equation of development rate as a function of temperature.
@@ -850,16 +906,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://ee.oxfordjournals.org/content/33/1/1}
+#' @docType data
+#' @keywords datasets
 "kontodimas_04"
 
 #' @title Simplified beta type equation of development rate as a function of temperature.
@@ -877,16 +935,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1093/jee/101.5.1557}
+#' @docType data
+#' @keywords datasets
 "damos_08"
 
 #' @title Inverse second-order polynomial equation of development rate as a function of temperature.
@@ -903,16 +963,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1155/2012/123405}
+#' @docType data
+#' @keywords datasets
 "damos_11"
 
 #' @title Wang et al. equation of development rate as a function of temperature.
@@ -928,16 +990,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://en.cnki.com.cn}
+#' @docType data
+#' @keywords datasets
 "wang_82"
 
 #' @title Bayoh and Lindsay equation of development rate as a function of temperature.
@@ -955,16 +1019,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://dx.doi.org/10.1079/BER2003259}
+#' @docType data
+#' @keywords datasets
 "bayoh_03"
 
 #' @title Hagstrum et Milliken equation of development rate as a function of temperature retrieved
@@ -986,18 +1052,20 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #'
 #' @source \url{https://doi.org/10.1093/aesa/77.2.208}
 #' @source \url{http://dx.doi.org/10.1093/aesa/81.4.539}
+#' @docType data
+#' @keywords datasets
 "wagner_88"
 
 #' @title Bieri equation 1 of development rate as a function of temperature.
@@ -1019,16 +1087,18 @@
 #'
 #' @format A list of eight elements describing the equation.
 #' \describe{
-#'   \item{eq}{The equation as a formula object.}
-#'   \item{eqAlt}{The equation as a string.}
-#'   \item{name}{The equation name.}
+#'   \item{eq}{The equation (formula object).}
+#'   \item{eqAlt}{The equation (string).}
+#'   \item{name}{The name of the equation.}
 #'   \item{ref}{The equation reference.}
 #'   \item{refShort}{The equation reference shortened.}
-#'   \item{startVal}{The parameter values found in the literature with their references.}
-#'   \item{com}{An otional comment about the equation use.}
-#'   \item{id}{An id to identificate the equation.}
+#'   \item{startVal}{The parameters found in the literature with their references.}
+#'   \item{com}{An optional comment about the equation use.}
+#'   \item{id}{An id to identify the equation.}
 #' }
 #' @source \url{http://www.e-periodica.ch}
+#' @docType data
+#' @keywords datasets
 "bieri1_83"
 
 #' The list of all available equations of development rate as a function of temperature.
