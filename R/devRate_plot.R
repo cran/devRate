@@ -6,10 +6,10 @@
 #' @param devRate The development rate \code{(days)^-1}
 #' @param rangeT The range of temperatures over which the regression is plotted.
 #'   This argument may be overwritten depending on the equation.
-#' @param optText A logical indcating wether the name of the eqaution should be written
+#' @param optText A logical indicating whether the name of the equation should be written
 #'   in the topright corner of the plot.
 #' @param spe A logical indicating if special plotting rules from literature should apply.
-#' @param ... Aditional arguments for the plot.
+#' @param ... Additional arguments for the plot.
 #' @return Nothing.
 #' @examples
 #' myT <- 5:15
