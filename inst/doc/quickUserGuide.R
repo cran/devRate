@@ -34,6 +34,10 @@ devRateFind(familySP = "Gelechiidae")
 devRateFind(species = "Tecia solanivora")
 
 ## ------------------------------------------------------------------------
+devRateFind(species = "Symmetrischema tangolias")
+devRateFind(species = "Phthorimaea operculella")
+
+## ------------------------------------------------------------------------
 devRateInfo(eq = taylor_81)
 devRateInfo(eq = lactin1_95)
 

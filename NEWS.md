@@ -1,3 +1,9 @@
+## devRate 0.1.5
+* main vignette improved
+* new sec01 vignette for model evaluation
+* CITATION file
+* BDD update: 37 models ; 2249 entries ; 799 species
+
 ## devRate 0.1.4
 * fixed typos and misspellings in the documentation 
 * vignette improved and output is generated automatically

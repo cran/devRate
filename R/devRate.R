@@ -2,7 +2,23 @@
 #'
 #' The devRate package allows quantifying the relationship between development rate and temperature in ectotherm organisms.
 #'
-#' ### How to use the package
+#' @section Citation:
+#'
+#' Please use \code{citation("devRate")} to cite the devRate package.
+#'
+#' Author's affiliation: UMR EGCE, Univ. ParisSud, CNRS, IRD, Univ. ParisSaclay, Gif-sur-Yvette, France
+#'
+#' @section Overview:
+#'
+#' The devRate package provides three categories of functions:
+#'
+#' - to find development rate information about a specific organism (Order, Family, Genus, species): which equations were used and what are the associated parameters (e.g., helpful to estimate starting values for your empirical data sets);
+#'
+#' - to relate development rate and temperature; and
+#'
+#' - to plot your empirical datasets and the associated fitted model, and/or to plot development curves from the literature.
+#'
+#' @section Usage:
 #'
 #' You can use the package:
 #'
@@ -12,21 +28,18 @@
 #'
 #' - to relate development rate with temperature from your empirical data, using the equations from the package database.
 #'
-#' ### Installation instructions
+#' @section Installation instructions:
 #'
-#' install.packages("devRate")
+#' \code{install.packages("devRate")}
 #'
-#' ### Overview
+#' @section Documentation:
 #'
-#' The devRate package provides three categories of functions:
+#' The package includes two vignettes (long-form documentation):
 #'
-#' - to find development rate information about a specific organism (Order, Family, Genus, species): which equations were used and which are the associated parameters (e.g., helpful to estimate starting values for your empirical data sets);
+#' - quickUserGuide: Using devRate package to fit development rate models to an empirical dataset
 #'
-#' - to relate development rate and temperature; and
+#' - modelEvaluation: Model evaluation using Shi et al. 2016 study
 #'
-#' - to plot your empirical datasets and the associated fitted model, and/or to plot development curves from the literature.
-#'
-#' Author's affiliation: UMR EGCE, Univ. ParisSud, CNRS, IRD, Univ. ParisSaclay, Gif-sur-Yvette, France
 #' @docType package
 #' @name devRate
 NULL

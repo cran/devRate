@@ -12,9 +12,9 @@
 
 <meta name="author" content="Francois Rebaudo, using data from Crespo-Perez et al. 2011" />
 
-<meta name="date" content="2017-10-17" />
+<meta name="date" content="2017-11-06" />
 
-<title>Using devRate package on T. solanivora (Lepidoptera: Gelechiidae) in Ecuador</title>
+<title>Using devRate package to fit development rate models to an empirical dataset</title>
 
 
 
@@ -68,25 +68,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 
-<h1 class="title toc-ignore">Using devRate package on <em>T. solanivora</em> (Lepidoptera: Gelechiidae) in Ecuador</h1>
+<h1 class="title toc-ignore">Using devRate package to fit development rate models to an empirical dataset</h1>
 <h4 class="author"><em>Francois Rebaudo, using data from Crespo-Perez et al. 2011</em></h4>
-<h4 class="date"><em>2017-10-17</em></h4>
+<h4 class="date"><em>2017-11-06</em></h4>
 
 
 
 <p>This vignette exemplifies the use of the devRate package to fit a development rate model to an empirical dataset (laboratory experiments at air constant temperatures) and to build a simple phenological model.</p>
-<p>The preliminary step is to perform an experiment where your arthropod study model is reared at different constant air temperatures, and to monitor the time at which your individuals change of life stage (e.g., eggs to larva). The monitoring of life stages is commonly expressed in development rate, corresponding to the inverse of the time to reach the next life stage. The time is often expressed in days. For example, if an individual takes 10 days from eggs to larva at 15 degrees Celsius, the development rate is 1/10 = 0.1. In this vignette we used a dataset from the literature.</p>
-<p>The dataset for <em>T. solanivora</em> was retrieved from Crespo-Perez et al. 2011<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, using Web Plot Digitizer<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>. The dataset is also included in the package in the exTropicalMoth object. This object structure may seem complicated as it is composed of the laboratory data and the results of the modeling. It was designed to reduce the length of examples in the manual. In this vignette we present how to organize your own dataset from scratch.</p>
+<p>The preliminary step is to perform an experiment where the arthropod study model is reared at different constant air temperatures, and to monitor the time at which individuals change of life stage (e.g., from eggs to larva). The monitoring of life stages is commonly expressed in development rate, corresponding to the inverse of the development time needed to reach the next life stage. Development time is usually expressed in days. For example, assuming that an individual needs 10 days to develop from eggs to larva at 15 degrees Celsius, its development rate would be 1/10 = 0.1. In this vignette we illustrate the different functions using a dataset from the literature.</p>
+<p>The dataset for <em>T. solanivora</em> was retrieved from Crespo-Perez et al. 2011<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, using Web Plot Digitizer<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>. The dataset is also included in the package in the exTropicalMoth object. This object is composed of the laboratory data and results of the modeling (see below). In this vignette we present how to organize your own dataset from scratch.</p>
 <div id="organizing-the-dataset" class="section level2">
 <h2>Organizing the dataset</h2>
-<p>In this example <em>T. solanivora</em> was reared at different temperatures with various repetitions for each temperature and different temperatures for the different life stages:</p>
+<p>In this example various individuals of <em>T. solanivora</em> were reared at different temperatures and the development rates were monitored for three life stages (eggs, larvae, pupae):</p>
 <ul>
 <li>the eggs were reared at 10, 13, 15, 15.5, 16, 17, 20, 25, 30, and 35 degrees</li>
 <li>the larva were reared at 10, 13, 15, 15.5, 17, 20, 25, 30, and 35 degrees</li>
 <li>the pupa were reared at 10, 13, 15, 15.5, 16, 17, 20, 25, 30, and 35 degrees.</li>
 </ul>
-<p>The development rates were monitored at all these temperatures with various repetitions for each temperature.</p>
-<p>The resulting dataset looks like the following table (for eggs development), where the first column corresponds to the temperature and the second column to the development rate.</p>
+<p>The dataset resulting from the rearing experiments looks like the following table (for one life stage) and represents the only input needed by the package devRate.</p>
 <table>
 <thead>
 <tr class="header">
@@ -113,7 +112,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tr>
 </tbody>
 </table>
-<p>If the dataset is stored into a file, it can be read directly from that file (e.g., using <em>read.table()</em>). In this example, we copy-pasted the experimental results to create vectors and data frames.</p>
+<p>If the dataset is stored into a file, it can be read directly from that file (e.g., using <em>read.table()</em>). In this example, we copy-pasted the experimental results to create vectors and data frames that are the required input types for the package.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### Experimental temperatures and development rate for the eggs
 expeTempEggs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">10.0</span>, <span class="fl">10.0</span>, <span class="fl">13.0</span>, <span class="fl">15.0</span>, <span class="fl">15.0</span>, <span class="fl">15.5</span>, <span class="fl">16.0</span>, <span class="fl">16.0</span>, <span class="fl">17.0</span>, <span class="fl">20.0</span>, <span class="fl">20.0</span>, 
               <span class="fl">25.0</span>, <span class="fl">25.0</span>, <span class="fl">30.0</span>, <span class="fl">30.0</span>, <span class="fl">35.0</span>)
@@ -148,7 +147,7 @@ dfDevPupa &lt;-<span class="st"> </span><span class="kw">data.frame</span>(expeT
 <p>Before attempting to fit any model to the empirical data, the devRate function “devRateFind” search the database for previous articles fitting models to the organism, either by Order, Family, or species. The most used models are presented at the top of the data.frame.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">devRateFind</span>(<span class="dt">orderSP =</span> <span class="st">&quot;Lepidoptera&quot;</span>)</code></pre></div>
 <pre><code>##              equation occu paramNumb
-## 1         campbell_74  108         2
+## 1         campbell_74  414         2
 ## 2          lactin2_95   32         4
 ## 3          briere1_99   23         3
 ## 4           taylor_81   22         3
@@ -176,7 +175,7 @@ dfDevPupa &lt;-<span class="st"> </span><span class="kw">data.frame</span>(expeT
 <p>Here we can see that at the time of this vignette, campbell_74 model was used 108 times to characterize the relationship between development rate and temperature for the Lepidoptera Order, and the taylor_81 model 22 times.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">devRateFind</span>(<span class="dt">familySP =</span> <span class="st">&quot;Gelechiidae&quot;</span>)</code></pre></div>
 <pre><code>##          equation occu paramNumb
-## 1     campbell_74   12         2
+## 1     campbell_74   33         2
 ## 2      lactin2_95    7         4
 ## 3       logan6_76    4         4
 ## 4      lactin1_95    4         3
@@ -190,9 +189,22 @@ dfDevPupa &lt;-<span class="st"> </span><span class="kw">data.frame</span>(expeT
 ## 12      rootsq_82    1         2</code></pre>
 <p>If we focus on the Family (Gelechiidae), campbell_74 has been used 12 times, lactin2_95 7 times, logan6_76 4 times, lactin1_95 4 times, briere1_99 4 times, damos_08 4 times, analytis_77 3 times, taylor_81 2 times, and so on (this may change as the database is growing).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">devRateFind</span>(<span class="dt">species =</span> <span class="st">&quot;Tecia solanivora&quot;</span>)</code></pre></div>
-<pre><code>## [1] equation occu    
-## &lt;0 rows&gt; (or 0-length row.names)</code></pre>
-<p>Unfortunately, the species <em>Tecia solanivora</em> is not in the package database at this time, so that we have to find a closely related species.</p>
+<pre><code>##      equation occu paramNumb
+## 1 campbell_74    1         2</code></pre>
+<p>Unfortunately, the species <em>Tecia solanivora</em> is not in the package database at this time, so that we have to find a closely related species. A rapid search in the literature indicates that <em>T. solanivora</em> is often associated with two tuber moths: <em>Symmetrischema tangolias</em> and <em>Phthorimaea operculella</em>, both being of the Gelechiidae family. The devRateFind function can be used to browse the database for these two Gelechiidae species.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">devRateFind</span>(<span class="dt">species =</span> <span class="st">&quot;Symmetrischema tangolias&quot;</span>)</code></pre></div>
+<pre><code>##    equation occu paramNumb
+## 1 taylor_81    2         3
+## 2 rootsq_82    1         2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">devRateFind</span>(<span class="dt">species =</span> <span class="st">&quot;Phthorimaea operculella&quot;</span>)</code></pre></div>
+<pre><code>##      equation occu paramNumb
+## 1 campbell_74   10         2
+## 2   logan6_76    3         4
+## 3 analytis_77    3         5
+## 4  lactin1_95    3         3
+## 5  lactin2_95    3         4
+## 6  briere1_99    3         3</code></pre>
+<p>The taylor_81 model was used for <em>S. tangolias</em> and among others, the lactin1_95 model was used for <em>P. operculella</em>.</p>
 <p>The “devRateInfo” function provides additional information on these models and on parameter estimations.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">devRateInfo</span>(<span class="dt">eq =</span> taylor_81)</code></pre></div>
 <pre><code>## ----------------------------------------
@@ -533,7 +545,7 @@ dfDevPupa &lt;-<span class="st"> </span><span class="kw">data.frame</span>(expeT
 ## 
 ## Comments: 
 ## None</code></pre>
-<p>Here we can see for example that <em>Symmetrischema tangolias</em> study by Sporleder et al. 2016 has used the taylor_81 model, and that <em>Phthorimaea operculella</em> study by Golizadeh et al. 2012 has used the lactin1_95 model.</p>
+<p>Here we can see for example that <em>S. tangolias</em> study by Sporleder et al. 2016 has used the taylor_81 model, and that <em>P. operculella</em> study by Golizadeh et al. 2012 has used the lactin1_95 model.</p>
 <p>To return only the information on the closely related species, a specific query can be performed on the model.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">taylor_81$startVal[taylor_81$startVal[<span class="st">&quot;genSp&quot;</span>] ==<span class="st"> &quot;Symmetrischema tangolias&quot;</span>,]</code></pre></div>
 <pre><code>##        ordersp    familysp        genussp   species
@@ -561,11 +573,11 @@ dfDevPupa &lt;-<span class="st"> </span><span class="kw">data.frame</span>(expeT
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">devRatePlotInfo</span> (<span class="dt">eq =</span> lactin1_95, <span class="dt">sortBy =</span> <span class="st">&quot;ordersp&quot;</span>,
   <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">1.00</span>), <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))</code></pre></div>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
-<p>In the case that no models were selected a priori because of the research goal (e.g., determination of a thermal metric), the taylor_81 or lactin1_95 models can be used as candidate models.</p>
+<p>If there is no a priori model selection (e.g., guided by a specific research question), the taylor_81 and/or lactin1_95 models can be used as candidate models.</p>
 </div>
 <div id="fitting-models-to-empirical-datasets" class="section level2">
 <h2>Fitting models to empirical datasets</h2>
-<p>Now that we have model candidates and starting parameter estimates from closely related species, we can start the fitting process with our empirical data (NLS fit). The empirical data can be fitted to any model in the database with the “devRateModel” function, which returns an object of class “nls”.</p>
+<p>Now that we have candidate models and starting parameter estimates from closely related species, we can start the fitting process with our empirical data (NLS fit). The empirical data can be fitted to any model in the database with the “devRateModel” function, which returns an object of class “nls”.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### using the vectors from section &quot;Organizing the dataset&quot;
 ############################################################
 
@@ -839,56 +851,56 @@ mPupa &lt;-<span class="st"> </span><span class="kw">devRateModel</span>(<span c
 <span class="kw">print</span>(forecastTsolanivora)</code></pre></div>
 <pre><code>## [[1]]
 ##       g1s1 g1s2 g1s3 g2s1
-##  [1,]   16   48   76   91
-##  [2,]   17   46   71   88
-##  [3,]   17   44   73   89
-##  [4,]   19   50   81   98
-##  [5,]   20   50   79   95
-##  [6,]   16   43   73   87
-##  [7,]   17   48   80   95
-##  [8,]   17   44   78   93
-##  [9,]   17   45   79   98
-## [10,]   18   47   80   97
-## [11,]   19   49   78   98
-## [12,]   17   49   80   97
-## [13,]   17   46   77   93
-## [14,]   18   48   81   98
-## [15,]   19   50   80   96
-## [16,]   16   46   79   96
-## [17,]   18   47   80   98
-## [18,]   18   46   81   99
-## [19,]   19   54   85   NA
-## [20,]   18   49   77   92
-## [21,]   17   45   73   92
-## [22,]   16   46   72   88
-## [23,]   19   49   79   94
-## [24,]   18   45   78   93
-## [25,]   16   47   80   97
-## [26,]   16   48   81   98
-## [27,]   17   44   74   90
-## [28,]   17   47   81   98
-## [29,]   18   44   74   90
-## [30,]   17   45   78   93
-## [31,]   20   46   77   92
-## [32,]   15   45   77   94
-## [33,]   16   45   80   95
-## [34,]   17   46   77   93
-## [35,]   18   46   77   91
-## [36,]   17   48   80   97
-## [37,]   16   48   83   NA
-## [38,]   18   46   80   96
-## [39,]   17   42   69   86
-## [40,]   16   39   73   89
-## [41,]   18   46   82   99
-## [42,]   16   41   72   89
-## [43,]   17   50   82   NA
-## [44,]   17   48   80   96
-## [45,]   17   44   74   89
-## [46,]   17   45   78   96
-## [47,]   16   42   72   88
-## [48,]   18   48   82   99
-## [49,]   17   48   78   94
-## [50,]   16   43   73   89
+##  [1,]   19   47   72   88
+##  [2,]   15   43   69   86
+##  [3,]   16   47   72   88
+##  [4,]   17   48   77   92
+##  [5,]   17   43   71   89
+##  [6,]   17   45   69   86
+##  [7,]   16   44   68   86
+##  [8,]   15   42   69   86
+##  [9,]   17   47   71   88
+## [10,]   18   45   80   96
+## [11,]   18   45   69   85
+## [12,]   16   46   68   86
+## [13,]   18   45   71   87
+## [14,]   16   43   74   91
+## [15,]   17   44   70   88
+## [16,]   15   43   70   86
+## [17,]   18   46   77   92
+## [18,]   18   47   75   90
+## [19,]   16   48   75   90
+## [20,]   18   46   72   90
+## [21,]   15   46   74   90
+## [22,]   17   43   75   90
+## [23,]   16   45   68   85
+## [24,]   19   47   69   86
+## [25,]   19   46   74   90
+## [26,]   18   46   67   85
+## [27,]   19   48   77   92
+## [28,]   18   41   65   81
+## [29,]   18   47   73   90
+## [30,]   18   46   68   86
+## [31,]   17   45   69   88
+## [32,]   14   42   68   86
+## [33,]   16   45   74   90
+## [34,]   18   45   73   89
+## [35,]   16   44   71   89
+## [36,]   17   47   75   90
+## [37,]   18   42   67   83
+## [38,]   16   42   70   86
+## [39,]   19   46   72   88
+## [40,]   17   46   72   88
+## [41,]   18   42   69   86
+## [42,]   18   48   75   90
+## [43,]   18   46   70   87
+## [44,]   17   46   71   86
+## [45,]   18   52   80   96
+## [46,]   16   45   77   91
+## [47,]   15   40   67   83
+## [48,]   19   50   80   94
+## [49,]   18   48   75   90
+## [50,]   15   45   69   87
 ## 
 ## [[2]]
 ## [[2]][[1]]
@@ -926,24 +938,24 @@ mPupa &lt;-<span class="st"> </span><span class="kw">devRateModel</span>(<span c
 ## 
 ## 
 ## [[3]]
-##   [1] 15.08717 14.13917 14.69259 13.89968 14.51723 14.56265 14.46420
-##   [8] 14.30875 13.07095 15.51554 14.77187 14.76677 13.76546 14.42929
-##  [15] 16.23992 17.39729 15.19926 14.05261 14.79270 15.88017 15.14433
-##  [22] 14.51188 16.00228 16.00136 15.66029 15.25931 16.37277 15.47359
-##  [29] 14.80287 13.42780 13.51618 14.72929 14.67732 14.77652 13.74241
-##  [36] 14.91819 16.29803 14.08647 14.77589 14.97184 15.85502 14.70589
-##  [43] 13.43626 15.78591 13.34995 16.19943 12.91605 15.95971 13.72409
-##  [50] 16.39064 14.01880 15.00564 13.96519 15.36538 15.97482 15.33349
-##  [57] 15.41414 14.88086 14.99089 13.99743 17.11897 15.41349 15.03996
-##  [64] 14.12918 15.79352 13.97583 13.37527 12.34994 14.45555 13.80742
-##  [71] 16.61982 14.96486 14.97945 14.20383 13.34039 12.33877 15.44264
-##  [78] 14.83817 14.88384 15.77332 15.78708 15.24639 15.50869 16.51268
-##  [85] 14.82239 15.41804 14.66941 14.57900 18.34496 14.92180 14.83583
-##  [92] 13.27677 14.63561 12.62634 14.61841 13.50935 14.75389 15.79490
-##  [99] 15.76641 15.13374</code></pre>
+##   [1] 14.25785 15.03165 13.38825 16.03208 14.66875 14.96830 14.35111
+##   [8] 13.45323 15.72817 15.98384 14.36201 16.32518 15.52567 15.27304
+##  [15] 14.50758 13.41548 11.96038 14.98248 16.47475 14.20116 14.02088
+##  [22] 14.03300 16.10133 13.14580 12.48160 13.14243 15.21701 15.59360
+##  [29] 16.26462 17.29101 14.86969 15.87413 14.24081 15.92969 14.57555
+##  [36] 16.29739 13.16706 14.48115 15.56072 16.03881 15.98072 15.08892
+##  [43] 14.85915 13.55452 15.86672 17.02614 16.99262 18.05636 15.47069
+##  [50] 15.41720 15.92478 15.88964 17.06615 14.45289 14.21179 15.49623
+##  [57] 16.29484 15.11419 14.90075 16.34948 15.93204 14.07170 15.68893
+##  [64] 13.97366 14.83020 13.09834 16.01662 15.55935 15.75594 14.30387
+##  [71] 15.23882 16.05072 12.15303 14.36586 15.00637 12.60391 15.35112
+##  [78] 15.30007 14.30381 18.23719 13.16152 14.93713 15.64285 16.11667
+##  [85] 15.32530 16.40225 14.35861 16.53248 15.39989 16.36853 14.13701
+##  [92] 16.01929 14.42217 15.24155 14.11773 16.12744 14.57256 14.86514
+##  [99] 15.50503 15.80818</code></pre>
 <p>Results can be plotted using the “devRateIBMPlot” function. From this simple model we can observe that if eggs of the first generation are laid at time t = 0, adults should be seen at t = [65:85], if the temperature time series correspond to the temperatures experienced by the organism and in the absence of other limiting factors.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">devRateIBMPlot</span>(<span class="dt">ibm =</span> forecastTsolanivora, <span class="dt">typeG =</span> <span class="st">&quot;density&quot;</span>)</code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
 <pre><code>## Threshold for visualization = 10% of individuals</code></pre>
 </div>
 <div class="footnotes">
