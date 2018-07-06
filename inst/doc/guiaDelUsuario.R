@@ -2,8 +2,8 @@
 library("devRate")
 
 ## ------------------------------------------------------------------------
-### script para analisar los datos de tasa de desarrollo de B. dorsalis en 
-### funcion de la temperatura.
+### script para analizar los datos de tasa de desarrollo de B. dorsalis en 
+### función de la temperatura.
 require("devRate") # para cargar el paquete devRate
 
 ## ------------------------------------------------------------------------
@@ -51,7 +51,7 @@ modLin <- devRateModel(eq = campbell_74, df = datosLab14)
 plot(x = datosLab$temp, y = datosLab$devRate, 
      xlab = "Temperatura", ylab = "Tasa de desarrollo", 
      xlim = c(0, 40), ylim = c(0, 1.2)) # datos del laboratorio
-abline(modLin) # añadir modelo lineal
+abline(modLin) # añadir modelo lineal en el grafico
 print(modLin) # imprimir resultados del ajuste del modelo
 
 ## ------------------------------------------------------------------------
@@ -182,7 +182,7 @@ par(mar = c(4, 4, 0, 0))
 devRateIBMPlot(ibm = simul02)
 
 ## ---- fig.width = 5, fig.height = 4--------------------------------------
-tempEspacio <- matrix(rnorm(100, mean = 15, sd = 1), ncol = 10) # mapa teorica
+tempEspacio <- matrix(rnorm(100, mean = 15, sd = 1), ncol = 10) # mapa teorico
 myDevRate <- 1/devRateMap(nlsDR = modTs01_egg, tempMap = tempEspacio) +
   1/devRateMap(nlsDR = modTs01_larva, tempMap = tempEspacio) +
   1/devRateMap(nlsDR = modTs01_pupa, tempMap = tempEspacio)
