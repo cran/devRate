@@ -3,7 +3,7 @@ library("devRate")
 
 ## ------------------------------------------------------------------------
 ### script para analizar los datos de tasa de desarrollo de B. dorsalis en 
-### función de la temperatura.
+### funciÃ³n de la temperatura.
 require("devRate") # para cargar el paquete devRate
 
 ## ------------------------------------------------------------------------
@@ -51,7 +51,7 @@ modLin <- devRateModel(eq = campbell_74, df = datosLab14)
 plot(x = datosLab$temp, y = datosLab$devRate, 
      xlab = "Temperatura", ylab = "Tasa de desarrollo", 
      xlim = c(0, 40), ylim = c(0, 1.2)) # datos del laboratorio
-abline(modLin) # añadir modelo lineal en el grafico
+abline(modLin) # aÃ±adir modelo lineal en el grafico
 print(modLin) # imprimir resultados del ajuste del modelo
 
 ## ------------------------------------------------------------------------

@@ -12,54 +12,287 @@
 
 <meta name="author" content="Francois Rebaudo y Camila Benavides" />
 
-<meta name="date" content="2018-10-08" />
+<meta name="date" content="2019-05-27" />
 
 <title>Guía metodológica para el uso del paquete R devRate</title>
 
 
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#header {
+text-align: center;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
 
 
 
-<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -69,8 +302,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 <h1 class="title toc-ignore">Guía metodológica para el uso del paquete R devRate</h1>
-<h4 class="author"><em>Francois Rebaudo y Camila Benavides</em></h4>
-<h4 class="date"><em>2018-10-08</em></h4>
+<h4 class="author">Francois Rebaudo y Camila Benavides</h4>
+<h4 class="date">2019-05-27</h4>
 
 
 
@@ -87,7 +320,7 @@ body {text-align: justify}
 <p>En la mayoría de los ecosistemas, las condiciones ambientales son variables. Este es el caso de la temperatura. Para los insectos poikilotérmos, esto dará como resultado un cambio en la temperatura de su cuerpo. Mas alla del rango en el cual pueden desarrollarse, sufrirán un estrés que puede llevarles a la muerte. Por lo tanto, existen umbrales críticos, un umbral mínimo y un umbral máximo, más allá de los cuales los insectos no pueden continuar su desarrollo. Esto límites se encuentran en la literatura bajo los acrónimos <strong>CTmin</strong> y <strong>CTmax</strong> para <em>Critical Thermal minima</em> <em>Critical Thermal maxima</em>, respectivamente. Los mismos varían ampliamente de una especie a otra, con algunas especies como el escarabajo ártico capaz de soportar hasta -70 grados, mientras que otras admiten hasta mas de 45 grados. Como se mencionó anteriormente, la sensibilidad a la temperatura, que clasifica los insectos de acuerdo con un gradiente de generalistas a especialistas varía mucho de una especie a otra e incluso dentro de una especie entre sus etapas fenológicas. Más allá de estos dos valores umbral, la respuesta de los insectos variará según el tiempo frecuencia y tasa de exposición, la velocidad a la que la temperatura se lleva más allá de los valores umbral, la historia de vida de los insectos y, por supuesto, las especies consideradas. En esta guía nos enfocaremos en lo que sucede entre estos umbrales.</p>
 <p>Para estudiar qué ocurre entre estos dos valores umbral, mediremos el tiempo de desarrollo del insecto, expresado como la tasa de desarrollo. La tasa de desarrollo de los insectos comienza en el primer valor umbral, luego aumenta progresivamente hasta alcanzar un valor óptimo, luego desciende rápidamente al segundo valor umbral. La respuesta de los insectos a la temperatura es, por lo tanto, no lineal.</p>
 <p>La temperatura a la cual el desarrollo es máximo se llama temperatura óptima de desarrollo u óptimo térmico (<strong>Topt</strong>). Es importante enfatizar que esta es la temperatura a la cual el desarrollo es óptimo, no la temperatura óptima para el insecto. De hecho, la temperatura óptima depende de otros criterios distintos del desarrollo. Un buen ejemplo es la supervivencia: a la temperatura óptima para el desarrollo, la supervivencia observada es diferente de la temperatura óptima para la supervivencia.</p>
-<p>Los estudios sobre la respuesta de los insectos a la temperatura no son nuevos: el primer científico que estudio y publico sobre el efecto de la temperatura en los insectos es René-Antoine Ferchault de Réaumur<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>: sus observaciones sobre las mariposas estan registradas en sus “Mémoires pour servir à l’histoire des insectes” entre 1734 y 1742. Despues de Réaumur, muchos científicos buscaron y siguen buscando cuantificar la relación entre la temperatura y la tasa de desarrollo.</p>
+<p>Los estudios sobre la respuesta de los insectos a la temperatura no son nuevos: el primer científico que estudio y publico sobre el efecto de la temperatura en los insectos es René-Antoine Ferchault de Réaumur<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>: sus observaciones sobre las mariposas estan registradas en sus “Mémoires pour servir à l’histoire des insectes” entre 1734 y 1742. Despues de Réaumur, muchos científicos buscaron y siguen buscando cuantificar la relación entre la temperatura y la tasa de desarrollo.</p>
 <p>Para hacer esto, el método más común consiste en un primer paso en colocar insectos en jaulas a diferentes temperaturas constantes, para medir el tiempo de desarrollo de cada etapa fenológica. Mientras haciendo este experimento, podemos observar algunas características de la respuesta de los insectos a la temperatura:</p>
 <ol style="list-style-type: decimal">
 <li>La primera que resulta muy difícil, si no imposible, de obtener datos de desarrollo cercanos a los mínimos y máximos, ya que a estas temperaturas la gran mayoría de los insectos de la misma especie y población no sobreviven</li>
@@ -101,42 +334,42 @@ body {text-align: justify}
 </div>
 <div id="datos-del-laboratorio" class="section level2">
 <h2>Datos del laboratorio</h2>
-<p>Los datos de laboratorio que vamos a usar son los de <em>Bactrocera dorsalis</em> <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>, un insecto del Orden de los Dipteros, que hemos obtenidos a partir del articulo de Messenger and Flitters (1958)<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>. Los datos coresponden al tiempo de desarrollo de los huevos expresado en horas a distintas temperaturas expresadas en Fahrenheit.</p>
+<p>Los datos de laboratorio que vamos a usar son los de <em>Bactrocera dorsalis</em> <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>, un insecto del Orden de los Dipteros, que hemos obtenidos a partir del articulo de Messenger and Flitters (1958)<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. Los datos coresponden al tiempo de desarrollo de los huevos expresado en horas a distintas temperaturas expresadas en Fahrenheit.</p>
 <p>Para seguir la guía, es nesesario contar con el programa R instalado en su computadora. Para usar el paquete devRate, hay que instalarlo mediante:</p>
 <pre><code>install.packages(&quot;devRate&quot;)</code></pre>
 <p>Una vez el paquete instalado, no es necesario repetir a futuro la linea de instalacion. Sin embargo instalar el paquete no es suficiente para poder usarlo dentro de R. Hay que especificar que vamos a usarlo cada vez que usamos R. Para esto se puede usar:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;devRate&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">library</span>(<span class="st">&quot;devRate&quot;</span>)</a></code></pre></div>
 <p>A partir de ahora vamos a trabajar desde un archivo que podriamos llamar <code>B_dorsalis_devRate.R</code>. Este archivo empeza con un comentario indicando de que se trata para acordarse de su contenido. Todo lo que viene despues del simbolo <code>#</code> son comentarios.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### script para analizar los datos de tasa de desarrollo de B. dorsalis en 
-### función de la temperatura.
-<span class="kw">require</span>(<span class="st">&quot;devRate&quot;</span>) <span class="co"># para cargar el paquete devRate</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co">### script para analizar los datos de tasa de desarrollo de B. dorsalis en </span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co">### función de la temperatura.</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="kw">require</span>(<span class="st">&quot;devRate&quot;</span>) <span class="co"># para cargar el paquete devRate</span></a></code></pre></div>
 <p>Para que los datos sean reconocidos en R, tenemos que usar un formato especial. Los datos de temperatura son almacenados en un formato vector que se escribe con <code>c()</code> en R y que corresponde a una colección ordenada de elementos del mismo tipo:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="fl">55.0</span>, <span class="fl">56.0</span>, <span class="fl">57.0</span>, <span class="fl">58.0</span>, <span class="fl">60.0</span>, <span class="fl">62.5</span>, <span class="fl">65.0</span>, <span class="fl">67.5</span>, <span class="fl">70.0</span>, <span class="fl">75.0</span>, <span class="fl">80.0</span>, <span class="fl">85.0</span>, <span class="fl">87.5</span>, 
-  <span class="fl">90.0</span>, <span class="fl">92.5</span>, <span class="fl">95.0</span>, <span class="fl">96.0</span>, <span class="fl">97.0</span>, <span class="fl">97.5</span>)</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">c</span>(<span class="fl">55.0</span>, <span class="fl">56.0</span>, <span class="fl">57.0</span>, <span class="fl">58.0</span>, <span class="fl">60.0</span>, <span class="fl">62.5</span>, <span class="fl">65.0</span>, <span class="fl">67.5</span>, <span class="fl">70.0</span>, <span class="fl">75.0</span>, <span class="fl">80.0</span>, <span class="fl">85.0</span>, <span class="fl">87.5</span>, </a>
+<a class="sourceLine" id="cb4-2" title="2">  <span class="fl">90.0</span>, <span class="fl">92.5</span>, <span class="fl">95.0</span>, <span class="fl">96.0</span>, <span class="fl">97.0</span>, <span class="fl">97.5</span>)</a></code></pre></div>
 <pre><code>##  [1] 55.0 56.0 57.0 58.0 60.0 62.5 65.0 67.5 70.0 75.0 80.0 85.0 87.5 90.0
 ## [15] 92.5 95.0 96.0 97.0 97.5</code></pre>
 <p>Los numeros usan el punto como separator de decimales y la coma como separator de valores. Aqui las temperaturas estan en Fahrenheit, tenemos que convertirlas en Celsius con la formula <code>T(°C) = (T(°F) - 32) / 1.8</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="kw">c</span>(<span class="fl">55.0</span>, <span class="fl">56.0</span>, <span class="fl">57.0</span>, <span class="fl">58.0</span>, <span class="fl">60.0</span>, <span class="fl">62.5</span>, <span class="fl">65.0</span>, <span class="fl">67.5</span>, <span class="fl">70.0</span>, <span class="fl">75.0</span>, <span class="fl">80.0</span>, <span class="fl">85.0</span>, <span class="fl">87.5</span>, 
-  <span class="fl">90.0</span>, <span class="fl">92.5</span>, <span class="fl">95.0</span>, <span class="fl">96.0</span>, <span class="fl">97.0</span>, <span class="fl">97.5</span>) <span class="op">-</span><span class="st"> </span><span class="dv">32</span>) <span class="op">/</span><span class="st"> </span><span class="fl">1.8</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">(<span class="kw">c</span>(<span class="fl">55.0</span>, <span class="fl">56.0</span>, <span class="fl">57.0</span>, <span class="fl">58.0</span>, <span class="fl">60.0</span>, <span class="fl">62.5</span>, <span class="fl">65.0</span>, <span class="fl">67.5</span>, <span class="fl">70.0</span>, <span class="fl">75.0</span>, <span class="fl">80.0</span>, <span class="fl">85.0</span>, <span class="fl">87.5</span>, </a>
+<a class="sourceLine" id="cb6-2" title="2">  <span class="fl">90.0</span>, <span class="fl">92.5</span>, <span class="fl">95.0</span>, <span class="fl">96.0</span>, <span class="fl">97.0</span>, <span class="fl">97.5</span>) <span class="op">-</span><span class="st"> </span><span class="dv">32</span>) <span class="op">/</span><span class="st"> </span><span class="fl">1.8</span></a></code></pre></div>
 <pre><code>##  [1] 12.77778 13.33333 13.88889 14.44444 15.55556 16.94444 18.33333
 ##  [8] 19.72222 21.11111 23.88889 26.66667 29.44444 30.83333 32.22222
 ## [15] 33.61111 35.00000 35.55556 36.11111 36.38889</code></pre>
 <p>Para guardar las temperaturas, podemos almacenarlas en un objeto. Para almacenar los valores de temperaturas en un objeto, se usa los simbolos <code>&lt;-</code>. Si queremos guardar los valores de temperatura en un objeto llamado <code>temp</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp &lt;-<span class="st"> </span>(<span class="kw">c</span>(<span class="fl">55.0</span>, <span class="fl">56.0</span>, <span class="fl">57.0</span>, <span class="fl">58.0</span>, <span class="fl">60.0</span>, <span class="fl">62.5</span>, <span class="fl">65.0</span>, <span class="fl">67.5</span>, <span class="fl">70.0</span>, <span class="fl">75.0</span>, <span class="fl">80.0</span>, 
-           <span class="fl">85.0</span>, <span class="fl">87.5</span>, <span class="fl">90.0</span>, <span class="fl">92.5</span>, <span class="fl">95.0</span>, <span class="fl">96.0</span>, <span class="fl">97.0</span>, <span class="fl">97.5</span>) <span class="op">-</span><span class="st"> </span><span class="dv">32</span>) <span class="op">/</span><span class="st"> </span><span class="fl">1.8</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">temp &lt;-<span class="st"> </span>(<span class="kw">c</span>(<span class="fl">55.0</span>, <span class="fl">56.0</span>, <span class="fl">57.0</span>, <span class="fl">58.0</span>, <span class="fl">60.0</span>, <span class="fl">62.5</span>, <span class="fl">65.0</span>, <span class="fl">67.5</span>, <span class="fl">70.0</span>, <span class="fl">75.0</span>, <span class="fl">80.0</span>, </a>
+<a class="sourceLine" id="cb8-2" title="2">           <span class="fl">85.0</span>, <span class="fl">87.5</span>, <span class="fl">90.0</span>, <span class="fl">92.5</span>, <span class="fl">95.0</span>, <span class="fl">96.0</span>, <span class="fl">97.0</span>, <span class="fl">97.5</span>) <span class="op">-</span><span class="st"> </span><span class="dv">32</span>) <span class="op">/</span><span class="st"> </span><span class="fl">1.8</span></a></code></pre></div>
 <p>De la misma manera, vamos a guardar los valores de tasa de desarrollo en un objeto llamado <code>devRate</code>. La tasa de desarrollo corresponde al opuesto del numero de días. Aquí los valores estan expresados en horas, entonces dividimos el numero de horas por 24 y despues calculamos el opuesto.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devRate &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>(<span class="kw">c</span>(<span class="fl">263.0</span>, <span class="fl">232.0</span>, <span class="fl">170.5</span>, <span class="fl">148.0</span>, <span class="fl">121.3</span>, <span class="fl">95.5</span>, <span class="fl">74.0</span>, <span class="fl">62.5</span>, <span class="fl">51.5</span>, 
-                <span class="fl">38.0</span>, <span class="fl">30.5</span>, <span class="fl">27.0</span>, <span class="fl">25.0</span>, <span class="fl">24.0</span>, <span class="fl">23.5</span>, <span class="fl">25.0</span>, <span class="fl">26.5</span>, <span class="fl">29.3</span>, <span class="fl">34.3</span>)<span class="op">/</span><span class="dv">24</span>)</code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">devRate &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>(<span class="kw">c</span>(<span class="fl">263.0</span>, <span class="fl">232.0</span>, <span class="fl">170.5</span>, <span class="fl">148.0</span>, <span class="fl">121.3</span>, <span class="fl">95.5</span>, <span class="fl">74.0</span>, <span class="fl">62.5</span>, <span class="fl">51.5</span>, </a>
+<a class="sourceLine" id="cb9-2" title="2">                <span class="fl">38.0</span>, <span class="fl">30.5</span>, <span class="fl">27.0</span>, <span class="fl">25.0</span>, <span class="fl">24.0</span>, <span class="fl">23.5</span>, <span class="fl">25.0</span>, <span class="fl">26.5</span>, <span class="fl">29.3</span>, <span class="fl">34.3</span>)<span class="op">/</span><span class="dv">24</span>)</a></code></pre></div>
 <p>Ahora podemos almacenar los datos de temperatura y de tasa de desarrollo en una tabla <code>datosLab</code> donde temperatura y tasa de desarrollo son las columnas. La función <code>data.frame</code> permite hacer la tabla.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datosLab &lt;-<span class="st"> </span><span class="kw">data.frame</span>(temp, devRate)</code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">datosLab &lt;-<span class="st"> </span><span class="kw">data.frame</span>(temp, devRate)</a></code></pre></div>
 <p>Si queremos hacer la tabla y llenarla, hay que especificar el nombre que queremos dar a las columnas con el simbolo <code>=</code> :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datosLab &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
-  <span class="dt">temp =</span> (<span class="kw">c</span>(<span class="fl">55.0</span>, <span class="fl">56.0</span>, <span class="fl">57.0</span>, <span class="fl">58.0</span>, <span class="fl">60.0</span>, <span class="fl">62.5</span>, <span class="fl">65.0</span>, <span class="fl">67.5</span>, <span class="fl">70.0</span>, <span class="fl">75.0</span>, <span class="fl">80.0</span>, 
-            <span class="fl">85.0</span>, <span class="fl">87.5</span>, <span class="fl">90.0</span>, <span class="fl">92.5</span>, <span class="fl">95.0</span>, <span class="fl">96.0</span>, <span class="fl">97.0</span>, <span class="fl">97.5</span>) <span class="op">-</span><span class="st"> </span><span class="dv">32</span>)<span class="op">/</span><span class="fl">1.8</span>, 
-  <span class="dt">devRate =</span> <span class="dv">1</span><span class="op">/</span>(<span class="kw">c</span>(<span class="fl">263.0</span>, <span class="fl">232.0</span>, <span class="fl">170.5</span>, <span class="fl">148.0</span>, <span class="fl">121.3</span>, <span class="fl">95.5</span>, <span class="fl">74.0</span>, <span class="fl">62.5</span>, <span class="fl">51.5</span>, 
-            <span class="fl">38.0</span>, <span class="fl">30.5</span>, <span class="fl">27.0</span>, <span class="fl">25.0</span>, <span class="fl">24.0</span>, <span class="fl">23.5</span>, <span class="fl">25.0</span>, <span class="fl">26.5</span>, <span class="fl">29.3</span>, <span class="fl">34.3</span>)<span class="op">/</span><span class="dv">24</span>))</code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">datosLab &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb11-2" title="2">  <span class="dt">temp =</span> (<span class="kw">c</span>(<span class="fl">55.0</span>, <span class="fl">56.0</span>, <span class="fl">57.0</span>, <span class="fl">58.0</span>, <span class="fl">60.0</span>, <span class="fl">62.5</span>, <span class="fl">65.0</span>, <span class="fl">67.5</span>, <span class="fl">70.0</span>, <span class="fl">75.0</span>, <span class="fl">80.0</span>, </a>
+<a class="sourceLine" id="cb11-3" title="3">            <span class="fl">85.0</span>, <span class="fl">87.5</span>, <span class="fl">90.0</span>, <span class="fl">92.5</span>, <span class="fl">95.0</span>, <span class="fl">96.0</span>, <span class="fl">97.0</span>, <span class="fl">97.5</span>) <span class="op">-</span><span class="st"> </span><span class="dv">32</span>)<span class="op">/</span><span class="fl">1.8</span>, </a>
+<a class="sourceLine" id="cb11-4" title="4">  <span class="dt">devRate =</span> <span class="dv">1</span><span class="op">/</span>(<span class="kw">c</span>(<span class="fl">263.0</span>, <span class="fl">232.0</span>, <span class="fl">170.5</span>, <span class="fl">148.0</span>, <span class="fl">121.3</span>, <span class="fl">95.5</span>, <span class="fl">74.0</span>, <span class="fl">62.5</span>, <span class="fl">51.5</span>, </a>
+<a class="sourceLine" id="cb11-5" title="5">            <span class="fl">38.0</span>, <span class="fl">30.5</span>, <span class="fl">27.0</span>, <span class="fl">25.0</span>, <span class="fl">24.0</span>, <span class="fl">23.5</span>, <span class="fl">25.0</span>, <span class="fl">26.5</span>, <span class="fl">29.3</span>, <span class="fl">34.3</span>)<span class="op">/</span><span class="dv">24</span>))</a></code></pre></div>
 <p>Podemos verificar el contenido del objeto <code>datosLab</code> con la función <code>print</code> :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(datosLab)</code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">print</span>(datosLab)</a></code></pre></div>
 <pre><code>##        temp    devRate
 ## 1  12.77778 0.09125475
 ## 2  13.33333 0.10344828
@@ -163,26 +396,26 @@ body {text-align: justify}
 <h2>Seleccionar un modelo y ajustarlo</h2>
 <div id="el-modelo-lineal" class="section level3">
 <h3>El modelo lineal</h3>
-<p>Aunque tenga limitaciones, el método más común y simple es usar los resultados obtenidos en la parte casi lineal de la relación entre la temperatura y la tasa de desarrollo. El modelo matemático utilizado es un modelo lineal, la línea de ecuación <code>y = bb * x + aa</code> que todos conocen de sus clases de estadistica. El uso del modelo lineal fue popularizado por el articulo cientifico de Campbell et al. (1974)<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>. Este modelo se basa en la suposición de que la relación entre temperatura y desarrollo en insectos es lineal en un cierto rango de temperaturas y sirve de base para el concepto de “grado-dias”. La extensión de la línea de regresión lineal fuera de la zona de linealidad intersecta el eje x. El valor de la temperatura en esta intersección se denomina temperatura base, que suele ser diferente del CTmin. La temperatura base es también conocido como el “umbral de desarrollo” y puede calcularse simplemente dividiendo el opuesto de la intersección en y por el coeficiente “a”. Pero primero hay que ajustar el modelo a los datos de laboratorio.</p>
+<p>Aunque tenga limitaciones, el método más común y simple es usar los resultados obtenidos en la parte casi lineal de la relación entre la temperatura y la tasa de desarrollo. El modelo matemático utilizado es un modelo lineal, la línea de ecuación <code>y = bb * x + aa</code> que todos conocen de sus clases de estadistica. El uso del modelo lineal fue popularizado por el articulo cientifico de Campbell et al. (1974)<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. Este modelo se basa en la suposición de que la relación entre temperatura y desarrollo en insectos es lineal en un cierto rango de temperaturas y sirve de base para el concepto de “grado-dias”. La extensión de la línea de regresión lineal fuera de la zona de linealidad intersecta el eje x. El valor de la temperatura en esta intersección se denomina temperatura base, que suele ser diferente del CTmin. La temperatura base es también conocido como el “umbral de desarrollo” y puede calcularse simplemente dividiendo el opuesto de la intersección en y por el coeficiente “a”. Pero primero hay que ajustar el modelo a los datos de laboratorio.</p>
 <p>Para seleccionar los datos que vamos a usar, puede ser util visualizar los datos de laboratorio en un grafico. Para esto vamos a usar la función <code>plot</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> datosLab<span class="op">$</span>temp, <span class="dt">y =</span> datosLab<span class="op">$</span>devRate, 
-     <span class="dt">xlab =</span> <span class="st">&quot;Temperatura&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tasa de desarrollo&quot;</span>, 
-     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">40</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">1.2</span>))</code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">plot</span>(<span class="dt">x =</span> datosLab<span class="op">$</span>temp, <span class="dt">y =</span> datosLab<span class="op">$</span>devRate, </a>
+<a class="sourceLine" id="cb14-2" title="2">     <span class="dt">xlab =</span> <span class="st">&quot;Temperatura&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tasa de desarrollo&quot;</span>, </a>
+<a class="sourceLine" id="cb14-3" title="3">     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">40</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">1.2</span>))</a></code></pre></div>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
 <p>Podemos observar que los ultimos cinco puntos salen de la zona de linearidad. Para no usar estos ultimos puntos, vamos a seleccinar una parte de los datos de laboratorio. Quitar los ultimos cinco elementos es igual a seleccionar unicamente las 14 primeras lineas de nuestra tabla. Se usan corchetes para seleccionar una parte de los datos, y una coma para especificar que se trata de lineas.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datosLab14 &lt;-<span class="st"> </span>datosLab[<span class="dv">1</span><span class="op">:</span><span class="dv">14</span>,]
-<span class="kw">plot</span>(<span class="dt">x =</span> datosLab14<span class="op">$</span>temp, <span class="dt">y =</span> datosLab14<span class="op">$</span>devRate, 
-     <span class="dt">xlab =</span> <span class="st">&quot;Temperatura&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tasa de desarrollo&quot;</span>, 
-     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">40</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">1.2</span>))</code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">datosLab14 &lt;-<span class="st"> </span>datosLab[<span class="dv">1</span><span class="op">:</span><span class="dv">14</span>,]</a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="kw">plot</span>(<span class="dt">x =</span> datosLab14<span class="op">$</span>temp, <span class="dt">y =</span> datosLab14<span class="op">$</span>devRate, </a>
+<a class="sourceLine" id="cb15-3" title="3">     <span class="dt">xlab =</span> <span class="st">&quot;Temperatura&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tasa de desarrollo&quot;</span>, </a>
+<a class="sourceLine" id="cb15-4" title="4">     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">40</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">1.2</span>))</a></code></pre></div>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
 <p>Aun que se podria ajustar directamente el modelo lineal con la función <code>lm</code>, vamos a usar la función generica del paquete devRate.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modLin &lt;-<span class="st"> </span><span class="kw">devRateModel</span>(<span class="dt">eq =</span> campbell_<span class="dv">74</span>, <span class="dt">df =</span> datosLab14)
-<span class="kw">plot</span>(<span class="dt">x =</span> datosLab<span class="op">$</span>temp, <span class="dt">y =</span> datosLab<span class="op">$</span>devRate, 
-     <span class="dt">xlab =</span> <span class="st">&quot;Temperatura&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tasa de desarrollo&quot;</span>, 
-     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">40</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">1.2</span>)) <span class="co"># datos del laboratorio</span>
-<span class="kw">abline</span>(modLin) <span class="co"># añadir modelo lineal en el grafico</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">modLin &lt;-<span class="st"> </span><span class="kw">devRateModel</span>(<span class="dt">eq =</span> campbell_<span class="dv">74</span>, <span class="dt">df =</span> datosLab14)</a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="kw">plot</span>(<span class="dt">x =</span> datosLab<span class="op">$</span>temp, <span class="dt">y =</span> datosLab<span class="op">$</span>devRate, </a>
+<a class="sourceLine" id="cb16-3" title="3">     <span class="dt">xlab =</span> <span class="st">&quot;Temperatura&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tasa de desarrollo&quot;</span>, </a>
+<a class="sourceLine" id="cb16-4" title="4">     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">40</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">1.2</span>)) <span class="co"># datos del laboratorio</span></a>
+<a class="sourceLine" id="cb16-5" title="5"><span class="kw">abline</span>(modLin) <span class="co"># añadir modelo lineal en el grafico</span></a></code></pre></div>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(modLin) <span class="co"># imprimir resultados del ajuste del modelo</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">print</span>(modLin) <span class="co"># imprimir resultados del ajuste del modelo</span></a></code></pre></div>
 <pre><code>## Nonlinear regression model
 ##   model: rT ~ aa + bb * T
 ##    data: data.frame(rT = devRate, T = temp)
@@ -200,10 +433,10 @@ body {text-align: justify}
 <li>la constante térmica es <code>K = 1/bb = 20.4876</code>.</li>
 </ul>
 <p>Podemos buscar en la base de datos del paquete devRate si hay otros modelos que fueron usados para la especie <em>Bactrocera dorsalis</em>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">devRateFind</span>(<span class="dt">species =</span> <span class="st">&quot;Bactrocera dorsalis&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">devRateFind</span>(<span class="dt">species =</span> <span class="st">&quot;Bactrocera dorsalis&quot;</span>)</a></code></pre></div>
 <pre><code>##      equation occu paramNumb
 ## 1 campbell_74    2         2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">campbell_<span class="dv">74</span><span class="op">$</span>startVal[campbell_<span class="dv">74</span><span class="op">$</span>startVal<span class="op">$</span>genSp <span class="op">==</span><span class="st"> &quot;Bactrocera dorsalis&quot;</span>,]</code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">campbell_<span class="dv">74</span><span class="op">$</span>startVal[campbell_<span class="dv">74</span><span class="op">$</span>startVal<span class="op">$</span>genSp <span class="op">==</span><span class="st"> &quot;Bactrocera dorsalis&quot;</span>,]</a></code></pre></div>
 <pre><code>##     ordersp    familysp    genussp  species               genSp stage
 ## 679 Diptera Tephritidae Bactrocera dorsalis Bactrocera dorsalis   all
 ## 680 Diptera Tephritidae Bactrocera dorsalis Bactrocera dorsalis   all
@@ -217,7 +450,7 @@ temperaturas bajas, en el área entre la temperatura base y la temperatura umbra
 <div id="los-modelos-no-lineales" class="section level3">
 <h3>Los modelos no lineales</h3>
 <p>Una de las principales motivaciones para el desarrollo de ecuaciones no lineales es el cálculo de CTmin, CTmax, Topt. Existen varios modelos no lineales. La lista de los que estan en el paquete devRate se puede encontrar en la documentacion mediante <code>?devRate</code> o a traves del objeto <code>devRateEqList</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(devRateEqList)</code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">names</span>(devRateEqList)</a></code></pre></div>
 <pre><code>##  [1] &quot;janisch_32&quot;         &quot;davidson_44&quot;        &quot;campbell_74&quot;       
 ##  [4] &quot;stinner_74&quot;         &quot;logan6_76&quot;          &quot;logan10_76&quot;        
 ##  [7] &quot;sharpeDeMichele_77&quot; &quot;analytis_77&quot;        &quot;schoolfield_81&quot;    
@@ -231,16 +464,16 @@ temperaturas bajas, en el área entre la temperatura base y la temperatura umbra
 ## [31] &quot;bayoh_03&quot;           &quot;kontodimas_04&quot;      &quot;damos_08&quot;          
 ## [34] &quot;damos_11&quot;           &quot;shi_11&quot;             &quot;perf2_11&quot;          
 ## [37] &quot;regniere_12&quot;</code></pre>
-<p>Dentro de todos estos modelos, la seleccion de uno en particular no tiene consenso en la comunidad cientifica. La mayoría de los modelos no lineales se basan en la descripción de la curva de respuesta a la temperatura de los insectos, con un enfoque matemático sin base biológica real, por lo que los diferentes modelos no pueden separarse en sus supuestos subyacentes, y los criterios estadísticos para decidir entre ellos no permiten que un modelo se afirme a sí mismo como mejor que los demás. Otros modelos no lineales, llamados modelos biofísicos, se basan en la activación enzimática, como el modelo Sharpe y DeMichèle de 1977, modificado en 1981 por Schoolfield et al. Lamentablemente, estos modelos son más complejos y requieren conjuntos de datos vastos para ser utilizados. Además, algunos estudios cuestionan su base teórica. Al final, se usan poco.</p>
+<p>Dentro de todos estos modelos, la seleccion de uno en particular no tiene consenso en la comunidad cientifica. La mayoría de los modelos no lineales se basan en la descripción de la curva de respuesta a la temperatura de los insectos, con un enfoque matemático sin base biológica real, por lo que los diferentes modelos no pueden separarse en sus supuestos subyacentes, y los criterios estadísticos para decidir entre ellos no permiten que un modelo se afirme a sí mismo como mejor que los demás. Otros modelos no lineales, llamados modelos biofísicos, se basan en la activación enzimática, como el modelo Sharpe y DeMichèle de 1977, modificado en 1981 por Schoolfield et al. Lamentablemente, estos modelos son más complejos y requieren conjuntos de datos vastos para ser utilizados. Además, algunos estudios cuestionan su base teórica. Al final, se usan poco.</p>
 <p>Para cuantificar la respuesta de los insectos a la temperatura, se trata de ajustar varios modelos al conjunto de datos experimentales, y seleccionar el que mejor responda a la problemática del estudio, y evaluarlo con los criterios de comparación estadísticos. Una posibilidad es de buscar en la base de datos del paquete cuales son los mas usados con la función <code>devRateFind</code> pero como hemos visto anteriormente no existen modelos no lineales que hayan sido usados al momento de escribir esta guía. Una alternativa es usar los modelos mas comunes como los de Briere, Logan, y Lactin. Para esto, hay que definir valores inciales para los parametros de los modelos para que el algoritmo que va a hacer el ajuste encuentre una solución. En caso de que no se conocen valores pertinentes para iniciar el algoritmo, se puede usar los valores promedios que se encuentran en la tabla <code>startVal</code> de cada modelo (por ejemplo <code>briere1_99$startVal</code> para el modelo de Briere-1).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">devRateFind</span>(<span class="dt">species =</span> <span class="st">&quot;Bactrocera dorsalis&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">devRateFind</span>(<span class="dt">species =</span> <span class="st">&quot;Bactrocera dorsalis&quot;</span>)</a></code></pre></div>
 <pre><code>##      equation occu paramNumb
 ## 1 campbell_74    2         2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modNoLin_<span class="dv">01</span> &lt;-<span class="st"> </span><span class="kw">devRateModel</span>(
-  <span class="dt">eq =</span> briere1_<span class="dv">99</span>, <span class="co"># nombre del modelo</span>
-  <span class="dt">df =</span> datosLab, <span class="co"># nombre de los datos de laboratorio</span>
-  <span class="dt">startValues =</span> <span class="kw">list</span>(<span class="dt">aa =</span> <span class="fl">0.01</span>, <span class="dt">Tmin =</span> <span class="dv">10</span>, <span class="dt">Tmax =</span> <span class="dv">40</span>)) <span class="co"># valores iniciales</span>
-<span class="kw">print</span>(modNoLin_<span class="dv">01</span>)</code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">modNoLin_<span class="dv">01</span> &lt;-<span class="st"> </span><span class="kw">devRateModel</span>(</a>
+<a class="sourceLine" id="cb27-2" title="2">  <span class="dt">eq =</span> briere1_<span class="dv">99</span>, <span class="co"># nombre del modelo</span></a>
+<a class="sourceLine" id="cb27-3" title="3">  <span class="dt">df =</span> datosLab, <span class="co"># nombre de los datos de laboratorio</span></a>
+<a class="sourceLine" id="cb27-4" title="4">  <span class="dt">startValues =</span> <span class="kw">list</span>(<span class="dt">aa =</span> <span class="fl">0.01</span>, <span class="dt">Tmin =</span> <span class="dv">10</span>, <span class="dt">Tmax =</span> <span class="dv">40</span>)) <span class="co"># valores iniciales</span></a>
+<a class="sourceLine" id="cb27-5" title="5"><span class="kw">print</span>(modNoLin_<span class="dv">01</span>)</a></code></pre></div>
 <pre><code>## Nonlinear regression model
 ##   model: rT ~ aa * T * (T - Tmin) * (Tmax - T)^(1/2)
 ##    data: data.frame(rT = devRate, T = temp)
@@ -250,12 +483,12 @@ temperaturas bajas, en el área entre la temperatura base y la temperatura umbra
 ## 
 ## Number of iterations to convergence: 5 
 ## Achieved convergence tolerance: 5.693e-06</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modNoLin_<span class="dv">02</span> &lt;-<span class="st"> </span><span class="kw">devRateModel</span>(
-  <span class="dt">eq =</span> briere2_<span class="dv">99</span>, <span class="co"># nombre del modelo</span>
-  <span class="dt">df =</span> datosLab, <span class="co"># nombre de los datos de laboratorio</span>
-  <span class="dt">startValues =</span> <span class="kw">list</span>(
-    <span class="dt">aa =</span> <span class="fl">0.01</span>, <span class="dt">Tmin =</span> <span class="dv">10</span>, <span class="dt">Tmax =</span> <span class="dv">40</span>, <span class="dt">bb =</span> <span class="dv">2</span>)) <span class="co"># valores iniciales</span>
-<span class="kw">print</span>(modNoLin_<span class="dv">02</span>)</code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">modNoLin_<span class="dv">02</span> &lt;-<span class="st"> </span><span class="kw">devRateModel</span>(</a>
+<a class="sourceLine" id="cb29-2" title="2">  <span class="dt">eq =</span> briere2_<span class="dv">99</span>, <span class="co"># nombre del modelo</span></a>
+<a class="sourceLine" id="cb29-3" title="3">  <span class="dt">df =</span> datosLab, <span class="co"># nombre de los datos de laboratorio</span></a>
+<a class="sourceLine" id="cb29-4" title="4">  <span class="dt">startValues =</span> <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb29-5" title="5">    <span class="dt">aa =</span> <span class="fl">0.01</span>, <span class="dt">Tmin =</span> <span class="dv">10</span>, <span class="dt">Tmax =</span> <span class="dv">40</span>, <span class="dt">bb =</span> <span class="dv">2</span>)) <span class="co"># valores iniciales</span></a>
+<a class="sourceLine" id="cb29-6" title="6"><span class="kw">print</span>(modNoLin_<span class="dv">02</span>)</a></code></pre></div>
 <pre><code>## Nonlinear regression model
 ##   model: rT ~ aa * T * (T - Tmin) * (Tmax - T)^(1/bb)
 ##    data: data.frame(rT = devRate, T = temp)
@@ -265,12 +498,12 @@ temperaturas bajas, en el área entre la temperatura base y la temperatura umbra
 ## 
 ## Number of iterations to convergence: 8 
 ## Achieved convergence tolerance: 3.451e-06</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modNoLin_<span class="dv">03</span> &lt;-<span class="st"> </span><span class="kw">devRateModel</span>(
-  <span class="dt">eq =</span> lactin2_<span class="dv">95</span>, <span class="co"># nombre del modelo</span>
-  <span class="dt">df =</span> datosLab, <span class="co"># nombre de los datos de laboratorio</span>
-  <span class="dt">startValues =</span> <span class="kw">list</span>(
-    <span class="dt">aa =</span> <span class="fl">0.03</span>, <span class="dt">Tmax =</span> <span class="dv">30</span>, <span class="dt">deltaT =</span> <span class="fl">5.0</span>, <span class="dt">bb =</span> <span class="op">-</span><span class="fl">1.5</span>)) <span class="co"># valores iniciales</span>
-<span class="kw">print</span>(modNoLin_<span class="dv">03</span>)</code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">modNoLin_<span class="dv">03</span> &lt;-<span class="st"> </span><span class="kw">devRateModel</span>(</a>
+<a class="sourceLine" id="cb31-2" title="2">  <span class="dt">eq =</span> lactin2_<span class="dv">95</span>, <span class="co"># nombre del modelo</span></a>
+<a class="sourceLine" id="cb31-3" title="3">  <span class="dt">df =</span> datosLab, <span class="co"># nombre de los datos de laboratorio</span></a>
+<a class="sourceLine" id="cb31-4" title="4">  <span class="dt">startValues =</span> <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb31-5" title="5">    <span class="dt">aa =</span> <span class="fl">0.03</span>, <span class="dt">Tmax =</span> <span class="dv">30</span>, <span class="dt">deltaT =</span> <span class="fl">5.0</span>, <span class="dt">bb =</span> <span class="fl">-1.5</span>)) <span class="co"># valores iniciales</span></a>
+<a class="sourceLine" id="cb31-6" title="6"><span class="kw">print</span>(modNoLin_<span class="dv">03</span>)</a></code></pre></div>
 <pre><code>## Nonlinear regression model
 ##   model: rT ~ exp(aa * T) - exp(aa * Tmax - (Tmax - T)/deltaT) + bb
 ##    data: data.frame(rT = devRate, T = temp)
@@ -281,39 +514,39 @@ temperaturas bajas, en el área entre la temperatura base y la temperatura umbra
 ## Number of iterations to convergence: 7 
 ## Achieved convergence tolerance: 3.62e-06</code></pre>
 <p>Los resultados se pueden visualizar graficamente con la función <code>devRatePlot</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)) <span class="co"># para hacer tres graficos en la misma pagina</span>
-<span class="kw">devRatePlot</span>(<span class="dt">eq =</span> briere1_<span class="dv">99</span>, 
-  <span class="dt">nlsDR =</span> modNoLin_<span class="dv">01</span>, 
-  <span class="dt">temp =</span> datosLab<span class="op">$</span>temp, 
-  <span class="dt">devRate =</span> datosLab<span class="op">$</span>devRate, 
-  <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">40</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">1.2</span>))
-<span class="kw">devRatePlot</span>(<span class="dt">eq =</span> briere2_<span class="dv">99</span>, 
-  <span class="dt">nlsDR =</span> modNoLin_<span class="dv">02</span>, 
-  <span class="dt">temp =</span> datosLab<span class="op">$</span>temp, 
-  <span class="dt">devRate =</span> datosLab<span class="op">$</span>devRate, 
-  <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">40</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">1.2</span>))
-<span class="kw">devRatePlot</span>(<span class="dt">eq =</span> lactin2_<span class="dv">95</span>, 
-  <span class="dt">nlsDR =</span> modNoLin_<span class="dv">03</span>, 
-  <span class="dt">temp =</span> datosLab<span class="op">$</span>temp, 
-  <span class="dt">devRate =</span> datosLab<span class="op">$</span>devRate, 
-  <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">40</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">1.2</span>))</code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)) <span class="co"># para hacer tres graficos en la misma pagina</span></a>
+<a class="sourceLine" id="cb33-2" title="2"><span class="kw">devRatePlot</span>(<span class="dt">eq =</span> briere1_<span class="dv">99</span>, </a>
+<a class="sourceLine" id="cb33-3" title="3">  <span class="dt">nlsDR =</span> modNoLin_<span class="dv">01</span>, </a>
+<a class="sourceLine" id="cb33-4" title="4">  <span class="dt">temp =</span> datosLab<span class="op">$</span>temp, </a>
+<a class="sourceLine" id="cb33-5" title="5">  <span class="dt">devRate =</span> datosLab<span class="op">$</span>devRate, </a>
+<a class="sourceLine" id="cb33-6" title="6">  <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">40</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">1.2</span>))</a>
+<a class="sourceLine" id="cb33-7" title="7"><span class="kw">devRatePlot</span>(<span class="dt">eq =</span> briere2_<span class="dv">99</span>, </a>
+<a class="sourceLine" id="cb33-8" title="8">  <span class="dt">nlsDR =</span> modNoLin_<span class="dv">02</span>, </a>
+<a class="sourceLine" id="cb33-9" title="9">  <span class="dt">temp =</span> datosLab<span class="op">$</span>temp, </a>
+<a class="sourceLine" id="cb33-10" title="10">  <span class="dt">devRate =</span> datosLab<span class="op">$</span>devRate, </a>
+<a class="sourceLine" id="cb33-11" title="11">  <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">40</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">1.2</span>))</a>
+<a class="sourceLine" id="cb33-12" title="12"><span class="kw">devRatePlot</span>(<span class="dt">eq =</span> lactin2_<span class="dv">95</span>, </a>
+<a class="sourceLine" id="cb33-13" title="13">  <span class="dt">nlsDR =</span> modNoLin_<span class="dv">03</span>, </a>
+<a class="sourceLine" id="cb33-14" title="14">  <span class="dt">temp =</span> datosLab<span class="op">$</span>temp, </a>
+<a class="sourceLine" id="cb33-15" title="15">  <span class="dt">devRate =</span> datosLab<span class="op">$</span>devRate, </a>
+<a class="sourceLine" id="cb33-16" title="16">  <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">40</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">1.2</span>))</a></code></pre></div>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
 <p>Existen varios indices estadisticos para comparar los modelos, uno de esos es AIC. El modelo con menor AIC es el que se ajusta mejor a los datos. No significa que el modelo es valido, sino que tiene el mejor ajuste dentro de los modelos seleccionados.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="kw">AIC</span>(modNoLin_<span class="dv">01</span>), <span class="kw">AIC</span>(modNoLin_<span class="dv">02</span>), <span class="kw">AIC</span>(modNoLin_<span class="dv">03</span>))</code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">c</span>(<span class="kw">AIC</span>(modNoLin_<span class="dv">01</span>), <span class="kw">AIC</span>(modNoLin_<span class="dv">02</span>), <span class="kw">AIC</span>(modNoLin_<span class="dv">03</span>))</a></code></pre></div>
 <pre><code>## [1]  -64.36146 -113.58638  -93.45456</code></pre>
 <p>En este caso, el modelo de Briere-2 se ajusta mejor a los datos que los otros modelos. Ahora podemos calcular los valores de CTmin, CTmax, y Topt. Primero vamos a simular datos de temperatura desde 0 hasta 45 grados. Despues vamos a hacer una predicción de la tasa de desarrollo para esas temperaturas en base al modelo de Briere-2. Despues especificamos que los valores de tasa de desarrollo negativos son de cero (porque no pueden ser negativos), y que los valores que faltan tambien son de cero (en caso de que haya valores ausentes). El Topt es el valor de temperatura a la cual la tasa de desarrollo esta máxima, el CTmin es el valor de temperatura mínima a la cual observamos desarrollo y el CTmax el valor de temperatura máxima a la cual observamos desarrollo.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tempS &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">45</span>, <span class="dt">by =</span> <span class="fl">0.1</span>) <span class="co"># temperaturas simuladas</span>
-devRateS &lt;-<span class="st"> </span><span class="kw">predict</span>(modNoLin_<span class="dv">02</span>, <span class="dt">newdata =</span> <span class="kw">list</span>(<span class="dt">T =</span> tempS)) <span class="co"># predicciones</span>
-devRateS[devRateS <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
-devRateS[<span class="kw">is.na</span>(devRateS)] &lt;-<span class="st"> </span><span class="dv">0</span>
-<span class="kw">c</span>(<span class="kw">AIC</span>(modNoLin_<span class="dv">01</span>), <span class="kw">AIC</span>(modNoLin_<span class="dv">02</span>), <span class="kw">AIC</span>(modNoLin_<span class="dv">03</span>))</code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1">tempS &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">45</span>, <span class="dt">by =</span> <span class="fl">0.1</span>) <span class="co"># temperaturas simuladas</span></a>
+<a class="sourceLine" id="cb36-2" title="2">devRateS &lt;-<span class="st"> </span><span class="kw">predict</span>(modNoLin_<span class="dv">02</span>, <span class="dt">newdata =</span> <span class="kw">list</span>(<span class="dt">T =</span> tempS)) <span class="co"># predicciones</span></a>
+<a class="sourceLine" id="cb36-3" title="3">devRateS[devRateS <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb36-4" title="4">devRateS[<span class="kw">is.na</span>(devRateS)] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb36-5" title="5"><span class="kw">c</span>(<span class="kw">AIC</span>(modNoLin_<span class="dv">01</span>), <span class="kw">AIC</span>(modNoLin_<span class="dv">02</span>), <span class="kw">AIC</span>(modNoLin_<span class="dv">03</span>))</a></code></pre></div>
 <pre><code>## [1]  -64.36146 -113.58638  -93.45456</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Topt &lt;-<span class="st"> </span>tempS[devRateS <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(devRateS)]
-CTmin &lt;-<span class="st"> </span>tempS[devRateS <span class="op">==</span><span class="st"> </span><span class="kw">min</span>(devRateS[devRateS <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>
-<span class="st">  </span>tempS <span class="op">&lt;</span><span class="st"> </span>Topt])]
-CTmax &lt;-<span class="st"> </span>tempS[devRateS <span class="op">==</span><span class="st"> </span><span class="kw">min</span>(devRateS[devRateS <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>
-<span class="st">  </span>tempS <span class="op">&gt;</span><span class="st"> </span>Topt])]
-<span class="kw">cat</span>(<span class="kw">paste0</span>(<span class="st">&quot;Topt: &quot;</span>, Topt, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">CTmin: &quot;</span>, CTmin, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">Tmax: &quot;</span>, CTmax))</code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1">Topt &lt;-<span class="st"> </span>tempS[devRateS <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(devRateS)]</a>
+<a class="sourceLine" id="cb38-2" title="2">CTmin &lt;-<span class="st"> </span>tempS[devRateS <span class="op">==</span><span class="st"> </span><span class="kw">min</span>(devRateS[devRateS <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb38-3" title="3"><span class="st">  </span>tempS <span class="op">&lt;</span><span class="st"> </span>Topt])]</a>
+<a class="sourceLine" id="cb38-4" title="4">CTmax &lt;-<span class="st"> </span>tempS[devRateS <span class="op">==</span><span class="st"> </span><span class="kw">min</span>(devRateS[devRateS <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb38-5" title="5"><span class="st">  </span>tempS <span class="op">&gt;</span><span class="st"> </span>Topt])]</a>
+<a class="sourceLine" id="cb38-6" title="6"><span class="kw">cat</span>(<span class="kw">paste0</span>(<span class="st">&quot;Topt: &quot;</span>, Topt, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">CTmin: &quot;</span>, CTmin, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">Tmax: &quot;</span>, CTmax))</a></code></pre></div>
 <pre><code>## Topt: 33.3
 ## CTmin: 9.2
 ## Tmax: 36.7</code></pre>
@@ -324,99 +557,99 @@ CTmax &lt;-<span class="st"> </span>tempS[devRateS <span class="op">==</span><sp
 <p>Mediante el uso de la tasa de desarrollo, es posible modelar el área de distribución teórica de una especie, es decir, el área en la que el desarrollo sería posible considerando la temperatura, así como las diferentes etapas y el número de generaciones potenciales por año de una especie; el voltinismo. El primer paso es tener datos de temperatura. El segundo paso consiste en utilizar la relación entre la temperatura y la tasa de desarrollo cuantificada previamente.</p>
 <p>De hecho, para cada dato de temperatura, se puede calcular una tasa de desarrollo que, al acumularse, conducirá al ciclo completo de desarrollo de una especie determinada. Así obtenemos una distribución potencial basada en un modelo de fenológia, que puede modificarse mediante la introducción de escenarios de cambio climático como un aumento general de las temperaturas o la introducción de eventos extremos más frecuentes.</p>
 <p>Para esto vamos a imaginar un entorno teórico. Este entorno tendra una temperatura sacada de una ley Normal de parámetro mu igual a 15 grados para el promedio, de parametro sigma igual a 1 para la desviación estandar, durante un período de 100 días.</p>
-<p>Nuestro modelo de <em>Bactrocera dorsalis</em> solo es valido para los huevos, mientras que necesitamos un modelo para todos los estadios fenologicos. Vamos a usar entonces otros datos sacados de la literatura. Los datos seran de <em>T. solanivora</em>, una polilla de la papa (Lepidoptera:Gelechiidae) del el articulo cientifico de Crespo-Perez et al. 2011<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>, usando Web Plot Digitizer<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## cargar datos del laboratorio
-datosLabTS_egg &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
-  <span class="dt">temp =</span> <span class="kw">c</span>(<span class="fl">10.0</span>, <span class="fl">10.0</span>, <span class="fl">13.0</span>, <span class="fl">15.0</span>, <span class="fl">15.0</span>, <span class="fl">15.5</span>, <span class="fl">16.0</span>, <span class="fl">16.0</span>, <span class="fl">17.0</span>, <span class="fl">20.0</span>, <span class="fl">20.0</span>, 
-    <span class="fl">25.0</span>, <span class="fl">25.0</span>, <span class="fl">30.0</span>, <span class="fl">30.0</span>, <span class="fl">35.0</span>), 
-  <span class="dt">devRate =</span> <span class="kw">c</span>(<span class="fl">0.031</span>, <span class="fl">0.039</span>, <span class="fl">0.072</span>, <span class="fl">0.047</span>, <span class="fl">0.059</span>, <span class="fl">0.066</span>, <span class="fl">0.083</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.143</span>, 
-    <span class="fl">0.171</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.18</span>, <span class="fl">0.001</span>))
-datosLabTS_larva &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
-  <span class="dt">temp =</span> <span class="kw">c</span>(<span class="fl">10.0</span>, <span class="fl">10.0</span>, <span class="fl">10.0</span>, <span class="fl">13.0</span>, <span class="fl">15.0</span>, <span class="fl">15.5</span>, <span class="fl">15.5</span>, <span class="fl">15.5</span>, <span class="fl">17.0</span>, <span class="fl">20.0</span>, <span class="fl">25.0</span>, 
-    <span class="fl">25.0</span>, <span class="fl">30.0</span>, <span class="fl">35.0</span>), 
-  <span class="dt">devRate =</span> <span class="kw">c</span>(<span class="fl">0.01</span>, <span class="fl">0.014</span>, <span class="fl">0.019</span>, <span class="fl">0.034</span>, <span class="fl">0.024</span>, <span class="fl">0.029</span>, <span class="fl">0.034</span>, <span class="fl">0.039</span>, <span class="fl">0.067</span>, <span class="fl">0.05</span>, 
-    <span class="fl">0.076</span>, <span class="fl">0.056</span>, <span class="fl">0.0003</span>, <span class="fl">0.0002</span>))
-datosLabTS_pupa &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
-  <span class="dt">temp =</span> <span class="kw">c</span>(<span class="fl">10.0</span>, <span class="fl">10.0</span>, <span class="fl">10.0</span>, <span class="fl">13.0</span>, <span class="fl">15.0</span>, <span class="fl">15.0</span>, <span class="fl">15.5</span>, <span class="fl">15.5</span>, <span class="fl">16.0</span>, <span class="fl">16.0</span>, <span class="fl">17.0</span>, 
-    <span class="fl">20.0</span>, <span class="fl">20.0</span>, <span class="fl">25.0</span>, <span class="fl">25.0</span>, <span class="fl">30.0</span>, <span class="fl">35.0</span>), 
-  <span class="dt">devRate =</span> <span class="kw">c</span>(<span class="fl">0.001</span>, <span class="fl">0.008</span>, <span class="fl">0.012</span>, <span class="fl">0.044</span>, <span class="fl">0.017</span>, <span class="fl">0.044</span>, <span class="fl">0.039</span>, <span class="fl">0.037</span>, <span class="fl">0.034</span>, <span class="fl">0.051</span>, 
-    <span class="fl">0.051</span>, <span class="fl">0.08</span>, <span class="fl">0.092</span>, <span class="fl">0.102</span>, <span class="fl">0.073</span>, <span class="fl">0.005</span>, <span class="fl">0.0002</span>))
-## ajustar un modelo a los datos (Lactin-1)
-## ver vignette quickUserGuide para mayor informacion
-modTs01_egg &lt;-<span class="st"> </span><span class="kw">devRateModel</span>(
-  <span class="dt">eq =</span> lactin1_<span class="dv">95</span>, 
-  <span class="dt">df =</span> datosLabTS_egg, 
-  <span class="dt">startValues =</span> <span class="kw">list</span>(<span class="dt">aa =</span> <span class="fl">0.177</span>, <span class="dt">Tmax =</span> <span class="fl">36.586</span>, <span class="dt">deltaT =</span> <span class="fl">5.631</span>))
-modTs01_larva &lt;-<span class="st"> </span><span class="kw">devRateModel</span>(
-  <span class="dt">eq =</span> lactin1_<span class="dv">95</span>, 
-  <span class="dt">df =</span> datosLabTS_larva, 
-  <span class="dt">startValues =</span> <span class="kw">list</span>(<span class="dt">aa =</span> <span class="fl">0.177</span>, <span class="dt">Tmax =</span> <span class="fl">36.586</span>, <span class="dt">deltaT =</span> <span class="fl">5.631</span>))
-modTs01_pupa &lt;-<span class="st"> </span><span class="kw">devRateModel</span>(
-  <span class="dt">eq =</span> lactin1_<span class="dv">95</span>, 
-  <span class="dt">df =</span> datosLabTS_pupa, 
-  <span class="dt">startValues =</span> <span class="kw">list</span>(<span class="dt">aa =</span> <span class="fl">0.177</span>, <span class="dt">Tmax =</span> <span class="fl">36.586</span>, <span class="dt">deltaT =</span> <span class="fl">5.631</span>))</code></pre></div>
+<p>Nuestro modelo de <em>Bactrocera dorsalis</em> solo es valido para los huevos, mientras que necesitamos un modelo para todos los estadios fenologicos. Vamos a usar entonces otros datos sacados de la literatura. Los datos seran de <em>T. solanivora</em>, una polilla de la papa (Lepidoptera:Gelechiidae) del el articulo cientifico de Crespo-Perez et al. 2011<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>, usando Web Plot Digitizer<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="co">## cargar datos del laboratorio</span></a>
+<a class="sourceLine" id="cb40-2" title="2">datosLabTS_egg &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb40-3" title="3">  <span class="dt">temp =</span> <span class="kw">c</span>(<span class="fl">10.0</span>, <span class="fl">10.0</span>, <span class="fl">13.0</span>, <span class="fl">15.0</span>, <span class="fl">15.0</span>, <span class="fl">15.5</span>, <span class="fl">16.0</span>, <span class="fl">16.0</span>, <span class="fl">17.0</span>, <span class="fl">20.0</span>, <span class="fl">20.0</span>, </a>
+<a class="sourceLine" id="cb40-4" title="4">    <span class="fl">25.0</span>, <span class="fl">25.0</span>, <span class="fl">30.0</span>, <span class="fl">30.0</span>, <span class="fl">35.0</span>), </a>
+<a class="sourceLine" id="cb40-5" title="5">  <span class="dt">devRate =</span> <span class="kw">c</span>(<span class="fl">0.031</span>, <span class="fl">0.039</span>, <span class="fl">0.072</span>, <span class="fl">0.047</span>, <span class="fl">0.059</span>, <span class="fl">0.066</span>, <span class="fl">0.083</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.143</span>, </a>
+<a class="sourceLine" id="cb40-6" title="6">    <span class="fl">0.171</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>, <span class="fl">0.18</span>, <span class="fl">0.001</span>))</a>
+<a class="sourceLine" id="cb40-7" title="7">datosLabTS_larva &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb40-8" title="8">  <span class="dt">temp =</span> <span class="kw">c</span>(<span class="fl">10.0</span>, <span class="fl">10.0</span>, <span class="fl">10.0</span>, <span class="fl">13.0</span>, <span class="fl">15.0</span>, <span class="fl">15.5</span>, <span class="fl">15.5</span>, <span class="fl">15.5</span>, <span class="fl">17.0</span>, <span class="fl">20.0</span>, <span class="fl">25.0</span>, </a>
+<a class="sourceLine" id="cb40-9" title="9">    <span class="fl">25.0</span>, <span class="fl">30.0</span>, <span class="fl">35.0</span>), </a>
+<a class="sourceLine" id="cb40-10" title="10">  <span class="dt">devRate =</span> <span class="kw">c</span>(<span class="fl">0.01</span>, <span class="fl">0.014</span>, <span class="fl">0.019</span>, <span class="fl">0.034</span>, <span class="fl">0.024</span>, <span class="fl">0.029</span>, <span class="fl">0.034</span>, <span class="fl">0.039</span>, <span class="fl">0.067</span>, <span class="fl">0.05</span>, </a>
+<a class="sourceLine" id="cb40-11" title="11">    <span class="fl">0.076</span>, <span class="fl">0.056</span>, <span class="fl">0.0003</span>, <span class="fl">0.0002</span>))</a>
+<a class="sourceLine" id="cb40-12" title="12">datosLabTS_pupa &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb40-13" title="13">  <span class="dt">temp =</span> <span class="kw">c</span>(<span class="fl">10.0</span>, <span class="fl">10.0</span>, <span class="fl">10.0</span>, <span class="fl">13.0</span>, <span class="fl">15.0</span>, <span class="fl">15.0</span>, <span class="fl">15.5</span>, <span class="fl">15.5</span>, <span class="fl">16.0</span>, <span class="fl">16.0</span>, <span class="fl">17.0</span>, </a>
+<a class="sourceLine" id="cb40-14" title="14">    <span class="fl">20.0</span>, <span class="fl">20.0</span>, <span class="fl">25.0</span>, <span class="fl">25.0</span>, <span class="fl">30.0</span>, <span class="fl">35.0</span>), </a>
+<a class="sourceLine" id="cb40-15" title="15">  <span class="dt">devRate =</span> <span class="kw">c</span>(<span class="fl">0.001</span>, <span class="fl">0.008</span>, <span class="fl">0.012</span>, <span class="fl">0.044</span>, <span class="fl">0.017</span>, <span class="fl">0.044</span>, <span class="fl">0.039</span>, <span class="fl">0.037</span>, <span class="fl">0.034</span>, <span class="fl">0.051</span>, </a>
+<a class="sourceLine" id="cb40-16" title="16">    <span class="fl">0.051</span>, <span class="fl">0.08</span>, <span class="fl">0.092</span>, <span class="fl">0.102</span>, <span class="fl">0.073</span>, <span class="fl">0.005</span>, <span class="fl">0.0002</span>))</a>
+<a class="sourceLine" id="cb40-17" title="17"><span class="co">## ajustar un modelo a los datos (Lactin-1)</span></a>
+<a class="sourceLine" id="cb40-18" title="18"><span class="co">## ver vignette quickUserGuide para mayor informacion</span></a>
+<a class="sourceLine" id="cb40-19" title="19">modTs01_egg &lt;-<span class="st"> </span><span class="kw">devRateModel</span>(</a>
+<a class="sourceLine" id="cb40-20" title="20">  <span class="dt">eq =</span> lactin1_<span class="dv">95</span>, </a>
+<a class="sourceLine" id="cb40-21" title="21">  <span class="dt">df =</span> datosLabTS_egg, </a>
+<a class="sourceLine" id="cb40-22" title="22">  <span class="dt">startValues =</span> <span class="kw">list</span>(<span class="dt">aa =</span> <span class="fl">0.177</span>, <span class="dt">Tmax =</span> <span class="fl">36.586</span>, <span class="dt">deltaT =</span> <span class="fl">5.631</span>))</a>
+<a class="sourceLine" id="cb40-23" title="23">modTs01_larva &lt;-<span class="st"> </span><span class="kw">devRateModel</span>(</a>
+<a class="sourceLine" id="cb40-24" title="24">  <span class="dt">eq =</span> lactin1_<span class="dv">95</span>, </a>
+<a class="sourceLine" id="cb40-25" title="25">  <span class="dt">df =</span> datosLabTS_larva, </a>
+<a class="sourceLine" id="cb40-26" title="26">  <span class="dt">startValues =</span> <span class="kw">list</span>(<span class="dt">aa =</span> <span class="fl">0.177</span>, <span class="dt">Tmax =</span> <span class="fl">36.586</span>, <span class="dt">deltaT =</span> <span class="fl">5.631</span>))</a>
+<a class="sourceLine" id="cb40-27" title="27">modTs01_pupa &lt;-<span class="st"> </span><span class="kw">devRateModel</span>(</a>
+<a class="sourceLine" id="cb40-28" title="28">  <span class="dt">eq =</span> lactin1_<span class="dv">95</span>, </a>
+<a class="sourceLine" id="cb40-29" title="29">  <span class="dt">df =</span> datosLabTS_pupa, </a>
+<a class="sourceLine" id="cb40-30" title="30">  <span class="dt">startValues =</span> <span class="kw">list</span>(<span class="dt">aa =</span> <span class="fl">0.177</span>, <span class="dt">Tmax =</span> <span class="fl">36.586</span>, <span class="dt">deltaT =</span> <span class="fl">5.631</span>))</a></code></pre></div>
 <p>A partir de los modelos ajustados a <em>T. solanivora</em> y una población de 50 individuos simulados, podemos representar la distribución de las<br />
 generaciones con el tiempo. Para agregar realismo a la simulación, añadimos variabilidad en la respuesta de los insectos a la temperatura que seguirá una distribución Normal de parametro mu igual al valor de la tasa de desarrollo y de parametro sigma = 0.025.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">simul01 &lt;-<span class="st"> </span><span class="kw">devRateIBM</span>(
-  <span class="dt">tempTS =</span> <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">15</span>, <span class="dt">sd =</span> <span class="dv">1</span>),
-  <span class="dt">timeStepTS =</span> <span class="dv">1</span>,
-  <span class="dt">models =</span> <span class="kw">list</span>(modTs01_egg, modTs01_larva, modTs01_pupa),
-  <span class="dt">numInd =</span> <span class="dv">50</span>,
-  <span class="dt">stocha =</span> <span class="fl">0.025</span>,
-  <span class="dt">timeLayEggs =</span> <span class="dv">1</span>)
-<span class="kw">print</span>(simul01)</code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">simul01 &lt;-<span class="st"> </span><span class="kw">devRateIBM</span>(</a>
+<a class="sourceLine" id="cb41-2" title="2">  <span class="dt">tempTS =</span> <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">15</span>, <span class="dt">sd =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb41-3" title="3">  <span class="dt">timeStepTS =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb41-4" title="4">  <span class="dt">models =</span> <span class="kw">list</span>(modTs01_egg, modTs01_larva, modTs01_pupa),</a>
+<a class="sourceLine" id="cb41-5" title="5">  <span class="dt">numInd =</span> <span class="dv">50</span>,</a>
+<a class="sourceLine" id="cb41-6" title="6">  <span class="dt">stocha =</span> <span class="fl">0.025</span>,</a>
+<a class="sourceLine" id="cb41-7" title="7">  <span class="dt">timeLayEggs =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb41-8" title="8"><span class="kw">print</span>(simul01)</a></code></pre></div>
 <pre><code>## [[1]]
 ##       g1s1 g1s2 g1s3 g2s1 g2s2
-##  [1,]   13   43   64   76   NA
-##  [2,]   15   49   72   88   NA
-##  [3,]   12   33   53   66   90
-##  [4,]   15   41   61   73   NA
-##  [5,]   12   38   64   79   NA
-##  [6,]   15   45   71   85   NA
-##  [7,]   15   46   75   90   NA
-##  [8,]   15   42   71   84   NA
-##  [9,]   14   40   62   80   NA
-## [10,]   14   38   61   76   NA
-## [11,]   15   42   71   85   NA
-## [12,]   14   46   71   85   NA
-## [13,]   15   39   62   79   NA
-## [14,]   14   46   69   84   NA
-## [15,]   16   39   62   76  100
-## [16,]   17   49   74   89   NA
-## [17,]   14   40   64   77   NA
-## [18,]   17   47   66   81   NA
-## [19,]   14   45   72   88   NA
-## [20,]   12   39   61   75   NA
-## [21,]   14   40   64   77   NA
-## [22,]   14   41   65   77   NA
-## [23,]   14   41   62   78   NA
-## [24,]   14   43   65   79   NA
-## [25,]   16   42   66   78   NA
-## [26,]   14   38   63   77   NA
-## [27,]   13   40   61   75   NA
-## [28,]   14   42   65   77   NA
-## [29,]   13   36   60   74   NA
-## [30,]   15   38   61   76   NA
-## [31,]   14   37   65   78   NA
-## [32,]   13   45   65   79   NA
-## [33,]   15   48   73   86   NA
-## [34,]   14   40   65   78   NA
-## [35,]   14   36   61   74   NA
-## [36,]   15   38   61   74   NA
-## [37,]   15   44   63   77   NA
-## [38,]   12   40   65   78   NA
-## [39,]   14   48   75   89   NA
-## [40,]   13   41   65   79   NA
-## [41,]   16   43   69   83   NA
-## [42,]   15   45   69   81   NA
-## [43,]   14   45   68   81   NA
-## [44,]   15   46   72   88   NA
-## [45,]   16   41   71   83   NA
-## [46,]   14   46   68   82   NA
-## [47,]   15   44   67   81   NA
-## [48,]   14   40   64   76   NA
-## [49,]   14   43   67   79   NA
-## [50,]   14   43   71   83   NA
+##  [1,]   14   41   68   85   NA
+##  [2,]   16   44   64   77   NA
+##  [3,]   15   42   65   80   NA
+##  [4,]   15   40   70   85   NA
+##  [5,]   17   40   68   83   NA
+##  [6,]   16   46   66   79   NA
+##  [7,]   14   41   65   83   NA
+##  [8,]   14   41   63   76   NA
+##  [9,]   13   36   61   75   NA
+## [10,]   14   42   71   85   NA
+## [11,]   14   41   65   81   NA
+## [12,]   14   37   62   75   NA
+## [13,]   13   46   70   85   NA
+## [14,]   19   46   73   85   NA
+## [15,]   16   41   65   79   NA
+## [16,]   16   42   72   86   NA
+## [17,]   14   39   61   77   NA
+## [18,]   17   41   67   80   NA
+## [19,]   16   40   63   77  100
+## [20,]   15   43   72   88   NA
+## [21,]   14   45   72   86   NA
+## [22,]   15   38   67   81   NA
+## [23,]   15   44   67   79   NA
+## [24,]   16   49   73   89   NA
+## [25,]   16   47   70   83   NA
+## [26,]   14   44   69   82   NA
+## [27,]   14   41   59   74   99
+## [28,]   16   49   69   84   NA
+## [29,]   17   43   66   80   NA
+## [30,]   18   47   71   86   NA
+## [31,]   15   52   72   86   NA
+## [32,]   13   42   70   85   NA
+## [33,]   15   46   73   89   NA
+## [34,]   16   39   64   77   NA
+## [35,]   15   41   61   77   NA
+## [36,]   15   52   78   93   NA
+## [37,]   12   37   64   77   NA
+## [38,]   14   45   68   84   NA
+## [39,]   15   40   68   81   NA
+## [40,]   15   42   67   83   NA
+## [41,]   14   47   72   87   NA
+## [42,]   15   36   56   72  100
+## [43,]   16   47   71   85   NA
+## [44,]   14   40   63   78   NA
+## [45,]   14   38   62   80   NA
+## [46,]   13   49   73   88   NA
+## [47,]   13   38   59   72   NA
+## [48,]   16   48   70   82   NA
+## [49,]   14   42   61   75   NA
+## [50,]   14   40   65   83   NA
 ## 
 ## [[2]]
 ## [[2]][[1]]
@@ -454,49 +687,49 @@ generaciones con el tiempo. Para agregar realismo a la simulación, añadimos va
 ## 
 ## 
 ## [[3]]
-##   [1] 14.22513 16.34114 13.59952 15.33452 15.76876 16.51790 12.83336
-##   [8] 14.63618 14.93749 14.96816 15.33604 13.79124 15.46812 15.36265
-##  [15] 15.88654 14.46660 15.86513 15.73910 13.82228 16.28772 15.98312
-##  [22] 15.61853 14.08225 13.09207 14.26228 15.84992 15.61550 16.22112
-##  [29] 15.58207 13.77845 14.82426 14.88953 17.14298 12.52797 15.82445
-##  [36] 16.22425 13.91616 13.65472 17.15908 15.08226 13.64705 15.46145
-##  [43] 13.96315 13.54597 14.94276 15.55708 14.18549 14.69667 13.78090
-##  [50] 16.09222 14.88695 16.28179 15.80011 16.68176 14.32309 13.68514
-##  [57] 14.62990 15.58554 14.11855 13.81864 16.50292 13.75617 13.77918
-##  [64] 14.00760 16.16660 14.08596 16.04354 15.68091 15.95125 13.06410
-##  [71] 17.02092 17.13391 16.06948 15.08226 15.00093 14.46890 16.85350
-##  [78] 14.33163 16.30796 14.87558 15.64307 14.82171 14.83542 16.46138
-##  [85] 15.97080 15.10305 15.07273 15.52497 15.05759 15.12470 15.52892
-##  [92] 16.55091 15.08267 15.47342 15.18739 13.63776 14.93358 16.83920
-##  [99] 14.91793 15.62252</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>))
-<span class="kw">devRateIBMPlot</span>(<span class="dt">ibm =</span> simul01)</code></pre></div>
-<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAEgCAMAAABcujGyAAAAZlBMVEUAAAAAADoAAGYAOjoAOpAAZrY6AAA6ADo6AGY6OpA6kNtmAABmADpmkJBmtrZmtv+QOgCQZgCQkGaQtpCQ2/+2ZgC2tma2/7a2///bkDrb2//b////AAD/tmb/25D//7b//9v////Fnas5AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAQh0lEQVR4nO2d62LkqBFGZcf2bNxJ2kmsrBWPut3v/5IrQFckJCEKKMR3fqxn3Z4qZJ1BgLgUj73cL++P29tV/LF+/lr8kQIAaqwEvV+koNXL97Kgu4MxJfkLOB1WggqfXx9K1eVoNIWKR/IXcDosBH1IR58+H3Vh8DP9+5v8BZwOO0E3o1EGi0HyF3A6IOiE5C/gdBwTtDL14p3KwoDkL+B0kNSgB4YEmJL8BZwOPOInJH8BpwOCTkj+Ak6HlaA/H+pBbmiBnuD+Jn8Bp8NG0Kob/zQOhCZ/f5O/gNNhIejPR68lXnWCQFi96rx2fzROFnEvUFySv4DTwbIGvf3xtfGNg8hGtNY8mcSGoNywa4O2VajnNuj9olXQs28c5Ofj6bO5ildzbAjKDatevJrPVBSG+pPo/tb6MMHsG0dRs1knr8G02BCUG3zGQcuiePqPmiulmri3t+bfwvUxfMM9tqRu/mCKDUG54VdQi4nSZeNJXSiJpDOyuqsL4wz+32uYY8v/M8aGoNzwKqjFTH719C1Hgo7FWRB01c+poJPYsgFtjA1BucHlEa80qUeCjnsvbo/4aWzRRzLGhqDc4CJoNRNUjQmpcQM3Qcex2wEIU2wIyg0ugs5rUEmpf8MxdjUaIFuKDUG5wUXQdgRId6Z9e+Um6BC7H8k1xYag3OAi6LwXL2u8WZXqFPv21s12McWGoNxgI6gYq3z+n5KlfSY3zcSu5+0+DipiV2r8QA62LseGoNzgI6jAVUTn2BCUG1wEle1E44YQbljEhqDc4CKofOiOuzCU7I8NQbnBRlAeJH8BpwOCTkj+Ak4HBJ2Q/AWcDgg6IfkLOB0sBZ2u8Fhap3GQWSj9GxCUGxwFna7CWFqncZBZqNk3ICg3GAqqrcJYWKdxlFmo2TcgKDcOCNruU78YzaEkxiUfkrqbD+8Uuw9lig1BuWG9Bfjq5jemJR+m/x+xuuRDfTxFnzy/vNpjFnu25GMSG4Jyw6YGbSf77q9B9eUdK7s0ri/5WFjorK/uMCxHmsWeLfmYxIag3LBcdiwWHHt5xG8s+XDqI20s+RjHhqDc6ARtnt97HChl+82DoKtLPsynNljHni35mMaGoNwYatBq12hjVbwHqkElpb5OwzH2bMmHFhuCcmPyiN/j6O3tbz4EXVnyUblOclpZ8qHHhqDc0NqglbmH3tE8HX0MMxmXfPTrNNxjz5Z8zGJDUG6MBa1lu+znw7j10nY0h5KYlnwM6zScY8+WfMxiQ1Bu9IKKUU5l5o61Eb6OocGSD6Ax9OIdqijjhkv7wZIPsEgv6D8o1k9iyQcgRhfUbVJG8vc3+Qs4HUrQcnhIrz0IcQwNCI1eg66BY2hAcFgeohCP5C/gdOAYmgnJX8DpkILeL+/9ZE9zJynaMTRV4TZMbwEE5UYCx9CIgQW3CfX7gaDc4H8MjRxh//mgWDS3DQTlxuhV57t4lh5/Dy+jGaKbvo5ZXZMEQXOlV6V8+b69vT5KJxHmSz5Wv45ZX5NU4RGfKcO7+Ku0IdarztU1STXVxg2bQFBujAUVlVisV53ra5Kc5gDaAEG5MTziX8WSuPuF8hFvwfoxNK7r4ncDQbkxng/69OnaF/GzJkmwshCKEgjKDS5b35jXJKlPfE5lHgFBucFF0JVjaMqm+Tl6i+UVCMqNXtDNqXS7ojn8XfMxNKW/qcw6EJQbQyeJ4hnKeU3SLiAoN4ZhJopnKM81SRZAUG6Mx0EJoh3/qz7XJO0HgnKjE5TmZXfy9zf5CzgdfRu0pqi+kr+/yV/A6Rjtbhe5F8+C5C/gdLAZB+VB8hdwOiDohOQv4HQMgjYP+Zfv0m2cJ/n7m/wFnI6hk/T0WYnZTE6GJn9/k7+A0zEMM73LtZrY+gawYjxQLwTdftlYF+ZFwEXyEP5qAQV6DVquzVwvi+L99vdv82sn//dXlBcaZYTWBl3dD17Iq2YQx9v6BoJmxqQXX6zu4CHrzdsveZhLrK1vCgiaGVZ7M4ke/s//HxFrUFlcCJoRVlvfdPWmcTAKggJi2s3Dhm7sWi++WzJkbKiGEhSGZsNoNpOoFR1X94YRFFVoRujzQU2ty53R3Au0kQCCZoY+o37fqiBf5yRtAkFzYzxQL1gdqDcHCfUiBoLmhjaj3nEXOQgKiNEG6h236IKggBirex3/nCQImht2e9RHPycJguZGYuckQdDcSOycpE5QGJoLadWga4cwgFPC8ZwkMxA0O0YbN2zvfRPmnKQVIGh2DLe6KtzP0oCggJjJrXZ2FIICYrRbXW3MCN2K5lqcrfgQNDfGt1ps0Xl1OpIIggJixsfQtJ0fh324ISggZujFU5yUBUEBMWntbgdBs2O2ga3TRvHhBIWhmaAvmiuuLhvchRIUVWg2LCyac1g3B0EBMQuL5hLoxUPQbNAXzYkalK2gBQTNjnkb1OXEJO+Czv8Ezo22aK6pPF0O7YSggJikxkEhaH5AUMCa4U7f3jY2sN0TzbU4G+EhaHZonaTVLcB3RHMv0Gp4CJodC8NMLtHcC7QaHoJmh9XudlX3pj7S7nYjLWFoJtjUoGJnsftFjJJCUBAIizaoclhOuIegIBAWvfiuFVCa34ZCUEDMkZ1FylcICgJx5Bia+8W08hOCAmKsbnTXQv35gKAgDFbnJG1HoyqWITwEzY5E38VD0Fw4dqPjdJLGZYWgmUAyWSTQMTQQNENSmiwCQTMkpckiEDRDrCaLRD6GZiIlDM0Dq8kikY+hgaAZYj1ZRBLnEAUImiEHJos8Yh1DA0EzJKVjaCBohqR0DA0EzZD+Pm/20B/Rj6GBoBnS32eXDUWGaO4h1qJD0PwYxkFdz0iS0QhirESHoPmhD9Q7RiOIsRIdguaHvoGtYzSCGObgEDRDRgP1BFWoZ0HN/wfOyuwQBb4z6nVBYWgOJDSjXisqBM0CCApYM9lh+eW7dBtsgqCAmKGT9PRZvXw7DodCUEDMeD5otbLr0s5oJGUyBYegGTIeqBeCOhyS9ICggBy9Bi35rkmCoDmitUE5r+qEoDminZPE+BAFfWQegmZBOuOgeknxKikL0hUUVWgWWM2o345GUSRTbAiaI+nMqIegWZLOjHoImiXpzKiHoFliMaN+xz7MEBQQ09/l29tmFWrcmn6IRlAiU2gImiVWe9RvVrNeBd3+Djgfdnd5a+ESBAXEJDNQvyQoDD0/7U3uzzF2jOYewhh6HhuCZoC6yeIc4x29pO1ozhHMoSFolsibrDZWtNiePsIxNBA0T9pevKg8j0+mD3AMzVJsCJoBJIIO0dwLZIq8EBqCZgAEBayxEjTiMTTLgsLQ02MjaMRjaBZdhKAZYPGqM+YhCssqQtDzY3GPYx5Dw1vQvhio08lJ5BgaxoKORteCnPmcGWkcQ2O46QxU0ISEoNRY/TajHUNjKGV8F+KX4OykMZvJVErWenAuWzokIaixnuIsaLqV6+/fsUswIhFBbT/wz2bmkK3RLpFjwt8aBCVzJnVBIxm6K3EwRbs0/dcjQXQ7mUgKQY+wN6/38i3GP5B0UUYWjqYtaJxnPKORpDVB9xdyRcPojqYg6IoPkQSNkFRnsxC7/xVtGRjX0TQEXfmIgywbeCnk3phbP7dLvoiOQlD/xGwSbKXe7V0sRxMXlMfjdgva7vyBUKb0VsrFUTQBQVdvbtjK6XAywmIeCbX8d+x1i+BoEoKufhhQUIdkHGp6rfjHTAvtaOqCBrzzjEaXjjEpv4NlQR09gaCBrImvJ1EBRBhXwcI5yl/QDTECCkoRwyUIzZWKMlDIFeg9UwqCun3OieOtBMqLlFpR/NpCOHoGQRMz9EBxKa9RGUUV0bujEJSgCHaxDg0TkeWf2kQR16+j6Qvq/RlP3XuPWeNrIpEVxZ+kVkWMsbPIth2eq9DITQjK7DOFqIN7cNRuVWeEnUW2C+jVIH+Dn0STPfZjtId1PWpRuDjr4ncU0O+2j94CB227rInjox4lk9SicFF2FtkjX1L9+I7tFfSEl7VDGepsVI5yr0F3lc+Hof6tXxHUQ522ozR0OQkrUrs2aPidReIIGmiDEFMKstz2mhAPaLlbalWg8DuL7LxV5ANBgRsNfTr656ylHtbrmbyUYl4gIjwIuvPHiN6Ux2nM9puOORfgt8bxArVf3YozL9OBohAUYYhGGexhUTMefiT3f6kI/FiffJ0m3y6G7uECNGWdeurw2zlcxmO3JMwxNDbCbNtVaArOpHAs/KJ5s6/DPZ9+HQfaoZ9PLReuTPNU+2qB/SWQ1BlFod99EuzCbQ/azIykLLDJvBUTDUQTcYvDV2QgnKBDNMpgAEBQwBz2k0VA3rCfLALyhvurTpA53CeLgMxBDQpYQzxZBABqLGzenCxi0Nbqp50JPM8D2fxmC1AICIpsx7NBUGRjnQ2CIhvrbBAU2Vhng6DIxjobBEU21tkgKLKxzgZBkY11NrydBKyBoIA1EBSwBoIC1kBQwBoIClgDQQFrIChgDQQFrIGggDUQFLAGggLWQFDAGt+C1kXx9Ok5h0LuHPUeMmcpl7cGyXZ7K4rXR6hsVfObvIbJdvvja5JoltGzoHWTrQ5iy89Hk6YSdzFUzlquvw6SrW4y3S+hrq0SSYSh/rPdL3KTmj7RPKNfQdVuJOWr1ySK25v4N189f4XKeb8IQYNkU0lCXdvPx6tK4j9brbZK7BMtZPQraG+N1ywjmn99oXJWL/9uBA2S7farrVOCZOsF9Z6tLt7lNl99ooWMngWVv1nTXmMeKJuLDJOzSSPaoEGy1c9/XmT7Osy1dY/4ENmUoF2ihYx+BVXNiTCNUJmvuYthcoqHkRA0SLZKPAhFxRbo99n2VEJkkzL2iRYynkrQuusj+c8pNvgLJ+hTW7GEubbmMdQ8dcP8U48saNhHvNp1L0hOmSTYI141ypoGWphr61uE53/EB+0ktVuUB8lZtXsDXoNkU3esuXthsnXVWIhskTtJAYeZ+u1Lw+UsQw0zqc2t60DDTMqSQNnquMNMAQfqRaMpcM4y2EB91f1TCJKta4OGyFbHHaiXz8IwXaT2oSuShcqpXnUGyVZ3r3GDZCvDZWvbm32iWUZMFgGsgaCANRAUsAaCAtZAUMAaCApYA0EBayAoYA0EBayBoIA1EBSwBoIC1kBQwBoIClgDQQFrIChgDQQFrIGggDUQFLAGggLWQFDAGggKWANBAWsgKGANBAWsgaCANRAUsAaCknK/tPsyPv95ue75C/Wun8oYCEpOf+TBDu77NM4YCEoOBKUEgpKjBBXq3d7+JU7nEMfEyZ2Du10NH+roOLE/cyEOW2o/uP3675v6CfVpvEtgBAQlZyyoPP3u+Uvuai2OQui22ZW7GNfFVdag3QeNlld1/kv7adzr4AEEJWcs6Puj+0/jonCz3bC1OydA/FT/gbK3evkOeLAUeyAoOWNBr4/+P2pna7UBfHdGpfyp/oN2c/inz+5TAEE9YBK0OxhE/pA8m/mqBO1PDPnVnRLUfgogqAdWa9Axpagrr8OhAYOg7achS80VCEqOQdD5iFLzHdUGbT9QbVB1NANGoFogKDkGQdWBhm292J25IjtI3Qey0y867/2JLACC0mMSVA53dr2fuj0yp+zGQeXZRP9sR0y7TwEEZUTbwwdjICgfIOgCEJQPEHSBvwDold91+H7cugAAAABJRU5ErkJggg==" /><!-- --></p>
+##   [1] 13.26458 15.14225 15.60602 15.31037 14.48383 13.72132 14.62682
+##   [8] 14.08576 14.29359 14.19712 13.65809 14.36098 15.66022 15.01174
+##  [15] 13.65289 14.04432 14.57178 14.21676 16.05877 15.83351 15.93283
+##  [22] 14.74429 13.81430 16.91812 14.72349 15.80485 17.00065 15.07068
+##  [29] 14.67094 17.85071 14.61108 15.01014 15.43275 14.88184 13.71068
+##  [36] 16.33774 15.82416 15.63230 12.98388 16.32347 15.40397 14.24573
+##  [43] 13.58704 14.41545 13.13372 15.22434 13.80249 14.98760 14.78730
+##  [50] 14.34662 14.82129 16.45091 16.92334 14.07128 15.19020 15.79420
+##  [57] 12.36084 15.88020 15.27771 14.73328 12.94977 15.21755 14.91647
+##  [64] 16.29319 14.30793 12.98516 16.02759 16.07324 14.88216 15.23580
+##  [71] 16.53230 15.39456 15.51184 15.14421 14.96738 15.71429 14.97705
+##  [78] 14.38904 14.29944 15.90983 14.90917 14.12557 14.73928 15.04070
+##  [85] 16.73884 14.92297 16.03390 14.53445 13.58889 15.82229 15.12611
+##  [92] 13.67260 15.51356 15.35628 16.06020 14.63239 14.49209 15.20605
+##  [99] 14.63311 13.82305</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb43-2" title="2"><span class="kw">devRateIBMPlot</span>(<span class="dt">ibm =</span> simul01)</a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
 <pre><code>## Threshold for visualization = 10% of individuals</code></pre>
 <p>En los resultados obtenemos la fenología de cada uno de los 50 individuos, el modelo utilizado, y la serie temporal de temperatura. En la visualización de los resultados, cada color representa una generación diferente y cada tipo de línea una etapa fenológica diferente.</p>
 <p>Dado que estamos interesados en la respuesta de los insectos al cambio climático, es posible modificar el escenario inicial, es decir, modificar la serie temporal de temperaturas introduciendo un aumento en las temperaturas, por ejemplo pasando de un promedio de 15 a 17 grados.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">simul02 &lt;-<span class="st"> </span><span class="kw">devRateIBM</span>(
-  <span class="dt">tempTS =</span> <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">17</span>, <span class="dt">sd =</span> <span class="dv">1</span>),
-  <span class="dt">timeStepTS =</span> <span class="dv">1</span>,
-  <span class="dt">models =</span> <span class="kw">list</span>(modTs01_egg, modTs01_larva, modTs01_pupa),
-  <span class="dt">numInd =</span> <span class="dv">50</span>,
-  <span class="dt">stocha =</span> <span class="fl">0.025</span>,
-  <span class="dt">timeLayEggs =</span> <span class="dv">1</span>)
-<span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>))
-<span class="kw">devRateIBMPlot</span>(<span class="dt">ibm =</span> simul02)</code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1">simul02 &lt;-<span class="st"> </span><span class="kw">devRateIBM</span>(</a>
+<a class="sourceLine" id="cb45-2" title="2">  <span class="dt">tempTS =</span> <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">17</span>, <span class="dt">sd =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb45-3" title="3">  <span class="dt">timeStepTS =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb45-4" title="4">  <span class="dt">models =</span> <span class="kw">list</span>(modTs01_egg, modTs01_larva, modTs01_pupa),</a>
+<a class="sourceLine" id="cb45-5" title="5">  <span class="dt">numInd =</span> <span class="dv">50</span>,</a>
+<a class="sourceLine" id="cb45-6" title="6">  <span class="dt">stocha =</span> <span class="fl">0.025</span>,</a>
+<a class="sourceLine" id="cb45-7" title="7">  <span class="dt">timeLayEggs =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb45-8" title="8"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb45-9" title="9"><span class="kw">devRateIBMPlot</span>(<span class="dt">ibm =</span> simul02)</a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
 <pre><code>## Threshold for visualization = 10% of individuals</code></pre>
 <p>Tambien podemos aumentar la variabilidad de las temperaturas al cambiar la desviación estándar de la ley normal que representa las temperaturas, y pasar sigma de 1 a 2.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">simul02 &lt;-<span class="st"> </span><span class="kw">devRateIBM</span>(
-  <span class="dt">tempTS =</span> <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">17</span>, <span class="dt">sd =</span> <span class="dv">2</span>),
-  <span class="dt">timeStepTS =</span> <span class="dv">1</span>,
-  <span class="dt">models =</span> <span class="kw">list</span>(modTs01_egg, modTs01_larva, modTs01_pupa),
-  <span class="dt">numInd =</span> <span class="dv">50</span>,
-  <span class="dt">stocha =</span> <span class="fl">0.025</span>,
-  <span class="dt">timeLayEggs =</span> <span class="dv">1</span>)
-<span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>))
-<span class="kw">devRateIBMPlot</span>(<span class="dt">ibm =</span> simul02)</code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">simul02 &lt;-<span class="st"> </span><span class="kw">devRateIBM</span>(</a>
+<a class="sourceLine" id="cb47-2" title="2">  <span class="dt">tempTS =</span> <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">17</span>, <span class="dt">sd =</span> <span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb47-3" title="3">  <span class="dt">timeStepTS =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb47-4" title="4">  <span class="dt">models =</span> <span class="kw">list</span>(modTs01_egg, modTs01_larva, modTs01_pupa),</a>
+<a class="sourceLine" id="cb47-5" title="5">  <span class="dt">numInd =</span> <span class="dv">50</span>,</a>
+<a class="sourceLine" id="cb47-6" title="6">  <span class="dt">stocha =</span> <span class="fl">0.025</span>,</a>
+<a class="sourceLine" id="cb47-7" title="7">  <span class="dt">timeLayEggs =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb47-8" title="8"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb47-9" title="9"><span class="kw">devRateIBMPlot</span>(<span class="dt">ibm =</span> simul02)</a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
 <pre><code>## Threshold for visualization = 10% of individuals</code></pre>
 <p>Variando los parámetros incluso ligeramente, podemos ver que las consecuencias pueden ser importantes para la fenología de los insectos, a pesar de la simplicidad del modelo aquí representado. Podemos modificar el modelo para cambiar el tamaño de las poblaciones, aumentar el número de días de la simulación o modificar la variabilidad intrapoblacional en la respuesta a la temperatura para profundizar estos elementos y observar la complejidad de la respuesta de los insectos a los cambios globales.</p>
 <p>También podemos usar un modelo diferente al utilisado y resaltar la importancia de la elección del mismo, y concluir que las incertidumbres son múltiples:</p>
@@ -506,14 +739,14 @@ generaciones con el tiempo. Para agregar realismo a la simulación, añadimos va
 <li>Incertidumbres relacionadas con la caracterización de la respuesta de los insectos a la temperatura y en particular las incertidumbres relacionadas con la elección del modelo matemático.</li>
 </ul>
 <p>Aquí el modelo presentado es bastante simple, podría enriquecerse teniendo en cuenta la variabilidad espacial en las temperaturas. En el ejemplo que sigue vamos a crear un entorno teórico para representar un mapa donde a cada punto corresponde un dato de temperatura que vamos a usar para calcular el numero de generaciones potenciales simulando 100 días a esta temperatura.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tempEspacio &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">15</span>, <span class="dt">sd =</span> <span class="dv">1</span>), <span class="dt">ncol =</span> <span class="dv">10</span>) <span class="co"># mapa teorico</span>
-myDevRate &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span><span class="kw">devRateMap</span>(<span class="dt">nlsDR =</span> modTs01_egg, <span class="dt">tempMap =</span> tempEspacio) <span class="op">+</span>
-<span class="st">  </span><span class="dv">1</span><span class="op">/</span><span class="kw">devRateMap</span>(<span class="dt">nlsDR =</span> modTs01_larva, <span class="dt">tempMap =</span> tempEspacio) <span class="op">+</span>
-<span class="st">  </span><span class="dv">1</span><span class="op">/</span><span class="kw">devRateMap</span>(<span class="dt">nlsDR =</span> modTs01_pupa, <span class="dt">tempMap =</span> tempEspacio)
-<span class="kw">filled.contour</span>(<span class="dv">100</span> <span class="op">/</span><span class="st"> </span>myDevRate, <span class="co"># numero de generaciones en 100 dias</span>
-    <span class="dt">col =</span> <span class="kw">rev</span>(<span class="kw">heat.colors</span>(<span class="dv">30</span>)), 
-    <span class="dt">main =</span> <span class="st">&quot;#generaciones&quot;</span>, <span class="dt">plot.axes =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1">tempEspacio &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">15</span>, <span class="dt">sd =</span> <span class="dv">1</span>), <span class="dt">ncol =</span> <span class="dv">10</span>) <span class="co"># mapa teorico</span></a>
+<a class="sourceLine" id="cb49-2" title="2">myDevRate &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span><span class="kw">devRateMap</span>(<span class="dt">nlsDR =</span> modTs01_egg, <span class="dt">tempMap =</span> tempEspacio) <span class="op">+</span></a>
+<a class="sourceLine" id="cb49-3" title="3"><span class="st">  </span><span class="dv">1</span><span class="op">/</span><span class="kw">devRateMap</span>(<span class="dt">nlsDR =</span> modTs01_larva, <span class="dt">tempMap =</span> tempEspacio) <span class="op">+</span></a>
+<a class="sourceLine" id="cb49-4" title="4"><span class="st">  </span><span class="dv">1</span><span class="op">/</span><span class="kw">devRateMap</span>(<span class="dt">nlsDR =</span> modTs01_pupa, <span class="dt">tempMap =</span> tempEspacio)</a>
+<a class="sourceLine" id="cb49-5" title="5"><span class="kw">filled.contour</span>(<span class="dv">100</span> <span class="op">/</span><span class="st"> </span>myDevRate, <span class="co"># numero de generaciones en 100 dias</span></a>
+<a class="sourceLine" id="cb49-6" title="6">    <span class="dt">col =</span> <span class="kw">rev</span>(<span class="kw">heat.colors</span>(<span class="dv">30</span>)), </a>
+<a class="sourceLine" id="cb49-7" title="7">    <span class="dt">main =</span> <span class="st">&quot;#generaciones&quot;</span>, <span class="dt">plot.axes =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAGACAMAAABC/kH9AAAA9lBMVEUAAAAAADoAAGYAOjoAOmYAOpAAZpAAZrY6AAA6ADo6AGY6OgA6Ojo6OmY6OpA6ZpA6ZrY6kLY6kNtmAABmOgBmOjpmkLZmkNtmtttmtv+QOgCQZgCQZjqQkGaQkLaQtpCQttuQtv+Q29uQ2/+2ZgC2Zjq2kGa229u22/+2/7a2///bkDrbkGbbtmbbtpDb27bb29vb////LgD/OgD/RgD/UQD/XQD/aAD/dAD/gAD/iwD/lwD/ogD/rgD/tmb/uQD/xQD/0QD/25D/27b/3AD/6AD/8wD//wD//xL//zf//1v//4D//6T//7b//8j//9v//+3///9ZYqynAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAen0lEQVR4nO3da4PbxnUGYCqVaqWuG1dymlhJ27TeNG62SapYtxXJJSmRu5ZkReX//zMlrnOugwMueNHBeT/Y0i4BUnh4BjO4DCbbiOtMTv0BIodNADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADtPADvPuQBfTx48/fj43ndDrvPTk91Kh1zh55hzAb6cfLF983BYjwDeng/wxeTbEjkycM4C+GLSZCf86feTyf3vLiY/+2P153tfP90WFX7vP8tfFK9HP/73byY/+3775292S39VtfB/+nIy+btfpwr+8y93f/+XzFq2/7Nb4t4vvj/2v/sYOTvgncou974sgD8+Ln94/48FTZViL81+/ODpdfpts7ZHDXC9KPijvJbyK+UuZwFc9LGKXXCxhXdUXzz9dFFu7ouiNt883FkVBve/L/77aEt+/OD77f/uKP/+af2j3Qr++enbx7vlK+DdT3f/rZaU17Kj/uLp9k/lT93lTIAvdxv3uiyyqm3+WADt/vOo/N3uJzuUb7eFxxdb/uMyf/mvL8smvlrB5S/+UFdw9ffqf/Jadn+//4dT/csPnTMBbvtYzX7zotrwbYt62TSrRaXTH+8W+y1o4puuc/nH5u+X+lqqvUK1l3aXswAG++By428r4OuJCMx/XO647//bXx5XwE1fvLRtVng9Kb9D4lreflP96T9OtQEO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" /><!-- --></p>
 <p>Tambien se podria incorporar la respuesta de los insectos a otros factores como la humedad relativa, o la disponibilidad y calidad del recurso disponible para estos.</p>
 </div>
 <div id="limites" class="section level2">
@@ -534,12 +767,12 @@ myDevRate &lt;-<span class="st"> </span><span class="dv">1</span><span class="op
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Ren%C3%A9_Antoine_Ferchault_de_R%C3%A9aumur">https://en.wikipedia.org/wiki/Ren%C3%A9_Antoine_Ferchault_de_R%C3%A9aumur</a><a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p><a href="https://en.wikipedia.org/wiki/Bactrocera_dorsalis" class="uri">https://en.wikipedia.org/wiki/Bactrocera_dorsalis</a><a href="#fnref2">↩</a></p></li>
-<li id="fn3"><p>Messenger, P.S., and Flitters, N.E. (1958). Effect of constant temperature environments on the egg stage of three species of Hawaiian fruit flies. Annals of the Entomological Society of America, 51(2), 109-119.<a href="#fnref3">↩</a></p></li>
-<li id="fn4"><p>Campbell, A., Frazer, B.D., Gilbert, N.G.A.P., Gutierrez, A.P., Mackauer, M. (1974). Temperature requirements of some aphids and their parasites. Journal of applied ecology, 431-438.<a href="#fnref4">↩</a></p></li>
-<li id="fn5"><p>Crespo-Pérez, V., Rebaudo, F., Silvain, J.-F. Dangles, O. (2011) Modeling invasive species spread in complex landscapes: the case of potato moth in Ecuador. Landscape Ecology, 26, 1447–1461.<a href="#fnref5">↩</a></p></li>
-<li id="fn6"><p>Rohatgi, A. (2015) WebPlotDigitalizer: HTML5 Based Online Tool to Extract Numerical Data from Plot Images.<a href="#fnref6">↩</a></p></li>
+<li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Ren%C3%A9_Antoine_Ferchault_de_R%C3%A9aumur" class="uri">https://en.wikipedia.org/wiki/Ren%C3%A9_Antoine_Ferchault_de_R%C3%A9aumur</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p><a href="https://en.wikipedia.org/wiki/Bactrocera_dorsalis" class="uri">https://en.wikipedia.org/wiki/Bactrocera_dorsalis</a><a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>Messenger, P.S., and Flitters, N.E. (1958). Effect of constant temperature environments on the egg stage of three species of Hawaiian fruit flies. Annals of the Entomological Society of America, 51(2), 109-119.<a href="#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p>Campbell, A., Frazer, B.D., Gilbert, N.G.A.P., Gutierrez, A.P., Mackauer, M. (1974). Temperature requirements of some aphids and their parasites. Journal of applied ecology, 431-438.<a href="#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p>Crespo-Pérez, V., Rebaudo, F., Silvain, J.-F. Dangles, O. (2011) Modeling invasive species spread in complex landscapes: the case of potato moth in Ecuador. Landscape Ecology, 26, 1447–1461.<a href="#fnref5" class="footnote-back">↩</a></p></li>
+<li id="fn6"><p>Rohatgi, A. (2015) WebPlotDigitalizer: HTML5 Based Online Tool to Extract Numerical Data from Plot Images.<a href="#fnref6" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 
