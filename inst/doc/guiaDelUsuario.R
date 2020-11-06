@@ -1,108 +1,102 @@
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 library("devRate")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ### script para analizar los datos de tasa de desarrollo de B. dorsalis en 
 ### función de la temperatura.
 require("devRate") # para cargar el paquete devRate
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 c(55.0, 56.0, 57.0, 58.0, 60.0, 62.5, 65.0, 67.5, 70.0, 75.0, 80.0, 85.0, 87.5, 
   90.0, 92.5, 95.0, 96.0, 97.0, 97.5)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 (c(55.0, 56.0, 57.0, 58.0, 60.0, 62.5, 65.0, 67.5, 70.0, 75.0, 80.0, 85.0, 87.5, 
   90.0, 92.5, 95.0, 96.0, 97.0, 97.5) - 32) / 1.8
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 temp <- (c(55.0, 56.0, 57.0, 58.0, 60.0, 62.5, 65.0, 67.5, 70.0, 75.0, 80.0, 
            85.0, 87.5, 90.0, 92.5, 95.0, 96.0, 97.0, 97.5) - 32) / 1.8
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 devRate <- 1/(c(263.0, 232.0, 170.5, 148.0, 121.3, 95.5, 74.0, 62.5, 51.5, 
                 38.0, 30.5, 27.0, 25.0, 24.0, 23.5, 25.0, 26.5, 29.3, 34.3)/24)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 datosLab <- data.frame(temp, devRate)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 datosLab <- data.frame(
   temp = (c(55.0, 56.0, 57.0, 58.0, 60.0, 62.5, 65.0, 67.5, 70.0, 75.0, 80.0, 
             85.0, 87.5, 90.0, 92.5, 95.0, 96.0, 97.0, 97.5) - 32)/1.8, 
   devRate = 1/(c(263.0, 232.0, 170.5, 148.0, 121.3, 95.5, 74.0, 62.5, 51.5, 
             38.0, 30.5, 27.0, 25.0, 24.0, 23.5, 25.0, 26.5, 29.3, 34.3)/24))
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 print(datosLab)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 plot(x = datosLab$temp, y = datosLab$devRate, 
      xlab = "Temperatura", ylab = "Tasa de desarrollo", 
      xlim = c(0, 40), ylim = c(0, 1.2))
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 datosLab14 <- datosLab[1:14,]
 plot(x = datosLab14$temp, y = datosLab14$devRate, 
      xlab = "Temperatura", ylab = "Tasa de desarrollo", 
      xlim = c(0, 40), ylim = c(0, 1.2))
 
-## ------------------------------------------------------------------------
-modLin <- devRateModel(eq = campbell_74, df = datosLab14)
+## -----------------------------------------------------------------------------
+modLin <- devRateModel(eq = campbell_74, dfData = datosLab14)
 plot(x = datosLab$temp, y = datosLab$devRate, 
      xlab = "Temperatura", ylab = "Tasa de desarrollo", 
      xlim = c(0, 40), ylim = c(0, 1.2)) # datos del laboratorio
 abline(modLin) # añadir modelo lineal en el grafico
 print(modLin) # imprimir resultados del ajuste del modelo
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 devRateFind(species = "Bactrocera dorsalis")
 campbell_74$startVal[campbell_74$startVal$genSp == "Bactrocera dorsalis",]
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 names(devRateEqList)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 devRateFind(species = "Bactrocera dorsalis")
 modNoLin_01 <- devRateModel(
   eq = briere1_99, # nombre del modelo
-  df = datosLab, # nombre de los datos de laboratorio
+  dfData = datosLab, # nombre de los datos de laboratorio
   startValues = list(aa = 0.01, Tmin = 10, Tmax = 40)) # valores iniciales
 print(modNoLin_01)
 modNoLin_02 <- devRateModel(
   eq = briere2_99, # nombre del modelo
-  df = datosLab, # nombre de los datos de laboratorio
+  dfData = datosLab, # nombre de los datos de laboratorio
   startValues = list(
     aa = 0.01, Tmin = 10, Tmax = 40, bb = 2)) # valores iniciales
 print(modNoLin_02)
 modNoLin_03 <- devRateModel(
   eq = lactin2_95, # nombre del modelo
-  df = datosLab, # nombre de los datos de laboratorio
+  dfData = datosLab, # nombre de los datos de laboratorio
   startValues = list(
     aa = 0.03, Tmax = 30, deltaT = 5.0, bb = -1.5)) # valores iniciales
 print(modNoLin_03)
 
-## ---- fig.width = 7, fig.height = 3--------------------------------------
+## ---- fig.width = 7, fig.height = 3-------------------------------------------
 par(mfrow = c(1, 3)) # para hacer tres graficos en la misma pagina
 devRatePlot(eq = briere1_99, 
   nlsDR = modNoLin_01, 
-  temp = datosLab$temp, 
-  devRate = datosLab$devRate, 
   xlim = c(10, 40), ylim = c(0, 1.2))
 devRatePlot(eq = briere2_99, 
   nlsDR = modNoLin_02, 
-  temp = datosLab$temp, 
-  devRate = datosLab$devRate, 
   xlim = c(10, 40), ylim = c(0, 1.2))
 devRatePlot(eq = lactin2_95, 
   nlsDR = modNoLin_03, 
-  temp = datosLab$temp, 
-  devRate = datosLab$devRate, 
   xlim = c(10, 40), ylim = c(0, 1.2))
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 c(AIC(modNoLin_01), AIC(modNoLin_02), AIC(modNoLin_03))
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 tempS <- seq(from = 0, to = 45, by = 0.1) # temperaturas simuladas
 devRateS <- predict(modNoLin_02, newdata = list(T = tempS)) # predicciones
 devRateS[devRateS < 0] <- 0
@@ -115,7 +109,7 @@ CTmax <- tempS[devRateS == min(devRateS[devRateS > 0 &
   tempS > Topt])]
 cat(paste0("Topt: ", Topt, "\nCTmin: ", CTmin, "\nTmax: ", CTmax))
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ## cargar datos del laboratorio
 datosLabTS_egg <- data.frame(
   temp = c(10.0, 10.0, 13.0, 15.0, 15.0, 15.5, 16.0, 16.0, 17.0, 20.0, 20.0, 
@@ -136,18 +130,18 @@ datosLabTS_pupa <- data.frame(
 ## ver vignette quickUserGuide para mayor informacion
 modTs01_egg <- devRateModel(
   eq = lactin1_95, 
-  df = datosLabTS_egg, 
+  dfData = datosLabTS_egg, 
   startValues = list(aa = 0.177, Tmax = 36.586, deltaT = 5.631))
 modTs01_larva <- devRateModel(
   eq = lactin1_95, 
-  df = datosLabTS_larva, 
+  dfData = datosLabTS_larva, 
   startValues = list(aa = 0.177, Tmax = 36.586, deltaT = 5.631))
 modTs01_pupa <- devRateModel(
   eq = lactin1_95, 
-  df = datosLabTS_pupa, 
+  dfData = datosLabTS_pupa, 
   startValues = list(aa = 0.177, Tmax = 36.586, deltaT = 5.631))
 
-## ---- fig.width = 7, fig.height = 3--------------------------------------
+## ---- fig.width = 7, fig.height = 3-------------------------------------------
 simul01 <- devRateIBM(
   tempTS = rnorm(n = 100, mean = 15, sd = 1),
   timeStepTS = 1,
@@ -159,7 +153,7 @@ print(simul01)
 par(mar = c(4, 4, 0, 0))
 devRateIBMPlot(ibm = simul01)
 
-## ---- fig.width = 7, fig.height = 3--------------------------------------
+## ---- fig.width = 7, fig.height = 3-------------------------------------------
 simul02 <- devRateIBM(
   tempTS = rnorm(n = 100, mean = 17, sd = 1),
   timeStepTS = 1,
@@ -170,7 +164,7 @@ simul02 <- devRateIBM(
 par(mar = c(4, 4, 0, 0))
 devRateIBMPlot(ibm = simul02)
 
-## ---- fig.width = 7, fig.height = 3--------------------------------------
+## ---- fig.width = 7, fig.height = 3-------------------------------------------
 simul02 <- devRateIBM(
   tempTS = rnorm(n = 100, mean = 17, sd = 2),
   timeStepTS = 1,
@@ -181,7 +175,7 @@ simul02 <- devRateIBM(
 par(mar = c(4, 4, 0, 0))
 devRateIBMPlot(ibm = simul02)
 
-## ---- fig.width = 5, fig.height = 4--------------------------------------
+## ---- fig.width = 5, fig.height = 4-------------------------------------------
 tempEspacio <- matrix(rnorm(100, mean = 15, sd = 1), ncol = 10) # mapa teorico
 myDevRate <- 1/devRateMap(nlsDR = modTs01_egg, tempMap = tempEspacio) +
   1/devRateMap(nlsDR = modTs01_larva, tempMap = tempEspacio) +

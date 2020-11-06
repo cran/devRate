@@ -155,7 +155,7 @@
 #'   \item{com}{An optional comment about the equation use.}
 #'   \item{id}{An id to identify the equation.}
 #' }
-#' @source \url{http://jb.asm.org/content/149/1/1}
+#' @source \url{https://jb.asm.org/content/149/1/1}
 #' @docType data
 #' @keywords datasets
 "rootsq_82"
@@ -219,8 +219,8 @@
 #'   \item{com}{An optional comment about the equation use.}
 #'   \item{id}{An id to identify the equation.}
 #' }
-#' @source \url{http://jb.asm.org/content/149/1/1}
-#' @source \url{http://jb.asm.org/content/154/3/1222}
+#' @source \url{https://jb.asm.org/content/149/1/1}
+#' @source \url{https://jb.asm.org/content/154/3/1222}
 #' @docType data
 #' @keywords datasets
 "ratkowsky_82"
@@ -353,7 +353,7 @@
 #' @title Davidson equation of development rate as a function of temperature.
 #'
 #' @description Davidson, J. (1944). On the relationship between temperature and rate of development of insects
-#' at constant temperatures. The Journal of Animal Ecology:26-38.
+#' at constant temperatures. The Journal of Animal Ecology:26-38. <doi:10.2307/1326>
 #'
 #' @details Equation:
 #' \deqn{rT = \frac{K}{1 + e^{aa + bb * T}}}{%
@@ -375,7 +375,6 @@
 #'   \item{com}{An optional comment about the equation use.}
 #'   \item{id}{An id to identify the equation.}
 #' }
-#' @source \url{http://dx.doi.org/10.2307/1326}
 #' @docType data
 #' @keywords datasets
 "davidson_44"
@@ -383,7 +382,7 @@
 #' @title Campbell et al. equation of development rate as a function of temperature.
 #'
 #' @description Campbell, A., Frazer, B. D., Gilbert, N. G. A. P., Gutierrez, A. P., & Mackauer, M. (1974).
-#' Temperature requirements of some aphids and their parasites. Journal of applied ecology, 431-438.
+#' Temperature requirements of some aphids and their parasites. Journal of applied ecology, 431-438. <doi:10.2307/2402197>
 #'
 #' @details Equation:
 #' \deqn{rT = aa + bb * T}{%
@@ -403,7 +402,6 @@
 #'   \item{com}{An optional comment about the equation use.}
 #'   \item{id}{An id to identify the equation.}
 #' }
-#' @source \url{http://dx.doi.org/10.2307/2402197}
 #' @docType data
 #' @keywords datasets
 "campbell_74"
@@ -695,7 +693,6 @@
 #'   \item{com}{An optional comment about the equation use.}
 #'   \item{id}{An id to identify the equation.}
 #' }
-#' @source \url{http://www.jstor.org/stable/2460694}
 #' @docType data
 #' @keywords datasets
 "taylor_81"
@@ -1174,3 +1171,6 @@
 
 #' The list of all available equations of development rate as a function of temperature.
 "devRateEqList"
+
+#' Default starting values for each equation listed in the devRateEqList object.
+"devRateEqStartVal"

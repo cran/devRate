@@ -1,4 +1,4 @@
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ### Experimental temperatures and development rate for the eggs
 expeTempEggs <- c(10.0, 10.0, 13.0, 15.0, 15.0, 15.5, 16.0, 16.0, 17.0, 20.0, 20.0, 
               25.0, 25.0, 30.0, 30.0, 35.0)
@@ -24,34 +24,34 @@ library("devRate")
 data(exTropicalMoth)
 str(exTropicalMoth[[1]])
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 devRateFind(orderSP = "Lepidoptera")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 devRateFind(familySP = "Gelechiidae")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 devRateFind(species = "Tecia solanivora")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 devRateFind(species = "Symmetrischema tangolias")
 devRateFind(species = "Phthorimaea operculella")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 devRateInfo(eq = taylor_81)
 devRateInfo(eq = lactin1_95)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 taylor_81$startVal[taylor_81$startVal["genSp"] == "Symmetrischema tangolias",]
 lactin1_95$startVal[lactin1_95$startVal["genSp"] == "Phthorimaea operculella",]
 
-## ---- fig.width = 6, fig.height = 6--------------------------------------
+## ---- fig.width = 6, fig.height = 6-------------------------------------------
 devRatePlotInfo (eq = taylor_81, sortBy = "ordersp",
   ylim = c(0, 0.20), xlim = c(0, 50))
 devRatePlotInfo (eq = lactin1_95, sortBy = "ordersp",
   ylim = c(0, 1.00), xlim = c(0, 50))
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ### using the vectors from section "Organizing the dataset"
 ############################################################
 
@@ -101,15 +101,15 @@ mPupa01b <- devRateModel(eq = lactin1_95,
 ############################################################
 
 mEggs02 <- devRateModel(eq = taylor_81, 
-  df = dfDevEggs,
+  dfData = dfDevEggs,
   startValues = list(Rm = 0.05, Tm = 30, To = 5))
 
 mLarva02 <- devRateModel(eq = taylor_81, 
-  df = dfDevLarva,
+  dfData = dfDevLarva,
   startValues = list(Rm = 0.05, Tm = 25, To = 10))
       
 mPupa02 <- devRateModel(eq = taylor_81, 
-  df = dfDevPupa,
+  dfData = dfDevPupa,
   startValues = list(Rm = 0.1, Tm = 30, To = 10))
 
 ### using the dataset included in the package (only for taylor_81 model)
@@ -130,61 +130,45 @@ mPupa <- devRateModel(eq = taylor_81,
   devRate = exTropicalMoth$raw$pupa[,2],
   startValues = list(Rm = 0.1, Tm = 30, To = 10))
 
-## ------------------------------------------------------------------------
-resultNLS <- devRatePrint(myNLS = mLarva, 
-  temp = exTropicalMoth$raw$larva[,1], 
-  devRate = exTropicalMoth$raw$larva[,2])
+## -----------------------------------------------------------------------------
+resultNLS <- devRatePrint(myNLS = mLarva)
 
-resultNLSb <- devRatePrint(myNLS = mLarva01b, 
-  temp = exTropicalMoth$raw$larva[,1], 
-  devRate = exTropicalMoth$raw$larva[,2])
+resultNLSb <- devRatePrint(myNLS = mLarva01b)
 
-## ---- fig.width = 7, fig.height = 5--------------------------------------
+## ---- fig.width = 7, fig.height = 5-------------------------------------------
 par(mfrow = c(1, 2), mar = c(4, 4, 0, 0))
 devRatePlot(eq = taylor_81, 
   nlsDR = mEggs, 
-  temp = exTropicalMoth$raw$eggs[,1], 
-  devRate = exTropicalMoth$raw$eggs[,2],
   pch = 16, ylim = c(0, 0.2))
 
 devRatePlot(eq = lactin1_95, 
   nlsDR = mEggs01b, 
-  temp = exTropicalMoth$raw$eggs[,1], 
-  devRate = exTropicalMoth$raw$eggs[,2],
   pch = 16, ylim = c(0, 0.2))
       
 devRatePlot(eq = taylor_81, 
   nlsDR = mLarva, 
-  temp = exTropicalMoth$raw$larva[,1], 
-  devRate = exTropicalMoth$raw$larva[,2],
   pch = 16, ylim = c(0, 0.1))
 
 devRatePlot(eq = lactin1_95, 
   nlsDR = mLarva01b, 
-  temp = exTropicalMoth$raw$larva[,1], 
-  devRate = exTropicalMoth$raw$larva[,2],
   pch = 16, ylim = c(0, 0.1))
       
 devRatePlot(eq = taylor_81, 
   nlsDR = mPupa, 
-  temp = exTropicalMoth$raw$pupa[,1], 
-  devRate = exTropicalMoth$raw$pupa[,2],
   pch = 16, ylim = c(0, 0.15))
 
 devRatePlot(eq = lactin1_95, 
   nlsDR = mPupa01b, 
-  temp = exTropicalMoth$raw$pupa[,1], 
-  devRate = exTropicalMoth$raw$pupa[,2],
   pch = 16, ylim = c(0, 0.15))
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ### Models for the larva life stage
 c(AIC(mLarva), AIC(mLarva01b))
 c(BIC(mLarva), BIC(mLarva01b))
 c(logLik(mLarva), logLik(mLarva01b))
 
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 forecastTsolanivora <- devRateIBM(
   tempTS = rnorm(n = 100, mean = 15, sd = 1),
   timeStepTS = 1,
@@ -194,6 +178,6 @@ forecastTsolanivora <- devRateIBM(
   timeLayEggs = 1)
 print(forecastTsolanivora)
 
-## ---- fig.width = 6, fig.height = 6--------------------------------------
+## ---- fig.width = 6, fig.height = 6-------------------------------------------
 devRateIBMPlot(ibm = forecastTsolanivora, typeG = "density")
 

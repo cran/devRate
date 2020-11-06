@@ -4,7 +4,8 @@
 \name{campbell_74}
 \alias{campbell_74}
 \title{Campbell et al. equation of development rate as a function of temperature.}
-\format{A list of eight elements describing the equation.
+\format{
+A list of eight elements describing the equation.
 \describe{
   \item{eq}{The equation (formula object).}
   \item{eqAlt}{The equation (string).}
@@ -14,16 +15,14 @@
   \item{startVal}{The parameters found in the literature with their references.}
   \item{com}{An optional comment about the equation use.}
   \item{id}{An id to identify the equation.}
-}}
-\source{
-\url{http://dx.doi.org/10.2307/2402197}
+}
 }
 \usage{
 campbell_74
 }
 \description{
 Campbell, A., Frazer, B. D., Gilbert, N. G. A. P., Gutierrez, A. P., & Mackauer, M. (1974).
-Temperature requirements of some aphids and their parasites. Journal of applied ecology, 431-438.
+Temperature requirements of some aphids and their parasites. Journal of applied ecology, 431-438. <doi:10.2307/2402197>
 }
 \details{
 Equation:

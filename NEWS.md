@@ -1,3 +1,22 @@
+## devRate 0.2.1
+* fix URLs
+
+## devRate 0.2.0
+* fix argument name: from df to dfData in devRateModel
+* simplify functions: 
+    - devRatePrint: delete T and rT arguments
+    - devRatePlot: delete T and rT arguments
+
+## devRate 0.1.12
+* function to fit all equations
+* function to assess goodness-of-fit
+* function for model comparison
+
+## devRate 0.1.11
+* coverage with testthat
+* typos and minor changes
+* new function devRateIBMparam
+
 ## devRate 0.1.10
 * vignette problem fixed with knitr version 1.23
 

@@ -219,15 +219,15 @@ mPupa01b <- devRateModel(eq = lactin1_95,
 ############################################################
 
 mEggs02 <- devRateModel(eq = taylor_81, 
-  df = dfDevEggs,
+  dfData = dfDevEggs,
   startValues = list(Rm = 0.05, Tm = 30, To = 5))
 
 mLarva02 <- devRateModel(eq = taylor_81, 
-  df = dfDevLarva,
+  dfData = dfDevLarva,
   startValues = list(Rm = 0.05, Tm = 25, To = 10))
       
 mPupa02 <- devRateModel(eq = taylor_81, 
-  df = dfDevPupa,
+  dfData = dfDevPupa,
   startValues = list(Rm = 0.1, Tm = 30, To = 10))
 
 ### using the dataset included in the package (only for taylor_81 model)
@@ -252,13 +252,9 @@ mPupa <- devRateModel(eq = taylor_81,
 The summary of the "devRateModel" can be obtained with the "devRatePrint" function.
 
 ```{r}
-resultNLS <- devRatePrint(myNLS = mLarva, 
-  temp = exTropicalMoth$raw$larva[,1], 
-  devRate = exTropicalMoth$raw$larva[,2])
+resultNLS <- devRatePrint(myNLS = mLarva)
 
-resultNLSb <- devRatePrint(myNLS = mLarva01b, 
-  temp = exTropicalMoth$raw$larva[,1], 
-  devRate = exTropicalMoth$raw$larva[,2])
+resultNLSb <- devRatePrint(myNLS = mLarva01b)
 ```
 
 Empirical data can be plotted against the model using the "devRatePlot" function.
@@ -267,38 +263,26 @@ Empirical data can be plotted against the model using the "devRatePlot" function
 par(mfrow = c(1, 2), mar = c(4, 4, 0, 0))
 devRatePlot(eq = taylor_81, 
   nlsDR = mEggs, 
-  temp = exTropicalMoth$raw$eggs[,1], 
-  devRate = exTropicalMoth$raw$eggs[,2],
   pch = 16, ylim = c(0, 0.2))
 
 devRatePlot(eq = lactin1_95, 
   nlsDR = mEggs01b, 
-  temp = exTropicalMoth$raw$eggs[,1], 
-  devRate = exTropicalMoth$raw$eggs[,2],
   pch = 16, ylim = c(0, 0.2))
       
 devRatePlot(eq = taylor_81, 
   nlsDR = mLarva, 
-  temp = exTropicalMoth$raw$larva[,1], 
-  devRate = exTropicalMoth$raw$larva[,2],
   pch = 16, ylim = c(0, 0.1))
 
 devRatePlot(eq = lactin1_95, 
   nlsDR = mLarva01b, 
-  temp = exTropicalMoth$raw$larva[,1], 
-  devRate = exTropicalMoth$raw$larva[,2],
   pch = 16, ylim = c(0, 0.1))
       
 devRatePlot(eq = taylor_81, 
   nlsDR = mPupa, 
-  temp = exTropicalMoth$raw$pupa[,1], 
-  devRate = exTropicalMoth$raw$pupa[,2],
   pch = 16, ylim = c(0, 0.15))
 
 devRatePlot(eq = lactin1_95, 
   nlsDR = mPupa01b, 
-  temp = exTropicalMoth$raw$pupa[,1], 
-  devRate = exTropicalMoth$raw$pupa[,2],
   pch = 16, ylim = c(0, 0.15))
 ```
 
