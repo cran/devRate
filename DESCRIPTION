@@ -2,7 +2,7 @@ Package: devRate
 Type: Package
 Title: Quantify the Relationship Between Development Rate and
         Temperature in Ectotherms
-Version: 0.2.2
+Version: 0.2.3
 Authors@R: c(
     person("Francois", "Rebaudo", role = c("aut", "cre"), comment = "2016-2022",  
       email = "francois.rebaudo@ird.fr"),
@@ -39,6 +39,6 @@ VignetteBuilder: knitr
 URL: https://github.com/frareb/devRate/
 BugReports: https://github.com/frareb/devRate/issues
 NeedsCompilation: no
-Packaged: 2022-06-29 07:15:00 UTC; frareb
+Packaged: 2022-09-08 09:56:15 UTC; frareb
 Repository: CRAN
-Date/Publication: 2022-06-29 11:20:07 UTC
+Date/Publication: 2022-09-08 11:03:23 UTC
