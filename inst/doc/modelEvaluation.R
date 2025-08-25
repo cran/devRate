@@ -157,7 +157,7 @@ RSS <- t(sapply(1:6, function(myModel){
 rownames(RSS) <- c("Briere-1", "Briere-2", "Lactin", "Perf-2", "Beta", "Ratkowsky")
 colnames(RSS) <- c("wu", "broufas", "trpis", "messenger", "liu1", "liu2", "shirai", "deJong")
 
-## ---- echo=FALSE, results='asis'----------------------------------------------
+## ----echo=FALSE, results='asis'-----------------------------------------------
 knitr::kable(RSS) 
 
 ## -----------------------------------------------------------------------------
@@ -170,7 +170,7 @@ R2 <- t(sapply(1:6, function(myModel){
 rownames(R2) <- c("Briere-1", "Briere-2", "Lactin", "Perf-2", "Beta", "Ratkowsky")
 colnames(R2) <- c("wu", "broufas", "trpis", "messenger", "liu1", "liu2", "shirai", "deJong")
 
-## ---- echo=FALSE, results='asis'----------------------------------------------
+## ----echo=FALSE, results='asis'-----------------------------------------------
 knitr::kable(R2) 
 
 ## -----------------------------------------------------------------------------
@@ -186,7 +186,7 @@ R2adj <- t(sapply(1:6, function(myModel){
 rownames(R2adj) <- c("Briere-1", "Briere-2", "Lactin", "Perf-2", "Beta", "Ratkowsky")
 colnames(R2adj) <- c("wu", "broufas", "trpis", "messenger", "liu1", "liu2", "shirai", "deJong")
 
-## ---- echo=FALSE, results='asis'----------------------------------------------
+## ----echo=FALSE, results='asis'-----------------------------------------------
 knitr::kable(R2adj) 
 
 ## -----------------------------------------------------------------------------
@@ -201,7 +201,7 @@ RMSE <- t(sapply(1:6, function(myModel){
 rownames(RMSE) <- c("Briere-1", "Briere-2", "Lactin", "Perf-2", "Beta", "Ratkowsky")
 colnames(RMSE) <- c("wu", "broufas", "trpis", "messenger", "liu1", "liu2", "shirai", "deJong")
 
-## ---- echo=FALSE, results='asis'----------------------------------------------
+## ----echo=FALSE, results='asis'-----------------------------------------------
 knitr::kable(RMSE) 
 
 ## -----------------------------------------------------------------------------
@@ -229,7 +229,7 @@ rownames(AICc) <- paste0(c("Briere-1", "Briere-2", "Lactin",
 colnames(AICc) <- paste0(c("wu", "broufas", "trpis", "messenger", 
       "liu1", "liu2", "shirai", "deJong"), " (", n, ")")
 
-## ---- echo=FALSE, results='asis'----------------------------------------------
+## ----echo=FALSE, results='asis'-----------------------------------------------
 knitr::kable(AICc) 
 
 ## -----------------------------------------------------------------------------
@@ -241,10 +241,10 @@ AIC <- t(sapply(1:6, function(myModel){
 rownames(AIC) <- c("Briere-1", "Briere-2", "Lactin", "Perf-2", "Beta", "Ratkowsky")
 colnames(AIC) <- c("wu", "broufas", "trpis", "messenger", "liu1", "liu2", "shirai", "deJong")
 
-## ---- echo=FALSE, results='asis'----------------------------------------------
+## ----echo=FALSE, results='asis'-----------------------------------------------
 knitr::kable(AIC) 
 
-## ---- fig.width = 6, fig.height = 6-------------------------------------------
+## ----fig.width = 6, fig.height = 6--------------------------------------------
 plot(x = listDS[[4]][,1], 
   y = listDS[[4]][,2], 
   ylim = c(0, 1), ylab = "Development rate",
@@ -257,7 +257,7 @@ for(i in 1:6){
 points(x = listDS[[4]][,1], y = listDS[[4]][,2], pch = 16, cex = 1.5)
 legend("topleft", col = 1:6, lwd = 2, legend = c("Briere-1", "Briere-2", "Lactin", "Perf-2", "Beta", "Ratkowsky"))
 
-## ---- fig.width = 6, fig.height = 6-------------------------------------------
+## ----fig.width = 6, fig.height = 6--------------------------------------------
 plot(x = listDS[[3]][,1], 
   y = listDS[[3]][,2], 
   ylim = c(0, 0.7), ylab = "Development rate",
@@ -270,7 +270,7 @@ for(i in 1:6){
 points(x = listDS[[3]][,1], y = listDS[[3]][,2], pch = 16, cex = 1.5)
 legend("topleft", col = 1:6, lwd = 2, legend = c("Briere-1", "Briere-2", "Lactin", "Perf-2", "Beta", "Ratkowsky"))
 
-## ---- fig.width = 7, fig.height = 6-------------------------------------------
+## ----fig.width = 7, fig.height = 6--------------------------------------------
 getPlot <- function(datasetNumber, ...){
   plot(x = listDS[[datasetNumber]][,1], 
     y = listDS[[datasetNumber]][,2], 

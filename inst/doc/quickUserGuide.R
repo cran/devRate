@@ -45,7 +45,7 @@ devRateInfo(eq = lactin1_95)
 taylor_81$startVal[taylor_81$startVal["genSp"] == "Symmetrischema tangolias",]
 lactin1_95$startVal[lactin1_95$startVal["genSp"] == "Phthorimaea operculella",]
 
-## ---- fig.width = 6, fig.height = 6-------------------------------------------
+## ----fig.width = 6, fig.height = 6--------------------------------------------
 devRatePlotInfo (eq = taylor_81, sortBy = "ordersp",
   ylim = c(0, 0.20), xlim = c(0, 50))
 devRatePlotInfo (eq = lactin1_95, sortBy = "ordersp",
@@ -135,7 +135,7 @@ resultNLS <- devRatePrint(myNLS = mLarva)
 
 resultNLSb <- devRatePrint(myNLS = mLarva01b)
 
-## ---- fig.width = 7, fig.height = 5-------------------------------------------
+## ----fig.width = 7, fig.height = 5--------------------------------------------
 par(mfrow = c(1, 2), mar = c(4, 4, 0, 0))
 devRatePlot(eq = taylor_81, 
   nlsDR = mEggs, 
@@ -178,6 +178,6 @@ forecastTsolanivora <- devRateIBM(
   timeLayEggs = 1)
 print(forecastTsolanivora)
 
-## ---- fig.width = 6, fig.height = 6-------------------------------------------
+## ----fig.width = 6, fig.height = 6--------------------------------------------
 devRateIBMPlot(ibm = forecastTsolanivora, typeG = "density")
 

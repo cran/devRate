@@ -81,7 +81,7 @@ modNoLin_03 <- devRateModel(
     aa = 0.03, Tmax = 30, deltaT = 5.0, bb = -1.5)) # valores iniciales
 print(modNoLin_03)
 
-## ---- fig.width = 7, fig.height = 3-------------------------------------------
+## ----fig.width = 7, fig.height = 3--------------------------------------------
 par(mfrow = c(1, 3)) # para hacer tres graficos en la misma pagina
 devRatePlot(eq = briere1_99, 
   nlsDR = modNoLin_01, 
@@ -141,7 +141,7 @@ modTs01_pupa <- devRateModel(
   dfData = datosLabTS_pupa, 
   startValues = list(aa = 0.177, Tmax = 36.586, deltaT = 5.631))
 
-## ---- fig.width = 7, fig.height = 3-------------------------------------------
+## ----fig.width = 7, fig.height = 3--------------------------------------------
 simul01 <- devRateIBM(
   tempTS = rnorm(n = 100, mean = 15, sd = 1),
   timeStepTS = 1,
@@ -153,7 +153,7 @@ print(simul01)
 par(mar = c(4, 4, 0, 0))
 devRateIBMPlot(ibm = simul01)
 
-## ---- fig.width = 7, fig.height = 3-------------------------------------------
+## ----fig.width = 7, fig.height = 3--------------------------------------------
 simul02 <- devRateIBM(
   tempTS = rnorm(n = 100, mean = 17, sd = 1),
   timeStepTS = 1,
@@ -164,7 +164,7 @@ simul02 <- devRateIBM(
 par(mar = c(4, 4, 0, 0))
 devRateIBMPlot(ibm = simul02)
 
-## ---- fig.width = 7, fig.height = 3-------------------------------------------
+## ----fig.width = 7, fig.height = 3--------------------------------------------
 simul02 <- devRateIBM(
   tempTS = rnorm(n = 100, mean = 17, sd = 2),
   timeStepTS = 1,
@@ -175,7 +175,7 @@ simul02 <- devRateIBM(
 par(mar = c(4, 4, 0, 0))
 devRateIBMPlot(ibm = simul02)
 
-## ---- fig.width = 5, fig.height = 4-------------------------------------------
+## ----fig.width = 5, fig.height = 4--------------------------------------------
 tempEspacio <- matrix(rnorm(100, mean = 15, sd = 1), ncol = 10) # mapa teorico
 myDevRate <- 1/devRateMap(nlsDR = modTs01_egg, tempMap = tempEspacio) +
   1/devRateMap(nlsDR = modTs01_larva, tempMap = tempEspacio) +
